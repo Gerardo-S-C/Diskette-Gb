@@ -1,0 +1,191 @@
+:root{
+    --fondo: #9FA9FA;
+    --boton: #7F88C7;
+    --cuadro: #4E537A;
+    --blanco: #ffffff;
+
+    
+    --bg: #1a1e24;
+    --color: #eee;
+    --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body{
+    background: var(--fondo);
+}
+
+.datos{
+    position: absolute;
+    width: 513px;
+    height: 727px;
+    left: 690px;
+    top: 100px;
+
+    border-radius: 75px;
+    background: var(--cuadro);
+}
+
+.Titulo{
+    position: absolute;
+    width: 428px;
+    height: 130px;
+    left: 50px;
+    top: 10px;
+
+    font-family: Palanquin Dark;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 130px;
+    text-align: center;
+
+    color: #ffffff ;
+}
+
+.botones{
+    position: absolute;
+    left: 80px;
+    width: 350px;
+    top: 130px;
+}
+
+.campos{
+    
+font-family: Palanquin Dark;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 43px;
+text-align: center;
+
+color: #FFFFFF;
+
+}
+
+.form-check-label{
+    color: #FFFFFF;
+}
+
+/*Botón confirmar*/
+
+.wrapper {
+    padding: 1.5rem 0;
+    filter: url('#goo');
+}
+
+.button {
+    display: inline-block;
+    text-align: center;
+    background: var(--boton);
+    color: var(--blanco);
+    font-weight: bold;
+    padding: 1.18em 1.32em 1.03em;
+    line-height: 1;
+    border-radius: 1em;
+    position: relative;
+    min-width: 8.23em;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 1.25rem;
+}
+
+.button:before,
+.button:after {
+    width: 4.4em;
+    height: 2.95em;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: var(--boton);
+    border-radius: 50%;
+    transition: transform 1s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.button:before {
+    top: -25%;
+    left: 20%;
+}
+
+.button:after {
+    bottom: -25%;
+    right: 20%;
+}
+
+.button:hover:before,
+.button:hover:after {
+    transform: none;
+}
+
+.BC{
+    position: absolute;
+    bottom: -80px;
+    left: 100px;
+}
+
+/*Botón Volver*/
+
+.wrapper {
+    padding: 1.5rem 0;
+    filter: url('#goo');
+}
+
+.button2 {
+    display: inline-block;
+    text-align: center;
+    background: var(--boton);
+    color: var(--blanco);
+    font-weight: bold;
+    padding: 1.18em 1.32em 1.03em;
+    line-height: 1;
+    border-radius: 1em;
+    position: relative;
+    min-width: 4.23em;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 1em;
+}
+
+.button2:before,
+.button2:after {
+    width: 2.4em;
+    height: 1.95em;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: var(--boton);
+    border-radius: 40%;
+    transition: transform 1s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.button2:before {
+    top: -25%;
+    left: 20%;
+}
+
+.button2:after {
+    bottom: -25%;
+    right: 20%;
+}
+
+.button2:hover:before,
+.button2:hover:after {
+    transform: none;
+}
+
+.BV{
+    position: absolute;
+    top: 820px;
+    left: 50px;
+}
+
+#boton{
+    outline: none;
+    border: 0;
+}
+
+/*
+*/
