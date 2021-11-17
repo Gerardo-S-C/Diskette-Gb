@@ -8,65 +8,179 @@
     --bg: #1a1e24;
     --color: #eee;
     --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+
+    --barraavance: 50%;
+
 }
 
 body{
-    background: var(--fondo);
+    background-color: var(--fondo);
 }
 
-.datos{
-    position: absolute;
-    width: 777px;
-    height: 589px;
-    left: 550px;
-    top: 170px;
-
-    border-radius: 75px;
-    background: var(--cuadro);
+.grid{
+    display: grid;
+    grid-template-columns: 30% 70%;
 }
 
-.Titulo{
-    position: absolute;
-    width: 428px;
-    height: 130px;
-    left: 180px;
-    top: 50px;
+.grid .izq div{
+    padding: 1em;
+}
 
-    font-family: Palanquin Dark;
+.usuario{
+    background-color: var(--fondo);
+    border-bottom: 10px solid var(--blanco);
+    border-right: 10px solid var(--blanco);
+}
+
+.act{
+    background-color: var(--fondo);
+    border-right: 10px solid var(--blanco);
+    height: 665px;
+}
+
+.proceso{
+    background-color: var(--boton);
+    padding: 1em;
+    border-radius: 10px;
+    height: 890px;
+}
+
+.cuadrousu{
+    background-color: #DFEEE5;
+    border-radius: 70px;
+    height: 150px;
+}
+
+.cuadrousu p{
+
+    position: absolute;
+    width: 282px;
+    height: 74px;
+    left: 250px;
+    top: 15px;
+
+    font-family: Font Awesome 5 Free;
     font-style: normal;
     font-weight: normal;
-    font-size: 72px;
-    line-height: 130px;
-    text-align: center;
-
-    color: #ffffff ;
+    font-size: 64px;
+    line-height: 74px;
 }
 
-.botones{
+.imgusu{
+    position: relative;
+    width: 150px;
+    float: left;
+}
+
+.proest{
+    position: relative;
+    width: 1200px;
+    height: 861px;
+    left: 55px;
+    top: 18.2px;
+
+    background-color: #2A337A;
+    border-radius: 40px;
+}
+
+.usuarios{
+    position: relative;
+    width: 1100px;
+    height: 80px;
+    left: 55px;
+    top: 25px;
+
+    background-color: #9FA9FA;
+    border-radius: 40px;
+}
+
+.estafas{
     position: absolute;
-    left: 220px;
-    width: 350px;
-    top: 200px;
-}
+    text-align: center;
+    width: 824px;
+    height: 157px;
+    left: 180px;
+    top: -40px;
 
-.campos{
-    
-font-family: Palanquin Dark;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 43px;
-text-align: center;
+    font-family: Font Awesome 5 Free;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 55px;
+    line-height: 55px;
 
-color: #FFFFFF;
-
-}
-
-.form-check-label{
     color: #FFFFFF;
 }
 
-/*Botón confirmar*/
+.prosgenest{
+    position: absolute;
+    text-align: center;
+    width: 824px;
+    height: 157px;
+    left: 180px;
+    top: 60px;
+
+    font-family: Font Awesome 5 Free;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 55px;
+
+    color: #FFFFFF;
+}
+
+.barraestafa,
+.barraestafa::after{
+    position: relative;
+    width: 900px;
+    height: 90px;
+    background-color: var(--blanco);
+    border-radius: 80px;
+    left: 80px;
+    top: 180px;
+    overflow: hidden;
+}
+
+.barraestafa::after{
+    content: "";
+    position: absolute;
+
+    background-color: #49995a;
+    transition: var(--boton);
+    border-radius: 80px;
+    left: -900px;
+    top: 0px;
+    animation: barraaa 1s ease-in-out forwards;
+}
+
+.barraestafa2::after{
+    --barraavance:50%
+}
+
+@keyframes barraaa{
+    to{
+        transform: translateX(var(--barraavance));
+    }
+}
+
+.porcentaje{
+    position: absolute;
+    text-align: center;
+    width: 80px;
+    height: 157px;
+    left: 1020px;
+    top: 150px;
+
+    font-family: Font Awesome 5 Free;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 55px;
+
+    color: #FFFFFF;
+}
+
+/*Botón Cerrar Sesión*/
+
 
 .wrapper {
     padding: 1.5rem 0;
@@ -76,8 +190,8 @@ color: #FFFFFF;
 .button {
     display: inline-block;
     text-align: center;
-    background: var(--boton);
-    color: var(--blanco);
+    background: var(--color);
+    color: var(--bg);
     font-weight: bold;
     padding: 1.18em 1.32em 1.03em;
     line-height: 1;
@@ -87,6 +201,9 @@ color: #FFFFFF;
     text-decoration: none;
     font-family: var(--font);
     font-size: 1.25rem;
+
+    left: 110px;
+    top: 150px;
 }
 
 .button:before,
@@ -96,7 +213,7 @@ color: #FFFFFF;
     position: absolute;
     content: "";
     display: inline-block;
-    background: var(--boton);
+    background: var(--color);
     border-radius: 50%;
     transition: transform 1s ease;
     transform: scale(0);
@@ -118,70 +235,42 @@ color: #FFFFFF;
     transform: none;
 }
 
-.BC{
-    position: absolute;
-    left: 100px;
-}
-
-/*Botón Volver*/
-
-.wrapper {
-    padding: 1.5rem 0;
-    filter: url('#goo');
-}
-
-.button2 {
-    display: inline-block;
-    text-align: center;
-    background: var(--boton);
-    color: var(--blanco);
-    font-weight: bold;
-    padding: 1.18em 1.32em 1.03em;
-    line-height: 1;
-    border-radius: 1em;
+.Us{
     position: relative;
-    min-width: 4.23em;
+    width: 440px;
+    height: 120px;
+    left: 5px;
+    top: 3px;
+
+    background-color: #2A337A;
+    border-radius: 10px;
+}
+
+.usuadm{
+    color: var(--blanco);
+}
+
+.imgusu2{
+    
+    position: relative;
+    width: 120px;
+    
+    float: left;
+    border-radius: 50%;
+}
+
+.Us a{
+
+    position: absolute;
+    width: 282px;
+    height: 74px;
+    left: 190px;
+    bottom: 38px;
+
+    font-family: Font Awesome 5 Free;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 74px;
     text-decoration: none;
-    font-family: var(--font);
-    font-size: 1em;
-}
-
-.button2:before,
-.button2:after {
-    width: 2.4em;
-    height: 1.95em;
-    position: absolute;
-    content: "";
-    display: inline-block;
-    background: var(--boton);
-    border-radius: 40%;
-    transition: transform 1s ease;
-    transform: scale(0);
-    z-index: -1;
-}
-
-.button2:before {
-    top: -25%;
-    left: 20%;
-}
-
-.button2:after {
-    bottom: -25%;
-    right: 20%;
-}
-
-.button2:hover:before,
-.button2:hover:after {
-    transform: none;
-}
-
-.BV{
-    position: absolute;
-    top: 820px;
-    left: 50px;
-}
-
-#boton{
-    outline: none;
-    border: 0;
 }

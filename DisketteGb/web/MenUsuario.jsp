@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="java.util.*"%>
+<%@page import="Modelo.*"%>
+<%@page import="Control.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
   <head>
@@ -18,10 +21,7 @@
         <div class="usuario">
           <div class="cuadrousu">
             <img src="./img/Usuario.png" alt="" class="imgusu" />
-            <%
-            
-            %>
-            <p>Usuario</p>
+            <p>${Usuario}</p>
           </div>
         </div>
 
