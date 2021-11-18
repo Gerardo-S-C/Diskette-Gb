@@ -21,7 +21,9 @@
         <div class="usuario">
           <div class="cuadrousu">
             <img src="./img/Usuario.png" alt="" class="imgusu" />
+            <div>
             <p>${Usuario}</p>
+            </div>
           </div>
         </div>
 
@@ -55,7 +57,7 @@
           <div class="estaf">
             <p class="estafas">ESTAFAS</p>
             <p class="prosgenest">Proceso General:</p>
-            <p class="porcentaje">50%</p>
+            <p class="porcentaje">50%<%%></p>
             <div class="barraestafa barraestafa2"></div>
           </div>
         </div>

@@ -8,7 +8,7 @@ const formulario = document.getElementById("form")
  
     formulario.addEventListener("submit",(e) => {
         e.preventDefault()
-        alert("Dentro del formlario")
+        alert("Dentro del formulario")
     let warnings = ""
     let entrar = false
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
