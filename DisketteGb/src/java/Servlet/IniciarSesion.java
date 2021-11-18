@@ -5,10 +5,14 @@
  */
 package Servlet;
 
+import Control.Administrador;
 import Control.accionesUsu;
 import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +35,7 @@ public class IniciarSesion extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -39,16 +43,40 @@ public class IniciarSesion extends HttpServlet {
             String contra=request.getParameter("password");
 
             accionesUsu au=new accionesUsu();
-            
+            Administrador ad=new Administrador();
             if(au.inicioSesion(correo, contra)){
-                response.sendRedirect("MenUsuario.jsp");
-                HttpSession session = request.getSession();
-                session.setAttribute("correo", correo);
-                }else{
-                    response.sendRedirect("IniciarSesion.jsp");
-                    System.out.println("El correo o contraseña no están registrados en la base de datos");
-                }
+
+                try {
+                    HttpSession session = request.getSession(true);
+                    String NomUsu = au.getNameByEmail(correo);
+                    System.out.println(NomUsu);
+                    session.setAttribute("Usuario", NomUsu);
+
+                    response.sendRedirect("MenUsuario.jsp");
+                } catch (SQLException ex) {
+                    Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+                }   
             }
+                else if(ad.inicioSesion(correo, contra)){              
+                try {
+                    HttpSession session = request.getSession(true);
+                    String NomUsu = ad.getAdminName(correo);
+                    System.out.println(NomUsu);
+                    session.setAttribute("Admin", NomUsu);
+
+                    response.sendRedirect("MenuAdm.jsp");
+                }catch (SQLException ex) {
+                        Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+                    }   
+                }
+            else{
+                HttpSession session = request.getSession(true);
+                session.setAttribute("Error","Direccion invalida");
+                response.sendRedirect("IniciarSesion.jsp");
+                response.getWriter().write("<script>alert('Correo o contraseña incorrectos !');window.history.back();</script>");
+                System.out.println("El correo o contraseña no están registrados en la base de datos");
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,7 +91,11 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -77,7 +109,11 @@ public class IniciarSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

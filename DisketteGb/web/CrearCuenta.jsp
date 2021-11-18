@@ -20,12 +20,11 @@
     <div>
         <div class="datos">
             <p class="Titulo">Crear Cuenta</p>
-        
-            <div class="botones">
-                <form name="registrarUsuario" id="registrarUsuario" action="GuardarUsu" method="POST" >    
+            <form name="registrarUsuario" id="registrarUsuario" action="GuardarUsu" method="POST" >    
+                <div class="botones">
                     <div class="datosUsuario">
                         <div class="grupo">
-                        <label for="" class="campos">Nombre: </label>
+                        <label for="" type="text" class="campos">Nombre: </label>
                         <input type="text" id="name" name="name" class="form-control" aria-describedby="passwordHelpBlock">
                         </div>
                         <br>
@@ -65,8 +64,8 @@
                             </svg>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
 
         <div class="BV">
