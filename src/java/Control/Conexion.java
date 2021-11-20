@@ -14,7 +14,7 @@ import java.sql.*;
 import java.sql.DriverManager;
 
 public class Conexion {
-        public static Connection getConexion()throws URISyntaxException, SQLException{
+        public static Connection getConexion(){
         try{
             String dbUrl = System.getenv("JDBC_DATABASE_URL");
             return DriverManager.getConnection(dbUrl);
