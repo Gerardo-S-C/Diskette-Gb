@@ -34,12 +34,12 @@ public class BorrarUsu extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("usuario"));
             
             int estatus = Administrador.borrarUsuario(id);
             
             if(estatus > 0){
-                response.sendRedirect("consultarEmpleados.jsp");
+                response.sendRedirect("MenuAdm.jsp");
             }else{
                 response.sendRedirect("error.jsp");
             }

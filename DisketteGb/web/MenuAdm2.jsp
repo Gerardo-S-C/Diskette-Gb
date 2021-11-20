@@ -35,7 +35,7 @@
                 <div class="bloque1">
 
                     <div class="Us">
-                        <img src="./img/icono usu.png" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm.html" >Usuarios</a>
+                        <img src="./img/icono usu.png" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm.jsp" >Usuarios</a>
                     </div>
 
                     <br>
@@ -43,7 +43,7 @@
                     <br>
 
                     <div class="Us">
-                        <img src="./img/act.jpg" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm2.html" >Actividades</a>
+                        <img src="./img/act.jpg" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm2.jsp" >Actividades</a>
                     </div>
 
                 </div>

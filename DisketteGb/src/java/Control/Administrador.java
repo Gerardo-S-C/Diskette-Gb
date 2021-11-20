@@ -18,21 +18,33 @@ import java.util.*;
 public class Administrador{
     
     public static int registrarUsuario(Usuario e){
+        PreparedStatement ps=null;
+        ResultSet rs=null;
         int estatus = 0;
         try{
             Connection con = Conexion.getConexion();
-            String q = "INSERT INTO `diskettegb`.`usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
-                    + "values(?,?,?)";
+            String consulta = "Select * from usuario where cor_usu = ?";
+            ps=getConexion().prepareStatement(consulta);
+            ps.setString(1, e.getCorreo());
+            System.out.println(e.getCorreo());
+            rs=ps.executeQuery();
             
-            PreparedStatement ps = con.prepareStatement(q);
-            
-            ps.setString(1, e.getNombre());
-            ps.setString(2, e.getPassword());
-            ps.setString(3, e.getCorreo());
-            
-            estatus = ps.executeUpdate();
-          
-            System.out.println("Usuario Registrado");
+            while(rs.next()){
+                String q = "INSERT ingore INTO `diskettegb`.`usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
+                        + "values(?,?,?)";
+
+                ps = con.prepareStatement(q);
+
+                ps.setString(1, e.getNombre());
+                ps.setString(2, e.getPassword());
+                ps.setString(3, e.getCorreo());
+                
+                estatus = ps.executeUpdate();
+                
+                System.out.println("Usuario Registrado");
+                estatus=ps.executeUpdate();
+            }
+
             con.close();
         }catch(Exception ed){
             System.out.println("Error al registar");
@@ -177,7 +189,7 @@ public class Administrador{
                 System.out.println(5+"\n"+6+"\n"+7+"\n"+8+"\n");
                 lista.add(uc);
             }
-            System.out.println("Se encontro a los usuarios");
+            System.out.println("Se encontraron a los usuarios");
             con.close();
         }catch(Exception ed){
             System.out.println("Error al consultar la tabla");
