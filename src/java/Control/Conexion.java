@@ -19,9 +19,9 @@ public class Conexion {
             Class.forName("com.mysql.jdbc.Driver");
             String url, userName, password;
             
-            url = "jdbc:mysql://localhost/diskettegb";
-            userName = "root";
-            password= "illuminova";
+            url = "jdbc:mysql://us-cdbr-east-04.cleardb.com";
+            userName = "b3f24c256c95db";
+            password= "6dc6cf58";
             
             return DriverManager.getConnection(url, userName, password);
         

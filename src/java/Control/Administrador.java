@@ -30,7 +30,7 @@ public class Administrador{
             rs=ps.executeQuery();
             
             while(rs.next()){
-                String q = "INSERT ingore INTO `diskettegb`.`usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
+                String q = "INSERT INTO `usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
                         + "values(?,?,?)";
 
                 ps = con.prepareStatement(q);
