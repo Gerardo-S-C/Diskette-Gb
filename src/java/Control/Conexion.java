@@ -19,7 +19,7 @@ public class Conexion {
             Class.forName("com.mysql.jdbc.Driver");
             String url, userName, password;
             
-            url = "us-cdbr-east-04.cleardb.com";
+            url = "jdbc:mysql://us-cdbr-east-04.cleardb.com";
             userName = "b3f24c256c95db";
             password= "6dc6cf58";
             
