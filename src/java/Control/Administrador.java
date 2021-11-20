@@ -24,7 +24,7 @@ public class Administrador{
         try{
             Connection con = Conexion.getConexion();
             String consulta = "Select * from usuario where cor_usu = ?";
-            ps=getConexion().prepareStatement(consulta);
+            ps=con.prepareStatement(consulta);
             ps.setString(1, e.getCorreo());
             System.out.println(e.getCorreo());
             rs=ps.executeQuery();
