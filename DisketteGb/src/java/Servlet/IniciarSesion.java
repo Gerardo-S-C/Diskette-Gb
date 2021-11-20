@@ -49,7 +49,7 @@ public class IniciarSesion extends HttpServlet {
                 try {
                     HttpSession session = request.getSession(true);
                     String NomUsu = au.getNameByEmail(correo);
-                    System.out.println(NomUsu);
+                    //System.out.println(NomUsu);
                     session.setAttribute("Usuario", NomUsu);
 
                     response.sendRedirect("MenUsuario.jsp");
@@ -61,7 +61,7 @@ public class IniciarSesion extends HttpServlet {
                 try {
                     HttpSession session = request.getSession(true);
                     String NomUsu = ad.getAdminName(correo);
-                    System.out.println(NomUsu);
+                    //System.out.println(NomUsu);
                     session.setAttribute("Admin", NomUsu);
 
                     response.sendRedirect("MenuAdm.jsp");
