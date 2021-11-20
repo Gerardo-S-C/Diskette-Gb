@@ -10,20 +10,22 @@ package Control;
  * @author illum
  */
 
+import java.net.URI;
 import java.sql.*;
 import java.sql.DriverManager;
 
 public class Conexion {
         public static Connection getConexion(){
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            String url, userName, password;
             
-            url = "jdbc:mysql://us-cdbr-east-04.cleardb.com";
-            userName = "b3f24c256c95db";
-            password= "6dc6cf58";
-            
-            return DriverManager.getConnection(url, userName, password);
+            URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+            String username = dbUri.getUserInfo().split(":")[0];
+            String password = dbUri.getUserInfo().split(":")[1];
+            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+
+            return DriverManager.getConnection(dbUrl, username, password);
+
         
         }catch(SQLException sq){
             System.out.println("Error al conectar con la BD");
