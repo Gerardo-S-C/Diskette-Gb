@@ -10,22 +10,23 @@ package Control;
  * @author illum
  */
 
-import java.net.URI;
 import java.sql.*;
 import java.sql.DriverManager;
 
 public class Conexion {
-        public static Connection getConexion(){
+        public static Connection getConexion()throws URISyntaxException, SQLException{
         try{
+            String dbUrl = System.getenv("JDBC_DATABASE_URL");
+            return DriverManager.getConnection(dbUrl);
             
-            URI dbUri = new URI(System.getenv("DATABASE_URL"));
-
-            String username = dbUri.getUserInfo().split(":")[0];
-            String password = dbUri.getUserInfo().split(":")[1];
-            String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-
-            return DriverManager.getConnection(dbUrl, username, password);
-
+//            Class.forName("com.mysql.jdbc.Driver");
+//            String url, userName, password;
+//            
+//            url = "jdbc:mysql://us-cdbr-east-04.cleardb.com/3306/heroku_c1d2b8ca4113e8c";
+//            userName = "b3f24c256c95db";
+//            password= "6dc6cf58";
+//            
+//            return DriverManager.getConnection(url, userName, password);
         
         }catch(SQLException sq){
             System.out.println("Error al conectar con la BD");
