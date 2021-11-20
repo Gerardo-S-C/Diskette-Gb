@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/simulacion.css">
+    <link rel="stylesheet" href="./CSS/animaciones.css">
+    <title>Simulación</title>
+  </head>
+  <body>
+    <div class="navegador mt-5 mb-5">
+      <div class="center_GUGLE">
+        <table class="NAVEGADOR">
+          <tr>
+            <th class="G">G</th>
+            <th class="U">U</th>
+            <th class="G2">G</th>
+            <th class="L">L</th>
+            <th class="E">E</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="buscador mb-3">
+      <table>
+        <thead>
+          <tr>
+            <th><h1>ㅤ</h1></th>
+            <th class="type-js headline">
+              <h1 class="text-js">Cómo hacer una transacción en linea?</h1>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="center_button">
+      <a href="./simulacion_navegador.html" type="button" class="btn btn_BUSCAR"><h1>Buscar</h1></a> 
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="tutorial_caja caja_dialogos col-4">
+          <h3>Las palabras se completan solas, de clic en buscar para ver las opciones que tienes.</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="context" tabindex="-1" role="dialog" aria-labelledby="modal aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="exampleModalLongTitle">CONTEXTO DE LA ACTIVIDAD</h2>
+          </div>
+          <div class="modal-body">
+            <h4>
+            Usted quiere realizar una transacción en 
+            linea, pero no sabe cómo, asi que decide 
+            buscar en intrenet para saber cómo hacerlo.
+            </h4>
+          </div>
+          <div class="center_button">
+            <button type="button" class="btn_OK" data-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./JS/animaciones.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#context").modal('show');
+      });
+      $('#context').on('hidden.bs.modal', function (e) {
+        autoType(".type-js",100);
+
+      })
+
+    </script>
+  </body>
+</html>

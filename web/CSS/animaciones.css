@@ -1,0 +1,78 @@
+.tutorial_caja {
+  border: solid 5px rgb(0, 0, 0);
+  border-radius: 15px;
+  width: 250px;
+  padding: 30px;
+  float: right;
+  display: flex;
+  align-items: center;
+}
+.tutorial_caja2 {
+  border: solid 5px rgb(0, 0, 0);
+  border-radius: 15px;
+  float: right;
+  display: flex;
+  align-items: center;
+  width: 450px;
+  height: 250px;
+  padding: 30px;
+}
+.text-js {
+  opacity: 0;
+}
+.cursor {
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: -5px;
+  width: 2px;
+  /* Change colour of Cursor Here */
+  background-color: white;
+  z-index: 1;
+  animation: flash 0.5s none infinite alternate;
+}
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.buscador2{
+  background: #E8E8E8;
+  border-radius: 60px;
+  margin-right: 60rem;
+}
+.caja {
+  position: relative;
+}
+.info {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  zoom: 1;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  padding: 5px;
+  color: white;
+  background: black;
+  -moz-transition: all ease 0.8s;
+  -webkit-transition: all ease 0.8s;
+  transition: all ease 0.8s;
+}
+.caja:hover .info {
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+p.desc{
+    font-size:medium;
+}
+a.desc{
+    font-size: larger;
+}
+.relleno{
+  text-shadow: 0 0 8px gray; color: transparent;
+  -webkit-user-select: none;
+}
