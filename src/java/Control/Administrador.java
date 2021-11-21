@@ -42,7 +42,7 @@ public class Administrador{
                 estatus = ps.executeUpdate();
                 
                 System.out.println("Usuario Registrado");
-                estatus=ps.executeUpdate();
+
             }
 
             con.close();
