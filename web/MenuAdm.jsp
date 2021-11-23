@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/MenuAdm.css">
     <script src="https://kit.fontawesome.com/d10bfaa166.js" crossorigin="anonymous"></script>
-    <script src="acordeon.js"></script>
     <title>Inicio</title>
 </head>
 <body>
@@ -54,7 +54,7 @@
                 <div class="boton">
                     
                     <div class="wrapper" id="iniciar">
-                        <a class="button" href="logout.jsp">Cerrar Sesión</a>
+                        <a class="button" href="index.html">Cerrar Sesión</a>
                     </div>
 
                 </div>
@@ -143,5 +143,7 @@
     </defs>
 </svg>
 
+
+<script src="acordeon.js"></script>
 </body>
 </html>

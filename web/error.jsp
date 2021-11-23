@@ -27,7 +27,7 @@
     </div>
     <div class="BV">
         <div class="wrapper">
-            <a class="button2" href="./index.html">Volver</a>
+            <a class="button2" href="javascript: history.go(-1)">Volver</a>
         </div>
         
         <!-- Filter: https://css-tricks.com/gooey-effect/ -->
