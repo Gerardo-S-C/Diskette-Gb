@@ -3,7 +3,6 @@ const mostrarFrente = () => {
 		tarjeta.classList.remove('active');
 	}
 }
-
 tarjeta.addEventListener('click', () => {
 	tarjeta.classList.toggle('active');
 });
