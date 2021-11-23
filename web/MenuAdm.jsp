@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/MenuAdm.css">
     <script src="https://kit.fontawesome.com/d10bfaa166.js" crossorigin="anonymous"></script>
+    <script src="acordeon.js"></script>
     <title>Inicio</title>
 </head>
 <body>
@@ -37,7 +38,7 @@
                 <div class="bloque1">
 
                     <div class="Us">
-                        <img src="./img/icono usu.png" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm.html" >Usuarios</a>
+                        <img src="./img/icono usu.png" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm.jsp" >Usuarios</a>
                     </div>
 
                     <br>
@@ -45,7 +46,7 @@
                     <br>
 
                     <div class="Us">
-                        <img src="./img/act.jpg" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm2.html" >Actividades</a>
+                        <img src="./img/act.jpg" alt="" class="imgusu2"><a class="usuadm" href="MenuAdm2.jsp" >Actividades</a>
                     </div>
 
                 </div>
@@ -53,7 +54,7 @@
                 <div class="boton">
                     
                     <div class="wrapper" id="iniciar">
-                        <a class="button" href="index.html">Cerrar Sesión</a>
+                        <a class="button" href="logout.jsp">Cerrar Sesión</a>
                     </div>
 
                 </div>
@@ -142,7 +143,5 @@
     </defs>
 </svg>
 
-
-<script src="acordeon.js"></script>
 </body>
 </html>
