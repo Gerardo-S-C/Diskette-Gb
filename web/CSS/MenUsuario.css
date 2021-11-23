@@ -7,7 +7,7 @@
     
     --bg: #1a1e24;
     --color: #eee;
-    --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+    --font: Montserrat, Cairo,Roboto, Helvetica, Arial, sans-serif, Noto serif;
 
     --barraavance: 50%;
 
@@ -17,14 +17,63 @@ body{
     background-color: var(--fondo);
 }
 
+/*acordeones*/
+.accordion {
+    width: 450px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 4px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+  
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    background: #2A337A;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #2A337A;
+    color: #f3f3f3;
+    cursor: pointer;
+}
+  
+.accordion-header.active {
+    background-color: #2A337A;
+}
+.accordion-header.active i {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-in-out;
+}
+  
+.accordion-body {
+    padding: 0 1rem;
+    background-color: rgba(139, 112, 216, 0.56);
+    max-height: 0;
+    color: #f3f3f3;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+  
+.accordion-body.active {
+    max-height: 10rem;
+    padding: 1rem;
+}
+
 .grid{
     display: grid;
     grid-template-columns: 30% 70%;
 }
 
-.grid .izq div{
+.usuario{
     padding: 1em;
 }
+
+.boton{
+    padding: 1em;
+}
+
 
 .usuario{
     background-color: var(--fondo);
@@ -35,7 +84,7 @@ body{
 .act{
     background-color: var(--fondo);
     border-right: 10px solid var(--blanco);
-    height: 665px;
+    height: 720px;
 }
 
 .proceso{
@@ -56,20 +105,44 @@ body{
     position: absolute;
     width: 282px;
     height: 74px;
-    left: 250px;
-    top: 15px;
-
-    font-family: Font Awesome 5 Free;
+    left: 180px;
+    top: 13px;
+    font-family: 'Quicksand', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 64px;
+    font-size: 50px;
     line-height: 74px;
 }
 
 .imgusu{
     position: relative;
-    width: 150px;
+    width: 125px;
     float: left;
+    left: 16px;
+    top: 12px;
+}
+
+.bloqest{
+    position: relative;
+    background-color: #C4C4C4;
+    border-radius: 50%;
+}
+
+.phi{
+    position: relative;
+    background-color: #C4C4C4;
+    width: 120px;
+    border-radius: 20%;
+}
+
+.imgest{
+    width: 90px;
+    padding: 1rem;
+}
+
+.imgphi{
+    width: 90px;
+    padding: 1rem;
 }
 
 .proest{
@@ -83,6 +156,33 @@ body{
     border-radius: 40px;
 }
 
+.estafasact{
+    position: relative;
+    width: 213px;
+    height: 83px;
+    top: 25px;
+    right: 40px;
+    font-family: 'Cairo', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 55px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.phishing{
+    position: relative;
+    left: 180px;
+    bottom: 140px;
+    font-family: 'Cairo', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    color: #FFFFFF;
+}
+
 .estafas{
     position: absolute;
     text-align: center;
@@ -90,8 +190,7 @@ body{
     height: 157px;
     left: 180px;
     top: -40px;
-
-    font-family: Font Awesome 5 Free;
+    font-family: 'Noto Serif', serif;
     font-style: normal;
     font-weight: normal;
     font-size: 55px;
@@ -107,8 +206,7 @@ body{
     height: 157px;
     left: 180px;
     top: 60px;
-
-    font-family: Font Awesome 5 Free;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
@@ -158,8 +256,7 @@ body{
     height: 157px;
     left: 1020px;
     top: 150px;
-
-    font-family: Font Awesome 5 Free;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 50px;
@@ -168,11 +265,18 @@ body{
     color: #FFFFFF;
 }
 
+.bloque1{
+    position: relative;
+    top: 40px;
+}
+
 /*Botón Cerrar Sesión*/
 
+#divboton{
+    position: sticky;
+}
 
 .wrapper {
-    padding: 1.5rem 0;
     filter: url('#goo');
 }
 
@@ -191,8 +295,8 @@ body{
     font-family: var(--font);
     font-size: 1.25rem;
 
-    left: 110px;
-    top: 500px;
+    left: 140px;
+    bottom: 100px;
 }
 
 .button:before,
@@ -226,66 +330,45 @@ body{
 
 /*Acts*/
 
-.acordeon{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: Font Awesome 5 Free;
-    list-style: none;
-    border-radius: .7rem;
-    position: absolute;
-    top: 340px;
-    left: 280px;
-    transform: translate(-50%, -50%);
+.btn-material {
 
-    width: 550px;
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-
-a{
     text-decoration: none;
-    color: var(--blanco);
-}
+    position: relative;
+    bottom: 90px;
 
-.acc-item{
-    overflow: hidden;
-}
-
-.btn{
-    display: block;
-    padding: 1rem 1.2rem;
-    background-color: #2A337A;
-    border-radius: 7.rem;
-    color: #ffffff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    border-radius: 5px;
+    background-color: #C4C4C4;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    transition: background-color 15ms linear,
+      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+    height: 50px;
+    line-height: 2.25rem;
+    font-family: Roboto, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    position: relative;
 }
-
-.btn i{
-    margin-right: 0.5rem;
+  
+.btn-material:hover, .btn-material:focus {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    background-color: #818181;
 }
-
-.submenu{
-    background-color: rgba(139, 112, 216, 0.56);
-    overflow: hidden;
-    transition: max-height 0.5s;
-    max-height: 0;
-    color: var(--blanco);
-}
-
-
-
-.submenu a{
-    display: block;
-    padding: 1rem 1.5rem;
-    color: #FFFFFF;
-    font-size: 0.9rem;
-    margin: 0.2rem 0;
-    position: relative;
-}
-
-.acc-item:target .submenu{
-    max-height: 12rem;
+  
+.btn-material:active {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    background-color: #776c95;
 }
