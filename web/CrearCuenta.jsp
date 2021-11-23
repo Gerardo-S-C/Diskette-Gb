@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./CSS/crear.css">
     <meta name="google-signin-client_id" content="864494698898-3g3ougdhoh4gojms4nc54afktastj07t.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="./JS/validacion.js"></script>
     <title>Registro</title>
 </head>
 <body>
@@ -76,12 +77,12 @@
               function onSignIn(googleUser) {
                 // Useful data for your client-side scripts:
                 var profile = googleUser.getBasicProfile();
-                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    //            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
                 console.log('Full Name: ' + profile.getName());
-
-                console.log("Image URL: " + profile.getImageUrl());
                 console.log("Email: " + profile.getEmail());
-
+                
+                document.registrarUsuario.name.value=profile.getName();
+                document.registrarUsuario.email.value=profile.getEmail();
                 // The ID token you need to pass to your backend:
                 var id_token = googleUser.getAuthResponse().id_token;
                 //console.log("ID Token: " + id_token);
@@ -104,6 +105,6 @@
             </svg>
         </div>
     </div>
-    <script src="./JS/validacion.js"></script>
+
 </body>
 </html>

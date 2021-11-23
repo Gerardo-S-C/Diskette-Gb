@@ -1,0 +1,18 @@
+body{
+	font-family: arial, helvetica;
+	background: #eaee0f;
+	font-size: 50px;
+	text-align:center;
+	align-content: center;
+	align-items: center;
+	vertical-align: middle;
+}
+
+.menu{
+	list-style: none;
+	padding: 0;
+	background: #d4f806;
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+}
