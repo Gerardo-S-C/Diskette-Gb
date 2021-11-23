@@ -1,0 +1,103 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/11/2021, 01:57:32 AM
+    Author     : illum
+*/
+
+:root{
+    --fondo: #9FA9FA;
+    --boton: #7F88C7;
+    --cuadro: #4E537A;
+    --blanco: #ffffff;
+
+    
+    --bg: #1a1e24;
+    --color: #eee;
+    --font: Montserrat, Cairo,Roboto, Helvetica, Arial, sans-serif, Noto serif;
+
+    --barraavance: 50%;
+
+}
+
+body{
+    background-color: var(--fondo);
+}
+
+.cuadro{
+    position: relative;
+    bottom: 50px;
+}
+
+.texto{
+    font-size: 100px;
+    text-align: center;
+    color: var(--blanco);
+    font-family: 'Patua One', cursive;
+}
+
+.img{
+    width: 400px;
+    display: block;
+    margin: auto;
+}
+
+.BV{
+    position: absolute;
+    top: 820px;
+    left: 50px;
+}
+
+
+.wrapper {
+    padding: 1.5rem 0;
+    filter: url('#goo');
+}
+
+.button2 {
+    display: inline-block;
+    text-align: center;
+    background: var(--boton);
+    color: var(--blanco);
+    font-weight: bold;
+    padding: 1.18em 1.32em 1.03em;
+    line-height: 1;
+    border-radius: 1em;
+    position: relative;
+    min-width: 8.23em;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 1.25rem;
+}
+
+.button2:before,
+.button2:after {
+    width: 4.4em;
+    height: 2.95em;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: var(--boton);
+    border-radius: 50%;
+    transition: transform 1s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.button2:before {
+    top: -25%;
+    left: 20%;
+}
+
+.button2:after {
+    bottom: -25%;
+    right: 20%;
+}
+
+.button:hover:before,
+.button:hover:after {
+    transform: none;
+}

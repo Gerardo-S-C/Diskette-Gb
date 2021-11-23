@@ -1,0 +1,42 @@
+body{
+	font-family: arial, helvetica;
+    font-size: 30px;
+	background: #94b2eb;
+	font-weight: normal;
+	text-align:center;
+}
+.bbv{
+    font-family: arial, helvetica;
+    font-size: 50px;
+    text-align: center;
+    color: #0b3c97;
+}
+
+.der{
+    margin: -295px;
+	margin-left: 360px;
+	width: 1200px;
+	height: 750px;
+	background-color: rgb(255, 255, 255);
+    border: 100px;
+    border-radius: 20px;
+}
+
+.izq{
+	margin: 90px;
+	margin-top: 80px;
+	width: 300px;
+	height: 750px;
+	background-color: rgb(37, 109, 190);
+    border: 100px;
+    border-radius: 20px;
+}
+.bbva{
+    width: 2000px;
+	height: 110px;
+	list-style: none;
+    padding: 10px;
+    background: #082d7c;
+    max-width: 1900px;
+    margin:-10px;
+}

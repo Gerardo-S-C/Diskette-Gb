@@ -181,6 +181,12 @@ color: #FFFFFF;
     left: 50px;
 }
 
+.BA{
+    position: absolute;
+    top: 820px;
+    right: 50px;
+}
+
 #boton{
     outline: none;
     border: 0;

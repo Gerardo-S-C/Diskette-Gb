@@ -52,6 +52,8 @@ public class GuardarUsu extends HttpServlet {
             if (estatus > 0){
                 response.sendRedirect("IniciarSesion.jsp");
             }else{
+                System.out.println(nombre+" "+correo+" "+password);
+                System.out.println(estatus);
                 response.sendRedirect("error.jsp");
             }
             

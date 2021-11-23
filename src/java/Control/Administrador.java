@@ -23,18 +23,12 @@ public class Administrador{
         int estatus = 0;
         try{
             Connection con = Conexion.getConexion();
-            String consulta = "Select * from usuario where cor_usu = ?";
-            ps=con.prepareStatement(consulta);
-            ps.setString(1, e.getCorreo());
-            System.out.println(e.getCorreo());
-            rs=ps.executeQuery();
-            
-            while(rs.next()){
-                String q = "INSERT INTO `usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
+
+                String q = "INSERT ignore INTO `usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
                         + "values(?,?,?)";
-
+                
                 ps = con.prepareStatement(q);
-
+                
                 ps.setString(1, e.getNombre());
                 ps.setString(2, e.getPassword());
                 ps.setString(3, e.getCorreo());
@@ -42,8 +36,6 @@ public class Administrador{
                 estatus = ps.executeUpdate();
                 
                 System.out.println("Usuario Registrado");
-                estatus=ps.executeUpdate();
-            }
 
             con.close();
         }catch(Exception ed){
