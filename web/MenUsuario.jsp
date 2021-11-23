@@ -41,7 +41,8 @@
                           </button>
                           <div class="accordion-body">
                             <div class="phi"><img src="./img/phishing.png" class="imgphi" alt=""></div><strong class="phishing">Phishing</strong>
-                            <a type="button" class="btn-material" href="simulacion_navegador.html">Fácil</a>  <a type="button" class="btn-material">Difícil</a>
+                            <a type="button" class="btn-material" href="simulacion_buscar.html">Fácil</a>  
+                            <a type="button" class="btn-material" href="simulacion_buscar2.html">Difícil</a>
                           </div>
                         </div>
                       </div>
