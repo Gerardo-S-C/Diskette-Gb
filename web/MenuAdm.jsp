@@ -69,6 +69,9 @@
                 <div class="usuarios">
                     <div class="accordion">
                         <div class="accordion-item">
+                            <%
+                            
+                            %>
                           <button class="accordion-header">
                             <strong class="estafasact">Usuario 1</strong><strong class="estafasact">Progreso Total</strong> 
                             <div class="barraestafa barraestafa2"> </div>
