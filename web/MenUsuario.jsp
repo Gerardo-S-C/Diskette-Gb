@@ -30,7 +30,7 @@
 
             </div>
 
-                        <div class="act">
+                                                <div class="act">
                 
                 <div class="bloque1">     
                     
