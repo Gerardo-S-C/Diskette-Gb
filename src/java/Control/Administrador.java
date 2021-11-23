@@ -92,16 +92,6 @@ public class Administrador{
                 usu.setCorreo(correo);
             }
             
-//            Datos del inicio de usuario
-//                while(rs.next()){
-//                int id_usu = rs.getInt(1);
-//                String p = "INSERT INTO asignacion (`id_usu`, `id_blo`) "
-//                        + "VALUES (?, '1'),(?, '2')";
-//                ps=getConexion().prepareStatement(p);
-//                ps.setInt(1, id_usu);
-//                ps.setInt(2, id_usu);
-//                estatus=ps.executeUpdate();
-//            }
             if(rs.absolute(1)){
                 return true;
             }
@@ -147,6 +137,8 @@ public class Administrador{
     //desde el administrador
     public static List<UsuarioConsulta> getAllUsuarios(){
         List<UsuarioConsulta> lista = new ArrayList<UsuarioConsulta>();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
         try{
             Connection con = Conexion.getConexion();
 //            String q = "select usuario.id_usu ,nom_usu, id_asig,  bloques.id_blo ,nom_blo, id_act_blo, nom_act, dif_dif\n" +
@@ -158,12 +150,11 @@ public class Administrador{
 //                        "inner join diskettegb.actividades on diskettegb.actividades.id_act = diskettegb.act_dif.id_act\n" +
 //                        "inner join diskettegb.dificultades on diskettegb.dificultades.id_dif = diskettegb.act_dif.id_dif)\n" +
 //                        "on diskettegb.act_dif.id_act_dif = diskettegb.act_blo.id_act_dif";
-            
+
             String q = "select * from consultas";
 
-            PreparedStatement ps = con.prepareStatement(q);
-            
-            ResultSet rs = ps.executeQuery();
+            ps = con.prepareStatement(q);
+            rs = ps.executeQuery();
             while(rs.next()){
                 UsuarioConsulta uc = new UsuarioConsulta();
                 uc.setId(rs.getInt(1));
@@ -174,7 +165,10 @@ public class Administrador{
                 uc.setPro_dif(rs.getString(6));
                 uc.setId_asig(rs.getInt(7));
                 uc.setId_act_blo(rs.getInt(8));
-                
+//                
+//                String q2="select * from consultas where nom_usu = ?";
+//                ps=con.prepareStatement(q2);
+//                ps.setString(0, q);
 //                u.setPassword(rs.getString(3));
 //                u.setCorreo(rs.getString(4));
                 System.out.println(1+"\n"+2+"\n"+3+"\n"+4+"\n");
