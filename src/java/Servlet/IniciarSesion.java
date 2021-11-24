@@ -49,10 +49,11 @@ public class IniciarSesion extends HttpServlet {
                 try {
                     HttpSession session = request.getSession(true);
                     String NomUsu = au.getNameByEmail(correo);
+                    au.AsignarSimulaciones();
                     //System.out.println(NomUsu);
                     session.setAttribute("Usuario", NomUsu);
-
                     response.sendRedirect("MenUsuario.jsp");
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
                 }   
