@@ -39,7 +39,7 @@ public class BorrarUsu extends HttpServlet {
             int estatus = Administrador.borrarUsuariotablaUsuario(id);
             int estatus2 = Administrador.borrarUsuariotablaAsignacion(id);
             int estatus3 = Administrador.borrarUsuariotablaConsulta(nom);
-            
+            System.out.println(estatus+" "+estatus2+" "+estatus3);
             if(estatus > 0 && estatus2 >0 && estatus3 >0){
                 response.sendRedirect("MenuAdm.jsp");
             }else{

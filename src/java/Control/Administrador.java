@@ -23,7 +23,6 @@ public class Administrador{
         int estatus = 0;
         try{
             Connection con = Conexion.getConexion();
-
                 String q = "INSERT ignore INTO `usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
                         + "values(?,?,?)";
                 
@@ -34,7 +33,12 @@ public class Administrador{
                 ps.setString(3, e.getCorreo());
                 
                 estatus = ps.executeUpdate();
-                
+                String q3 = "SET foreign_key_checks = 1;";
+                ps= con.prepareStatement(q3);
+                rs=ps.executeQuery();
+                String q4 = "SET sql_safe_updates=1;";
+                ps= con.prepareStatement(q4);
+                rs=ps.executeQuery();
                 System.out.println("Usuario Registrado");
 
             con.close();
@@ -48,17 +52,31 @@ public class Administrador{
     }
     
     public static int borrarUsuariotablaUsuario(int id){
-        int estatus=0;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
         
         try{
             Connection con = Conexion.getConexion();
+            String q1 = "SET foreign_key_checks = 0;";
+            ps= con.prepareStatement(q1);
+            rs=ps.executeQuery();
+            String q2 = "SET sql_safe_updates=0;";
+            ps= con.prepareStatement(q2);
+            rs=ps.executeQuery();
             String q = "delete from usuario where id_usu= ?";
             
-            PreparedStatement ps = con.prepareStatement(q);
+            ps = con.prepareStatement(q);
             
             ps.setInt(1, id);
 
             estatus = ps.executeUpdate();
+            String q3 = "SET foreign_key_checks = 1;";
+            ps= con.prepareStatement(q3);
+            rs=ps.executeQuery();
+            String q4 = "SET sql_safe_updates=1;";
+            ps= con.prepareStatement(q4);
+            rs=ps.executeQuery();
             System.out.println("Eliminacion del usuario exitoso");
             con.close();
         }catch(Exception ed){
@@ -69,16 +87,30 @@ public class Administrador{
     }
     
     public static int borrarUsuariotablaAsignacion(int id){
-        int estatus=0;
-        
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+              
         try{
             Connection con = Conexion.getConexion();
+            String q1 = "SET foreign_key_checks = 0;";
+            ps= con.prepareStatement(q1);
+            rs=ps.executeQuery();
+            String q2 = "SET sql_safe_updates=0;";
+            ps= con.prepareStatement(q2);
+            rs=ps.executeQuery();
             String q = "delete from asignacion where id_usu= ?";
-            PreparedStatement ps = con.prepareStatement(q);
+            ps = con.prepareStatement(q);
             
             ps.setInt(1, id);
           
             estatus = ps.executeUpdate();
+            String q3 = "SET foreign_key_checks = 1;";
+            ps= con.prepareStatement(q3);
+            rs=ps.executeQuery();
+            String q4 = "SET sql_safe_updates=1;";
+            ps= con.prepareStatement(q4);
+            rs=ps.executeQuery();
             System.out.println("Eliminacion del usuario exitoso");
             con.close();
         }catch(Exception ed){
