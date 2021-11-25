@@ -1,9 +1,3 @@
-/* Imagenes segun el tipo de numero de tarjeta */
-const visaImg = 'assets/images/visa.png';
-const mastercardImg = 'assets/images/mastercard.png';
-const americanImg = 'assets/images/american.png';
-const discoverImg = 'assets/images/discover.png';
-
 /* Variables de validación */
 const number = /^([0-9])*$/;
 const validateVisa = /^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/;

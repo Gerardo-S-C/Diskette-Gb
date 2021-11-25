@@ -120,6 +120,7 @@ public class accionesUsu extends Conexion{
                 usu.setId(rs.getInt(1));
                 usu.setNom_usu(rs.getString(2));
                 usu.setDif_dif(rs.getString(5));
+                usu.setPro_dif_dif1(rs.getString(6));
                 usu.setPro_dif(rs.getString(9));
             }
             System.out.println("Usuario asignado, encontrado");
@@ -130,7 +131,28 @@ public class accionesUsu extends Conexion{
         }
         return usu;
     }
-    
+    public static UsuarioConsulta buscarUsuDif_dificil(String nombre) throws SQLException{
+        UsuarioConsulta usu = new UsuarioConsulta();
+        
+        try{
+            Connection con = Conexion.getConexion();
+            String q = "SELECT * FROM consultas \n" +
+                       "where nom_usu = ? and nom_blo = 'Estafas' and nom_act = 'phishing' and dif_dif = 'dificil';";
+            PreparedStatement ps = getConexion().prepareStatement(q);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()){
+                usu.setPro_dif_dif2(rs.getString(6));
+            }
+            System.out.println("Usuario asignado, encontrado");
+            con.close(); 
+        }catch(Exception ed){
+            System.out.println("Error al buscar al usuario asignado");
+            System.out.println(ed.getMessage());
+        }
+        return usu;
+    }
     public static List<Usuario> consultaGral(){
         List<Usuario> lista = new ArrayList<Usuario>();
         try{
