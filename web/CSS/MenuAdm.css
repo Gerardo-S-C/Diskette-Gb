@@ -176,10 +176,6 @@ body{
     animation: barraaa 1s ease-in-out forwards;
 }
 
-.barraestafa4::after{
-    --barraavance:100%
-}
-
 @keyframes barraaa{
     to{
         transform: translateX(var(--barraavance));
@@ -208,10 +204,6 @@ body{
     left: -300px;
     top: 0px;
     animation: barraaa 1s ease-in-out forwards;
-}
-
-.barraestafa6::after{
-    --barraavance:0%
 }
 
 @keyframes barraaa{

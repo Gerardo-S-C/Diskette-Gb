@@ -239,9 +239,7 @@ body{
     animation: barraaa 1s ease-in-out forwards;
 }
 
-.barraestafa2::after{
-    --barraavance:50%
-}
+
 
 @keyframes barraaa{
     to{

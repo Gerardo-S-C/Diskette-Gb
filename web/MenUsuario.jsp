@@ -13,6 +13,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d10bfaa166.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./CSS/MenUsuario.css">
+    <%
+    String nombre = (String) session.getAttribute("Usuario");
+    
+    UsuarioConsulta usuC = accionesUsu.buscarUsuAsigProm(nombre);
+    System.out.println(usuC.getPro_dif());
+    
+    String progreso = usuC.getPro_dif();
+    %>
+    <style>
+        .barraestafa2::after{
+            --barraavance:<%=progreso+"%"%>;
+        }
+    </style>
     <title>Inicio</title>
 </head>
 <body>
@@ -66,8 +79,8 @@
                 <div class="estaf">
                 <p class="estafas">ESTAFAS</p>
                 <p class="prosgenest">Proceso General:</p>
-                <p class="porcentaje">50%</p>
-                <div class="barraestafa barraestafa2"> </div>
+                <p class="porcentaje"><%=progreso+"%"%></p>
+                <div id="progreso" class="barraestafa barraestafa2"> </div>
                 </div>
             </div>
 

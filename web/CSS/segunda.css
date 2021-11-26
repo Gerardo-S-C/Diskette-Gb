@@ -102,3 +102,5 @@ th, td{
 	margin:  -350px 1200px ;
 	float: left;
 }
+.error:focus, .error{ box-shadow:0 0 1px 2px #F6CCD0; border: none; outline: none; border: 1px solid #DC3545; }
+.success:focus, .success{ box-shadow: 0 0 1px 2px #C9E9D0; border: none; outline: none; border: 1px solid #28A745; }

@@ -11,7 +11,7 @@ package Modelo;
  */
 public class UsuarioConsulta {
     private int id, id_asig, id_act_blo;
-    private String nom_usu, nom_blo, nom_act, dif_dif, pro_dif;
+    private String nom_usu, nom_blo, nom_act, dif_dif, pro_dif, pro_dif_dif1, pro_dif_dif2;
     
     public UsuarioConsulta(){
         
@@ -79,6 +79,22 @@ public class UsuarioConsulta {
 
     public void setPro_dif(String pro_dif) {
         this.pro_dif = pro_dif;
+    }
+
+    public String getPro_dif_dif1() {
+        return pro_dif_dif1;
+    }
+
+    public void setPro_dif_dif1(String pro_dif_dif1) {
+        this.pro_dif_dif1 = pro_dif_dif1;
+    }
+
+    public String getPro_dif_dif2() {
+        return pro_dif_dif2;
+    }
+
+    public void setPro_dif_dif2(String pro_dif_dif2) {
+        this.pro_dif_dif2 = pro_dif_dif2;
     }
     
 }

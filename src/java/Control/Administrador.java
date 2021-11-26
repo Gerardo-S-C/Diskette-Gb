@@ -23,7 +23,6 @@ public class Administrador{
         int estatus = 0;
         try{
             Connection con = Conexion.getConexion();
-
                 String q = "INSERT ignore INTO `usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
                         + "values(?,?,?)";
                 
@@ -34,7 +33,12 @@ public class Administrador{
                 ps.setString(3, e.getCorreo());
                 
                 estatus = ps.executeUpdate();
-                
+                String q3 = "SET foreign_key_checks = 1;";
+                ps= con.prepareStatement(q3);
+                rs=ps.executeQuery();
+                String q4 = "SET sql_safe_updates=1;";
+                ps= con.prepareStatement(q4);
+                rs=ps.executeQuery();
                 System.out.println("Usuario Registrado");
 
             con.close();
@@ -47,20 +51,83 @@ public class Administrador{
         
     }
     
-    public static int borrarUsuario(int id){
+    public static int borrarUsuariotablaUsuario(int id){
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        
+        try{
+            Connection con = Conexion.getConexion();
+            String q1 = "SET foreign_key_checks = 0;";
+            ps= con.prepareStatement(q1);
+            rs=ps.executeQuery();
+            String q2 = "SET sql_safe_updates=0;";
+            ps= con.prepareStatement(q2);
+            rs=ps.executeQuery();
+            String q = "delete from usuario where id_usu= ?";
+            
+            ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id);
+
+            estatus = ps.executeUpdate();
+            String q3 = "SET foreign_key_checks = 1;";
+            ps= con.prepareStatement(q3);
+            rs=ps.executeQuery();
+            String q4 = "SET sql_safe_updates=1;";
+            ps= con.prepareStatement(q4);
+            rs=ps.executeQuery();
+            System.out.println("Eliminacion del usuario exitoso");
+            con.close();
+        }catch(Exception ed){
+            System.out.println("Error, usuario no encontrado");
+            System.out.println(ed.getMessage());
+        }
+    return estatus;
+    }
+    
+    public static int borrarUsuariotablaAsignacion(int id){
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+              
+        try{
+            Connection con = Conexion.getConexion();
+            String q1 = "SET foreign_key_checks = 0;";
+            ps= con.prepareStatement(q1);
+            rs=ps.executeQuery();
+            String q2 = "SET sql_safe_updates=0;";
+            ps= con.prepareStatement(q2);
+            rs=ps.executeQuery();
+            String q = "delete from asignacion where id_usu= ?";
+            ps = con.prepareStatement(q);
+            
+            ps.setInt(1, id);
+          
+            estatus = ps.executeUpdate();
+            String q3 = "SET foreign_key_checks = 1;";
+            ps= con.prepareStatement(q3);
+            rs=ps.executeQuery();
+            String q4 = "SET sql_safe_updates=1;";
+            ps= con.prepareStatement(q4);
+            rs=ps.executeQuery();
+            System.out.println("Eliminacion del usuario exitoso");
+            con.close();
+        }catch(Exception ed){
+            System.out.println("Error, usuario no encontrado");
+            System.out.println(ed.getMessage());
+        }
+    return estatus;
+    }
+    public static int borrarUsuariotablaConsulta(String nom){
         int estatus=0;
         
         try{
             Connection con = Conexion.getConexion();
-            String q = "SET foreign_key_checks = 0;\n" +
-                        "delete from asignacion where (id_usu=?);\n" +
-                        "delete from usuario where (id_usu=?);\n" +
-                        "SET foreign_key_checks = 1;";
+            String q =  "delete from consultas where nom_usu= ?";
             
             PreparedStatement ps = con.prepareStatement(q);
-            
-            ps.setInt(1, id);
-            ps.setInt(2, id);
+            ps.setString(1, nom);
             
             estatus = ps.executeUpdate();
             System.out.println("Eliminacion del usuario exitoso");
@@ -71,7 +138,6 @@ public class Administrador{
         }
     return estatus;
     }
-    
     public boolean inicioSesion(String correo, String pass){
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -135,55 +201,31 @@ public class Administrador{
     //necesita arreglarse para obtener los datos a mostrar en la consulta de 
     //usuarios, los bloques con sus actividades y progresos correspondientes
     //desde el administrador
-    public static List<UsuarioConsulta> getAllUsuarios(){
-        List<UsuarioConsulta> lista = new ArrayList<UsuarioConsulta>();
+    public static List<Usuario> getAllUsuarios() throws SQLException{
+        List<Usuario> listaUsu = new ArrayList<Usuario>();
+        //List<UsuarioConsulta> listCon = new ArrayList<UsuarioConsulta>();
         PreparedStatement ps=null;
         ResultSet rs=null;
+        int estatus = 0;
+        
         try{
-            Connection con = Conexion.getConexion();
-//            String q = "select usuario.id_usu ,nom_usu, id_asig,  bloques.id_blo ,nom_blo, id_act_blo, nom_act, dif_dif\n" +
-//                        "from diskettegb.asignacion\n" +
-//                        "inner join diskettegb.usuario on diskettegb.usuario.id_usu = diskettegb.asignacion.id_usu\n" +
-//                        "inner join diskettegb.bloques on diskettegb.bloques.id_blo = diskettegb.asignacion.id_blo\n" +
-//                        "inner join diskettegb.act_blo on diskettegb.act_blo.id_blo = diskettegb.bloques.id_blo\n" +
-//                        "inner join (diskettegb.act_dif \n" +
-//                        "inner join diskettegb.actividades on diskettegb.actividades.id_act = diskettegb.act_dif.id_act\n" +
-//                        "inner join diskettegb.dificultades on diskettegb.dificultades.id_dif = diskettegb.act_dif.id_dif)\n" +
-//                        "on diskettegb.act_dif.id_act_dif = diskettegb.act_blo.id_act_dif";
-
-            String q = "select * from consultas";
-
-            ps = con.prepareStatement(q);
+            String q1 = "select * from usuario";
+            ps = getConexion().prepareStatement(q1);
             rs = ps.executeQuery();
             while(rs.next()){
-                UsuarioConsulta uc = new UsuarioConsulta();
-                uc.setId(rs.getInt(1));
-                uc.setNom_usu(rs.getString(2));
-                uc.setNom_blo(rs.getString(3));
-                uc.setNom_act(rs.getString(4));
-                uc.setDif_dif(rs.getString(5));
-                uc.setPro_dif(rs.getString(6));
-                uc.setId_asig(rs.getInt(7));
-                uc.setId_act_blo(rs.getInt(8));
-//                
-//                String q2="select * from consultas where nom_usu = ?";
-//                ps=con.prepareStatement(q2);
-//                ps.setString(0, q);
-//                u.setPassword(rs.getString(3));
-//                u.setCorreo(rs.getString(4));
-                System.out.println(1+"\n"+2+"\n"+3+"\n"+4+"\n");
-                System.out.println(5+"\n"+6+"\n"+7+"\n"+8+"\n");
-                lista.add(uc);
+                
+                Usuario usu = new Usuario();
+                usu.setId(rs.getInt(1));
+                usu.setNombre(rs.getString(2));
+                listaUsu.add(usu);
+                
             }
-            System.out.println("Se encontraron a los usuarios");
-            con.close();
-        }catch(Exception ed){
-            System.out.println("Error al consultar la tabla");
-            System.out.println(ed.getMessage());
-        
+            System.out.println("Exito");
+        }catch(Exception e){
+            System.out.println("Error al buscar");
         }
-        return lista;
         
+    return listaUsu;
     }
     
 }

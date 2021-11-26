@@ -34,11 +34,13 @@ public class BorrarUsu extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            int id = Integer.parseInt(request.getParameter("usuario"));
-            
-            int estatus = Administrador.borrarUsuario(id);
-            
-            if(estatus > 0){
+            int id = Integer.parseInt(request.getParameter("id"));
+            String nom = request.getParameter("nombre");
+            int estatus = Administrador.borrarUsuariotablaUsuario(id);
+            int estatus2 = Administrador.borrarUsuariotablaAsignacion(id);
+            int estatus3 = Administrador.borrarUsuariotablaConsulta(nom);
+            System.out.println(estatus+" "+estatus2+" "+estatus3);
+            if(estatus > 0 && estatus2 >0 && estatus3 >0){
                 response.sendRedirect("MenuAdm.jsp");
             }else{
                 response.sendRedirect("error.jsp");
