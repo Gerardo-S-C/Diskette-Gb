@@ -11,6 +11,8 @@ package Control;
  */
 
 import static Control.Conexion.getConexion;
+import Modelo.Actividades;
+import Modelo.Bloques;
 import Modelo.Usuario;
 import Modelo.UsuarioConsulta;
 import java.sql.*;
@@ -227,5 +229,33 @@ public class Administrador{
         
     return listaUsu;
     }
-    
+    //Esta es para la parte de actividades del administrador
+    //solo mostrará lo que hay asignado, aun no se moveran de lugar
+    //las actividades ni bloques ni dificultades, solo será visual
+    public static List<Bloques> getBloques() throws SQLException{
+        List<Bloques> listblo = new ArrayList<Bloques>();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            String q = "SELECT nom_blo, nom_act, dif_dif FROM bloques\n" +
+                        "inner join act_blo on act_blo.id_blo = bloques.id_blo\n" +
+                        "inner join act_dif on act_dif.id_act_dif = act_blo.id_act_dif\n" +
+                        "inner join actividades on actividades.id_act = act_dif.id_act\n" +
+                        "inner join dificultades on dificultades.id_dif = act_dif.id_dif";
+            ps = getConexion().prepareStatement(q);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Bloques blo = new Bloques ();
+                blo.setNom_blo(rs.getString(1));
+                blo.setNom_act(rs.getString(2));
+                blo.setDif_dif(rs.getString(3));
+                listblo.add(blo);
+            }
+            System.out.println("Bloques consultados");
+        }catch(Exception e){
+            System.out.println("Error al consultar bloques");
+        }
+        return listblo;
+    }
 }

@@ -41,6 +41,7 @@ public class accionesUsu extends Conexion{
                 ps.setInt(1, id_usu);
                 ps.setInt(2, id_usu);
                 estatus=ps.executeUpdate();
+//                System.out.println(estatus);
             }
             if(rs.next()){
                 usu = new Usuario();

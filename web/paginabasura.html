@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +12,12 @@
     <title>Como hacer una transacción bancaria?</title>
 
 </head>
-
 <body>
     <div class="form-group">
         <form action="">
             <table>
                 <tr>
-                    <td><label for="nombre">Nombre</label></td>
+                    <td><label for="name"class="col-form-label">Nombre</label></td>
                     <td><input type="text" placeholder="Escribe tu nombre"  name="name" maxlength="30" id="name"></td>
                 <tr>
                     <td><label for="teléfono">Télefeno</label></td>
@@ -39,6 +39,11 @@
                 </tr>
                 <tr>
                     <td><input id="button-pay" type="submit" class="btn btn-info btn-block" disabled value="Enviar"/></td>
+                    <td>
+                        <div class="col-3 container-type-card">
+                            <img id="type-card" class="type-card" src="" alt="">
+                        </div>
+                    </td>
                 </tr>
                 <a href="MenUsuario.jsp" class="btn">X</a>
             </table>
@@ -46,8 +51,10 @@
         </form>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="JS/index.js"></script>
     <script src="JS/app.js"></script>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1116393974429402"
         crossorigin="anonymous"></script>
     <!-- Bloque vertical -->
@@ -56,8 +63,6 @@
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1116393974429402"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
