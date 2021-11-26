@@ -106,6 +106,68 @@ public class accionesUsu extends Conexion{
         return null;
     }
     
+    public static int AumentarProgresoEZ(UsuarioConsulta usucon) throws SQLException{
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            abrir();
+            
+            String q2 = "update consultas \n" +
+                        "SET consultas.pro_dif = ? \n" +
+                        "WHERE nom_usu = ? \n" +
+                        "AND nom_blo = ? \n" +
+                        "AND nom_act = ? \n" +
+                        "AND dif_dif = ? \n";
+            ps = getConexion().prepareStatement(q2);
+            String progresoEZ=usucon.getPro_dif_dif1();
+            int progreso = Integer.parseInt(progresoEZ);
+            ps.setInt(1, progreso);
+            ps.setString(2, usucon.getNom_usu());
+            ps.setString(3, usucon.getNom_blo());
+            ps.setString(4, usucon.getNom_act());
+            ps.setString(5, usucon.getDif_dif());
+            estatus = ps.executeUpdate();
+            
+            cerrar();
+            System.out.println("Progreso aumentado exitosamente en 'fácil' ");
+        }catch(Exception ed){
+            System.out.println("Error, en la sintaxis");
+            System.out.println(ed.getMessage());
+        }
+        return estatus;
+    }
+        public static int AumentarProgresoHD(UsuarioConsulta usucon) throws SQLException{
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            abrir();
+            
+            String q2 = "update consultas \n" +
+                        "SET consultas.pro_dif = ? \n" +
+                        "WHERE nom_usu = ? \n" +
+                        "AND nom_blo = ? \n" +
+                        "AND nom_act = ? \n" +
+                        "AND dif_dif = ? \n";
+            ps = getConexion().prepareStatement(q2);
+            String progresoHD=usucon.getPro_dif_dif2();
+            int progreso = Integer.parseInt(progresoHD);
+            ps.setInt(1, progreso);
+            ps.setString(2, usucon.getNom_usu());
+            ps.setString(3, usucon.getNom_blo());
+            ps.setString(4, usucon.getNom_act());
+            ps.setString(5, usucon.getDif_dif());
+            estatus = ps.executeUpdate();
+            
+            cerrar();
+            System.out.println("Progreso aumentado exitosamente en 'fácil' ");
+        }catch(Exception ed){
+            System.out.println("Error, en la sintaxis");
+            System.out.println(ed.getMessage());
+        }
+        return estatus;
+    }
     public static UsuarioConsulta buscarUsuAsigProm(String nombre) throws SQLException{
         UsuarioConsulta usu = new UsuarioConsulta();
         
@@ -121,7 +183,7 @@ public class accionesUsu extends Conexion{
                 usu.setId(rs.getInt(1));
                 usu.setNom_usu(rs.getString(2));
                 usu.setDif_dif(rs.getString(5));
-                usu.setPro_dif_dif1(rs.getString(6));
+                usu.setPro_dif_dif1(rs.getString(6));   
                 usu.setPro_dif(rs.getString(9));
             }
             System.out.println("Usuario asignado, encontrado");
@@ -172,5 +234,21 @@ public class accionesUsu extends Conexion{
         }
         return lista;
     }
-    
+    public static void abrir() throws SQLException{
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        String q1 = "SET sql_safe_updates=0";
+        ps = getConexion().prepareStatement(q1);
+        rs = ps.executeQuery();
+            
+    }
+    public static void cerrar() throws SQLException{
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        String q1 = "SET sql_safe_updates=1";
+        ps = getConexion().prepareStatement(q1);
+        rs = ps.executeQuery();       
+    }
 }
