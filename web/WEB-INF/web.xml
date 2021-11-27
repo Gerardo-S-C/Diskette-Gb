@@ -24,6 +24,10 @@
         <servlet-name>AumentarProgresoHD</servlet-name>
         <servlet-class>Servlet.AumentarProgresoHD</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizarDif1</servlet-name>
+        <servlet-class>Servlet.ActualizarDif1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BorrarUsu</servlet-name>
         <url-pattern>/BorrarUsu</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>AumentarProgresoHD</servlet-name>
         <url-pattern>/AumentarProgresoHD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarDif1</servlet-name>
+        <url-pattern>/ActualizarDif1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

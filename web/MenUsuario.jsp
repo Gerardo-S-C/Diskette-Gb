@@ -18,7 +18,7 @@
     
     UsuarioConsulta usuC = accionesUsu.buscarUsuAsigProm(nombre);
     System.out.println(usuC.getPro_dif());
-    
+    List<Dificultades> listdif = Administrador.ConsDificultadess();
     String progreso = usuC.getPro_dif();
     %>
     <style>

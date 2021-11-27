@@ -11,11 +11,12 @@ package Control;
  */
 import Modelo.Usuario;
 import Modelo.UsuarioConsulta;
+import Modelo.*;
 import java.sql.*;
 import java.util.*;
 
 public class accionesUsu extends Conexion{
-    
+    //Inicia la sesión del usuario verificando que esté en la BD
     public boolean inicioSesion(String correo, String pass){
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -70,6 +71,8 @@ public class accionesUsu extends Conexion{
         
         return false;
     }
+    //Obtiene el nombre del usuario mediante el correo con el que ingresa
+    //Y lo asigna como parametro de la sesión
     public String getNameByEmail(String email) throws SQLException{
         String sql = "SELECT * FROM usuario WHERE cor_usu=?";
         PreparedStatement ps = getConexion().prepareStatement(sql);
@@ -82,7 +85,8 @@ public class accionesUsu extends Conexion{
 
         return null;
     }
-    
+    //Cuando un usuario ingresa por primera vez, se le asigna las actividades
+    //Si ya estaba registrado, este mismo proceso se ejecuta, pero no hay cambios
     public String AsignarSimulaciones () throws SQLException{
         String q ="insert into consultas (nom_usu, nom_blo, nom_act, dif_dif, pro_dif, id_asig, id_act_blo)\n" +
                 "select nom_usu, nom_blo, nom_act, dif_dif, pro_dif, id_asig, id_act_blo\n" +
@@ -105,7 +109,7 @@ public class accionesUsu extends Conexion{
         
         return null;
     }
-    
+    //Aumenta el progreso en la dificultad fácil de cualquier actividad (supuestamente)
     public static int AumentarProgresoEZ(UsuarioConsulta usucon) throws SQLException{
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -137,7 +141,10 @@ public class accionesUsu extends Conexion{
         }
         return estatus;
     }
-        public static int AumentarProgresoHD(UsuarioConsulta usucon) throws SQLException{
+    //Aumenta el progreso en la dificultad difícil de cualquier actividad (supuestamente)
+    /*Aunque AumentarProgresoEZ sea la misma sentencia, los datos no lo son, por eso
+    son 2 metodos diferentes*/
+    public static int AumentarProgresoHD(UsuarioConsulta usucon) throws SQLException{
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
@@ -168,6 +175,10 @@ public class accionesUsu extends Conexion{
         }
         return estatus;
     }
+    //Se busca al usuario para obtener el promedio de las actividades de un bloque
+    //En este caso solo sería el de Estafas y de la actividad de phishing porque
+    //Es la única actividad que se tiene funcionando en el sistema a pesar de haber otras
+    //en la BD
     public static UsuarioConsulta buscarUsuAsigProm(String nombre) throws SQLException{
         UsuarioConsulta usu = new UsuarioConsulta();
         
@@ -194,6 +205,8 @@ public class accionesUsu extends Conexion{
         }
         return usu;
     }
+    //Busca el progreso de la dificultad "dificil" por separado porque el metodo anterior
+    //buscarUsuAsigProm ya obtiene el valor de la dificultad "facil"
     public static UsuarioConsulta buscarUsuDif_dificil(String nombre) throws SQLException{
         UsuarioConsulta usu = new UsuarioConsulta();
         
@@ -216,6 +229,8 @@ public class accionesUsu extends Conexion{
         }
         return usu;
     }
+    //Este metodo es para consultar la lista de usuarios registrador, sin importar si hayan iniciado 
+    //sesion o no
     public static List<Usuario> consultaGral(){
         List<Usuario> lista = new ArrayList<Usuario>();
         try{
@@ -233,7 +248,9 @@ public class accionesUsu extends Conexion{
             
         }
         return lista;
-    }
+    }    
+    //Estos metodos son para deshabilitar y rehabilitar las actualizaciones con FK 
+    //dentro de MySql
     public static void abrir() throws SQLException{
         PreparedStatement ps=null;
         ResultSet rs=null;

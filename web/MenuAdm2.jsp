@@ -50,14 +50,26 @@
             <div class="proest">
                 <div class="usuarios">
                     <div class="accordion">
+                            <%
+                                List<Bloques> listablo = Administrador.ConsBloques();
+                                List<Actividades> listaact = Administrador.ConsActividades();
+                                List<Dificultades> listdif = Administrador.ConsDificultadess();
+                                for(Bloques blo : listablo ){
+                            %>
                         <div class="accordion-item">
-                          <button class="accordion-header">
-                            <div class="bloqest"><img src="./img/estafas.png" class="imgest" alt=""></div><strong class="estafasact">Estafas</strong>
-                     
+                          <button class="accordion-header" id="<%=blo.getId_blo()%>">
+                            <div class="bloqest"><img src="./img/estafas.png" class="imgest" alt=""></div><strong class="estafasact"><%=blo.getNom_blo()%></strong>
                           </button>
                           <div class="accordion-body">
                             <div class="tituloact">
-                                <strong class="phishing">Phishing</strong>
+                                <%
+                                    List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo());
+                                    for(Act_Blo actblo : injoin ){
+                              %>
+                                <strong class="phishing"><%=actblo.getNom_act() %></strong>
+                            <%
+                                }
+                            %>
                             </div>
                             <div class="progresosusu">
                                 <Strong class="btn-material1">Fácil</strong>
@@ -71,13 +83,20 @@
                                 <div class="container-modal3">
                                     <div class="content-modal3">
                                         <h2>Dificultades</h2>
-                                        <button class="btn-material1" id="easy">Fácil</button> <button class="btn-material1" id="hard">Difícil</button>
+                                        <form name="ActualizarDif1" method="post" action="ActualizarDif1" id="1">
+                                            <%
+                                                for(Dificultades dif : listdif){
+                                            %>
+                                            <input type="submit" class="btn-material1" id="easy" name="<%=dif.getDif_dif()%>" value="<%=dif.getDif_dif()%>">
+                                            <%
+                                                }
+                                            %>
+                                        </form>
                                         <div class="btn-cerrar3">
                                             <label for="btn-modal3" id="ok3">Aceptar</label>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <br>
                             <br>
@@ -92,7 +111,15 @@
                                 <div class="container-modal2">
                                     <div class="content-modal2">
                                         <h2>Dificultades</h2>
-                                        <button class="btn-material1" id="easy">Fácil</button> <button class="btn-material1" id="hard">Difícil</button>
+                                        <form name="ActualizarDif1" method="post" action="ActualizarDif1" id="1">
+                                            <%
+                                                for(Dificultades dif : listdif){
+                                            %>
+                                            <input type="submit" class="btn-material1" id="easy" name="<%=dif.getDif_dif()%>" value="<%=dif.getDif_dif()%>">
+                                            <%
+                                                }
+                                            %>
+                                        </form>
                                         <div class="btn-cerrar2">
                                             <label for="btn-modal2" id="ok2">Aceptar</label>
                                         </div>
@@ -108,7 +135,14 @@
                             <div class="container-modal">
                                 <div class="content-modal">
                                     <h2>Bloques Disponibles</h2>
-                                    <button class="btn-material1" id="bloque1">Estafas</button>
+                                    <%
+                                        List<Bloques> blobot = Administrador.ConsBloques();
+                                        for(Bloques bot : blobot){
+                                    %>
+                                        <button class="btn-material1" id="bloque1"><%=bot.getNom_blo()%></button>
+                                    <%
+                                    }
+                                    %>
                                     <div class="btn-cerrar">
                                         <label for="btn-modal" id="ok">Ok</label>
                                     </div>
@@ -124,7 +158,11 @@
                                     </filter>
                                 </defs>
                             </svg>
-                          </div>
+                          </div>  
+                            <br>
+                            <%
+                                }
+                            %>  
                         </div>
                     </div>
                 </div>
