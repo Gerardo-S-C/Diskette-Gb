@@ -10,44 +10,58 @@
 
  <!-- Bootstrap CSS -->
  
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
- <link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="CSS/segunda2.css">
 
 </head>
 <body>
+
 <div class="bbva">
     <h1><p="text-align: right;>BBVA</h1>
     <div class="izq">
         <button  class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><img class="imgtar" src="img/tar.png" width="200" height="100"></button>
         <div class="der">
+            <form name="X" method="post" id="progress" action="AumentarProgresoHD" class="d-md-flex justify-content-md-end">
+                <button type="submit" class="btn "><img src="./img/tache.png" height="80px" width="80px" class="tache"></a></button>
+            </form>
         <p="text-align: center;>Datos personales</p>
+        
         <form action="">
-            <table>
-            <tr>
-                <td><label for="nombre">Nombre</label></td>   
-                <td><input type="text" placeholder="Escribe tu nombre" name="nombre" maxlength="30" id="nombre"></td>  
-            <tr>
-                <td><label for="teléfono">Télefeno</label></td>   
-                <td><input type="text" placeholder="Escribe tu teléfono" maxlength="10" name="teléfono" id="teléfono"></td>
-            </tr>   
-            <tr>
-                <td><label for="número">Número de tarjeta</label></td>   
-                <td><input type="text" placeholder="Escribe tu número" maxlength="19" name="número" id="número"></td>
-            </tr>   
-            <tr>
-                <td><label for="nombre">Fecha de caducidad</label></td>   
-                <td><input type="month"  name="mes" id="mes"></td>
-            </tr>   
-            <tr>
-                <td><label for="cvv">Número cvv</label></td>   
-                <td><input type="text" placeholder="Escribe el número" maxlength="3" name="número" id="número"></td>
-            </tr>
-            <tr>
-                <td><a href="primera2.html"><input class="botons" value="continuar" ></td></a>
-            </tr>
-            </table>
-        </form>
+                <table>
+                    <tr>
+                        <td><label for="name"class="col-form-label">Nombre</label></td>
+                        <td><input type="text" placeholder="Escribe tu nombre"  name="name" maxlength="30" id="name"></td>
+                    <tr>
+                        <td><label for="teléfono">Télefeno</label></td>
+                        <td><input type="text" placeholder="Escribe tu teléfono" maxlength="10" name="teléfono" id="teléfono">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="número">Número de tarjeta</label></td>
+                        <td><input type="text" name="cn" class="inline" id="cn" placeholder="Escribe tu número" maxlength="16"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="nombre">Fecha de caducidad</label></td>
+                        <td><input type="text"  placeholder="MM/YY" pattern="[0-9]{4}" name="exp" id="exp">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="cvv">Número cvv</label></td>
+                        <td><input type="text" placeholder="Escribe el número" maxlength="3" name="cvv" id="cvv"></td>
+                    </tr>
+                    <tr>
+                        <td><input id="button-pay" type="submit" class="btn btn-outline-secondary btn-block" disabled value="Enviar"/></td>
+                        <td>
+                            <div class="col-3 container-type-card">
+                                <img id="type-card" class="type-card" src="" alt="">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
 </div>
@@ -109,7 +123,10 @@
     
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
         <script src="js/tarjeta.js"></script>
-
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="JS/index.js"></script>
+        <script src="JS/app.js"></script>
 
       </div>
       <div class="modal-footer">
@@ -120,7 +137,10 @@
 
 
 
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="JS/index.js"></script>
+        <script src="JS/app.js"></script>
         
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>     
 

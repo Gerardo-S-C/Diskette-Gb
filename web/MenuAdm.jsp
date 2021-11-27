@@ -80,10 +80,12 @@
 
                             <%
                                 UsuarioConsulta usuC = accionesUsu.buscarUsuAsigProm(u.getNombre());
+                                UsuarioConsulta usuHD = accionesUsu.buscarUsuDif_dificil(u.getNombre());
                                 System.out.println(usuC.getPro_dif() + "%");
                                 String progreso = usuC.getPro_dif();
                                 String progresof = usuC.getPro_dif_dif1();
-                                String progresod = usuC.getPro_dif_dif2();
+                                String progresod = usuHD.getPro_dif_dif2();
+                                System.out.println(progresod);
                             %>
                             <style>
                                 .barraestafa<%=u.getId()%>::after{
