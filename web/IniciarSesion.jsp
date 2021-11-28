@@ -35,7 +35,7 @@
                 <div class="grupo" name="grupo_email">
                 <label for="" class="campos">Correo: </label>
               <input
-                type="text"
+                type="email"
                 id="grupo_email"
                 name="email"
                 class="form-control formulario__input"

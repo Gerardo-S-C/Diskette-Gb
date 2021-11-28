@@ -16,7 +16,7 @@ const campos = {
 }
 const validarFormulario = (e) =>     {
     switch(e.target.name){
-    case "correo":
+    case "email":
         validarCampo(expresiones.correo, e.target, 'email');
     break;
     case "password":
@@ -26,15 +26,16 @@ const validarFormulario = (e) =>     {
 }
 
 const validarCampo = (expresion, input, campo) =>{
+
     if(expresion.test(input.value)){
         document.getElementById(`grupo_${campo}`).classList.remove('formulario__grupo-incorrecto');
         document.getElementById(`grupo_${campo}`).classList.add('formulario__grupo-correcto');
-        document.querySelector(`#grupo_${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+
         campos[campo]=true;
     }else{
         document.getElementById(`grupo_${campo}`).classList.remove('formulario__grupo-correcto');
         document.getElementById(`grupo_${campo}`).classList.add('formulario__grupo-incorrecto');
-        document.querySelector(`#grupo_${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+
         campos[campo]=false;
     }
 }
@@ -50,7 +51,7 @@ formulario.addEventListener('submit', (e) =>{
         formulario.submit();
     }
     else{
-        alert('Ingrese todos los datos faltantes');
+        alert('Ingrese todos los datos faltantes o inicia una nueva cuenta');
     }
     
 })
