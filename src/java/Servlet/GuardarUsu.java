@@ -39,7 +39,7 @@ public class GuardarUsu extends HttpServlet {
             
             nombre=request.getParameter("name");
             correo=request.getParameter("email");
-            password=request.getParameter("password");
+            password=request.getParameter("password1");
             
             Usuario u=new Usuario();
             

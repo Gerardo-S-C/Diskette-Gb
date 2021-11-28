@@ -1,45 +1,82 @@
-const nombre = document.getElementById("name")
+/* const nombre = document.getElementById("name")
 const email = document.getElementById("email")
 const pass = document.getElementById("password")
 const pass2 = document.getElementById("password2")
-const parrafo = document.getElementById("warnings")
-const formulario = document.getElementById("form")
+const parrafo = document.getElementById("warnings") */
+const formulario = document.getElementById("registrarUsuario")
+const input = document.querySelectorAll('#registrarUsuario input')
 
- 
-    formulario.addEventListener("submit",(e) => {
-        e.preventDefault()
-        alert("Dentro del formulario")
-    let warnings = ""
-    let entrar = false
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
-    parrafo.innerHTML = ""
-    if (nombre.value.length < 6) {
-        warnings += "El nombre no es valido <br>"
-        entrar = true
+const expresiones = {
+	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	password: /^.{4,12}$/, // 4 a 12 digitos.
+	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+}
+const campos = {
+	name: false,
+	password: false,
+	email: false
+}
+const validarFormulario = (e) =>     {
+    switch(e.target.name){
+    case "name":
+        validarCampo(expresiones.nombre, e.target, 'name');
+    break;
+    case "email":
+        validarCampo(expresiones.correo, e.target, 'email');
+    break;
+    case "password1":
+        validarCampo(expresiones.password, e.target, 'password1');
+        validarPassword2();
+    break;
+    case "password2":
+        validarPassword2();
+    break;
     }
+}
 
-    if (!regexEmail.test(email.value)) {
-        warnings += `El email no es valido <br>`
-        entrar = true
+const validarCampo = (expresion, input, campo) =>{
+    if(expresion.test(input.value)){
+        document.getElementById(`grupo_${campo}`).classList.remove('formulario__grupo-incorrecto');
+        document.getElementById(`grupo_${campo}`).classList.add('formulario__grupo-correcto');
+        document.querySelector(`#grupo_${campo} .formulario__input-error`).classList.remove('formulario__input-error-activo');
+        campos[campo]=true;
+    }else{
+        document.getElementById(`grupo_${campo}`).classList.remove('formulario__grupo-correcto');
+        document.getElementById(`grupo_${campo}`).classList.add('formulario__grupo-incorrecto');
+        document.querySelector(`#grupo_${campo} .formulario__input-error`).classList.add('formulario__input-error-activo');
+        campos[campo]=false;
     }
+}
 
-    if (pass.value.length < 8) {
-        warnings += "La contraseña no es valida <br>"
-        entrar = true
-    }
+const validarPassword2 = () => {
+	const inputPassword1 = document.getElementsByName('password1')[0];
+	const inputPassword2 = document.getElementsByName('password2')[0];
+	if(inputPassword1.value !== inputPassword2.value){
+        document.getElementById('grupo_password2').classList.remove('formulario__grupo-correcto');
+		document.getElementById('grupo_password2').classList.add('formulario__grupo-incorrecto');
+		document.querySelector('#grupo_password2 .formulario__input-error').classList.add('formulario__input-error-activo');
+		campos['password'] = false;
+	} else {
+		document.getElementById('grupo_password2').classList.remove('formulario__grupo-incorrecto');
+		document.getElementById('grupo_password2').classList.add('formulario__grupo-correcto');
+		document.querySelector('#grupo_password2 .formulario__input-error').classList.remove('formulario__input-error-activo');
+		campos['password'] = true;
+	}
+}
 
-    if (pass.value != pass2.value) {
-        warnings += "La contraseña no coincide"
-        entrar = true
-    }
-
-    if (entrar) {
-        alert("Error " + warnings)
-       parrafo.innerHTML = warnings     
-    } else {
-        alert("Todo bien")
-        formulario.submit()
-       // window.open("./IniciarSesion.html", "self")
-    }
+input.forEach((input) => {
+    input.addEventListener('keyup', (validarFormulario));
+    input.addEventListener('blur', validarFormulario);
+    
 })
-   
+formulario.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    if(campos.email && campos.name && campos.password){
+        alert('Resgistro exitoso, inicie sesión para empesar con sus actividades =)');
+        formulario.submit();
+    }
+    else{
+        alert('Ingrese todos los datos faltantes');
+    }
+    
+})
