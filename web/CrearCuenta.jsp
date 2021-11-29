@@ -116,7 +116,7 @@
                     </svg>
                 </div>
             </div>
-            <script src="./JS/validaciones.js"></script>
+            <script src="./JS/validacion.js"></script>
         </body>
 
         </html>
