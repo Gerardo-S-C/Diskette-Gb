@@ -29,7 +29,7 @@
             </form>
         <p="text-align: center;>Datos personales</p>
         
-        <form action="">
+        <form action="./primera3.html">
                 <table>
                     <tr>
                         <td><label for="name"class="col-form-label">Nombre</label></td>
@@ -53,7 +53,12 @@
                         <td><input type="text" placeholder="Escribe el número" maxlength="3" name="cvv" id="cvv"></td>
                     </tr>
                     <tr>
-                        <td><input id="button-pay" type="submit" class="btn btn-outline-secondary btn-block" disabled value="Enviar"/></td>
+                        <td><input id="button-pay" type="submit" class="btn btn-outline-secondary btn-block" disabled value="Enviar" onclick="enviarPagina();"/></td>
+                        <script>
+                            function enviarPagina(){
+                                location.href="./primera3.html"
+                            }
+                        </script>
                         <td>
                             <div class="col-3 container-type-card">
                                 <img id="type-card" class="type-card" src="" alt="">
@@ -87,17 +92,17 @@
                     <div class="datos">
                         <div class="grupo" id="numero">
                             <p class="label">Número Tarjeta</p>
-                            <p class="numero">1334 4587 8010 1112</p>
+                            <p class="numero">4375 6820 3689 3497</p>
                         </div>
                         <div class="flexbox">
                             <div class="grupo" id="nombre">
                                 <p class="label">Nombre Tarjeta</p>
-                                <p class="nombre">Mario Cortez</p>
+                                <p class="nombre">Julio Martinez</p>
                             </div>
     
                             <div class="grupo" id="expiracion">
                                 <p class="label">Expiracion</p>
-                                <p class="expiracion"><span class="mes">05</span> / <span class="year">22</span></p>
+                                <p class="expiracion"><span class="mes">08</span> / <span class="year">23</span></p>
                             </div>
                         </div>
                     </div>
@@ -108,11 +113,11 @@
                     <div class="datos">
                         <div class="grupo" id="firma">
                             <p class="label">Firma</p>
-                            <div class="firma"><p>oziel ltyqsmahp</p></div>
+                            <div class="firma"><p>JulmartezGLEZ</p></div>
                         </div>
                         <div class="grupo" id="ccv">
                             <p class="label">CCV</p>
-                            <p class="ccv">129</p>
+                            <p class="ccv">710</p>
                         </div>
                     </div>
                     <p class="leyenda">Para cualquier duda llame a su banco de preferencia o consulte la pagina web otra vez</p>
@@ -122,7 +127,7 @@
     
     
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-        <script src="js/tarjeta.js"></script>
+        <script src="JS/tarjeta.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="JS/index.js"></script>

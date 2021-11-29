@@ -53,7 +53,12 @@
                         <td><input type="text" placeholder="Escribe el número" maxlength="3" name="cvv" id="cvv"></td>
                     </tr>
                     <tr>
-                        <td><input id="button-pay" type="submit" class="btn btn-outline-secondary btn-block" disabled value="Enviar"/></td>
+                        <td><input id="button-pay" type="submit" class="btn btn-outline-secondary btn-block" disabled value="Enviar" onclick="enviarPagina()"/></td>
+                        <script>
+                            function enviarPagina(){
+                                location.href="./primera3.html"
+                            }
+                        </script>
                         <td>
                             <div class="col-3 container-type-card">
                                 <img id="type-card" class="type-card" src="" alt="">
@@ -94,7 +99,7 @@
                     <div class="datos">
                         <div class="grupo" id="numero">
                             <p class="label">Número Tarjeta</p>
-                            <p class="numero">1334 4587 8010 1112</p>
+                            <p class="numero">5306 9831 4696 6699</p>
                         </div>
                         <div class="flexbox">
                             <div class="grupo" id="nombre">
@@ -115,13 +120,14 @@
                     <div class="datos">
                         <div class="grupo" id="firma">
                             <p class="label">Firma</p>
-                            <div class="firma"><p>oziel ltyqsmahp</p></div>
+                            <div class="firma"><p>MarCorTezR.A</p></div>
                         </div>
                         <div class="grupo" id="ccv">
                             <p class="label">CCV</p>
-                            <p class="ccv">129</p>
+                            <p class="ccv">392</p>
                         </div>
                     </div>
+                    <p class="leyenda">Teléfono: 55 7463 8765</p>
                     <p class="leyenda">Para cualquier duda llame a su banco de preferencia o consulte la pagina web otra vez</p>
                     <a href="#" class="link-banco">www.trucoteca.com</a>
                 </div>
@@ -129,7 +135,7 @@
     
     
         <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-        <script src="js/tarjeta.js"></script>
+        <script src="JS/tarjeta.js"></script>
 
 
       </div>

@@ -99,7 +99,7 @@
                                 }
                             </style>
                             <button class="accordion-header">
-                                <strong class="estafasact" name="id"><%=u.getId()%></strong>
+                                
                                 <strong class="estafasact" name="nombre"><%=u.getNombre()%></strong><strong class="estafasact">Progreso Total</strong> 
                                 <div class="barraestafa barraestafa<%=u.getId()%>"> </div>
                             </button>
