@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./CSS/MenUsuario.css">
     <%
     String nombre = (String) session.getAttribute("Usuario");
-    
+    System.out.println(nombre);
     UsuarioConsulta usuC = accionesUsu.buscarUsuAsigProm(nombre);
     System.out.println(usuC.getPro_dif());
     List<Dificultades> listdif = Administrador.ConsDificultadess();
