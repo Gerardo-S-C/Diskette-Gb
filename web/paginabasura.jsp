@@ -65,6 +65,8 @@
                 </table>
             </form>
         </div>
+        <br><br><br><br><br><br><br><br>
+                        <div class="abajo"> anuncios</div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -147,7 +149,6 @@
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
-        <div class="abajo"> anuncios</div>
     </body>
 
 </html>
