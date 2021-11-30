@@ -53,7 +53,7 @@ public class ActualizarDif1 extends HttpServlet {
                 response.sendRedirect("MenuAdm2.jsp");
             }
             else{
-                System.out.println("Error al actualizar dificultad");
+                System.out.println("Error al actualizar dificultad aa");
                 response.sendRedirect("error.jsp");
             }
             
