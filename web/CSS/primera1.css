@@ -1,40 +1,30 @@
 body{
 	font-family: arial, helvetica;
-    font-size: 30px;
 	background: #94b2eb;
 	font-weight: normal;
-	text-align:left;
+	
 }
 
 table{
 	background-color: white;
 	text-align: left;
 	border-collapse: collapse;
-	width: 100%;
+	width: 80%;
 }
 
 th, td{
-	padding: 30px;
+	padding: 20px;
 }
 
 form{
 	border-radius: 3px;
 	padding: 20px;
-	margin-left: 60px;
-}
-
-
-input, textarea{
-    margin-left: 50px;
-	border: 1;
-	outline: none;
-	width: 380px;
-	height: 40px;
+	margin-left: 50px;
 }
 
 
 .der{
-    margin: -155px;
+    margin: -140px;
 	margin-left: 360px;
 	width: 1200px;
 	height: 750px;
@@ -43,21 +33,43 @@ input, textarea{
     border-radius: 30px;
 }
 
+.cen{
+	margin: -720px 0 0 1520px;
+	
+	width: 250px;
+	height: 750px;
+	background-color: rgb(206, 213, 221);
+    border: 100px;
+    border-radius: 20px;
+}
 .izq{
 	margin: 70px;
-	margin-top: 80px;
+	margin-top: 20px;
 	width: 300px;
 	height: 750px;
-	background-color: rgb(37, 109, 190);
+	background-color:  #0c6cfc ;
     border: 100px;
     border-radius: 20px;
 }
 .bbva{
-    width: 2000px;
+	font-family: helvetica;
+    font-size: 30px;
+    width: 2400px;
 	height: 110px;
 	list-style: none;
     padding: 10px;
-    background: #082d7c;
+    color: #05070a;
+	text-align: center;
     max-width: 1900px;
     margin:-10px;
+	background:#ffffff;
+}
+.abajo{
+	margin: -150px 0 0 50px;
+
+	width: 1400px;
+	height: 150px;
+	background-color: rgb(206, 213, 221);
+    border: 100px;
+    border-radius: 20px;
 }

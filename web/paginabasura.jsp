@@ -10,6 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="CSS/primera1.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+         <link rel="stylesheet" href="CSS/basura.css">
         <title>Como hacer una transacción bancaria?</title>
 <%
     String nombre = (String) session.getAttribute("Usuario");
@@ -43,7 +44,7 @@
                     </tr>
                     <tr>
                         <td><label for="cvv">Número cvv</label></td>
-                        <td><input type="text" placeholder="Escribe el número" maxlength="3" name="cvv" id="cvv"></td>
+                        <td><input type="text" placeholder="Escribe el número CVV" maxlength="3" name="cvv" id="cvv"></td>
                     </tr>
                     <tr>
                         <td><input id="button-pay" type="submit" class="btn btn-info btn-block" disabled value="Enviar" onclick="enviarPagina();"/></td>
@@ -64,6 +65,8 @@
                 </table>
             </form>
         </div>
+        <br><br><br><br><br><br><br><br>
+                        <div class="abajo"> anuncios</div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -92,7 +95,7 @@
                                       </div>
               
                                       <div class="grupo" id="expiracion">
-                                          <p class="label">Expiracion</p>
+                                          <p class="label">Expiración</p>
                                           <p class="expiracion"><span class="mes">03</span> / <span class="year">24</span></p>
                                       </div>
                                   </div>
