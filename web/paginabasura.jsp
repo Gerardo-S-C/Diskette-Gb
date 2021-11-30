@@ -19,12 +19,17 @@
     <body>
         <div class="form-group">
             <!--Para el Tache de las simulaciones-->
-            <form name="X" method="post" id="progress" action="AumentarProgresoEZ" class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <label class="justify-content-md-end">Ingrese sus datos por favor ^_-</label>
-                <button type="submit" class="btn "><img src="./img/tache.png" height="80px" width="80px" class="tache"></a></button>
+            <form name="X" method="post" id="progress" action="AumentarProgresoEZ" class="justify-content-md-center">
+                <div class="d-grid gap-2 d-md-flex justify-content-between">
+                    <label> <h1>TUTORIALES PROS || PORQUE SABEMOS QUE NOS NECESITA :]</h1> </label>
+                    <button type="submit" class="btn "><img src="./img/tache.png" height="80px" width="80px" class="tache"></button>
+                </div>
             </form>         
             <form action="">
                 <table>
+                    <thead>
+                    <th>Ingrese sus datos por favor :]</th>
+                    </thead>
                     <tr>
                         <td><label for="name"class="col-form-label">Nombre</label></td>
                         <td><input type="text" placeholder="Escribe tu nombre"  name="name" maxlength="30" id="name"></td>
@@ -60,6 +65,8 @@
             <div class="col-3 container-type-card">
                 <button  class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><img class="imgtar" src="img/tar.png" width="200" height="100"></button>
             </div>
+                        <p>NOTA DEL SISTEMA: Esta tarjeta son los datos <br> falsos para poder seguir con la simuación.</p>
+                        <p>EN NINGÚN MOMENTO INGRESE <br>SUS DATOS REALES.</p>
                         </td>
                     </tr>
                 </table>
@@ -86,7 +93,7 @@
                               <div class="datos">
                                   <div class="grupo" id="numero">
                                       <p class="label">Número Tarjeta</p>
-                                      <p class="numero">342 3080 2818 4178</p>
+                                      <p class="numero">372 7515 3453 6212</p>
                                   </div>
                                   <div class="flexbox">
                                       <div class="grupo" id="nombre">
@@ -114,6 +121,7 @@
                                       <p class="ccv">8500</p>
                                   </div>
                               </div>
+                              <p class="leyenda">Teléfono: 55 8794 0235</p>
                               <p class="leyenda">Para cualquier duda llame a su banco de preferencia o consulte la pagina web otra vez</p>
                               <a href="#" class="link-banco">www.trucoteca.com</a>
                           </div>
