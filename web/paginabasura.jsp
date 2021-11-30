@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                         <td><label for="cvv">Número cvv</label></td>
-                        <td><input type="text" placeholder="Escribe el número" maxlength="3" name="cvv" id="cvv"></td>
+                        <td><input type="text" placeholder="Escribe el número CVV" maxlength="3" name="cvv" id="cvv"></td>
                     </tr>
                     <tr>
                         <td><input id="button-pay" type="submit" class="btn btn-info btn-block" disabled value="Enviar" onclick="enviarPagina();"/></td>
@@ -92,7 +92,7 @@
                                       </div>
               
                                       <div class="grupo" id="expiracion">
-                                          <p class="label">Expiracion</p>
+                                          <p class="label">Expiración</p>
                                           <p class="expiracion"><span class="mes">03</span> / <span class="year">24</span></p>
                                       </div>
                                   </div>
@@ -146,6 +146,7 @@
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
+        <div class="abajo"> anuncios</div>
     </body>
 
 </html>

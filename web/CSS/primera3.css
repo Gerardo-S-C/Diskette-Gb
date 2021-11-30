@@ -1,42 +1,59 @@
 body{
 	font-family: arial, helvetica;
-    font-size: 30px;
 	background: #94b2eb;
 	font-weight: normal;
-	text-align:center;
-}
-.bbv{
-    font-family: arial, helvetica;
-    font-size: 50px;
-    text-align: center;
-    color: #0b3c97;
+	text-align: center;
 }
 
+table{
+	background-color: white;
+	text-align: center;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+th, td{
+	padding: 20px;
+}
+
+form{
+	border-radius: 3px;
+	padding: 20px;
+	margin-left: 20px;
+}
+
+
 .der{
-    margin: -295px;
-	margin-left: 360px;
-	width: 1200px;
+   
+    margin: -45px;
+	margin-left: 400px;
+	width: 900px;
 	height: 750px;
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(201, 204, 212);
     border: 100px;
-    border-radius: 20px;
+    border-radius: 30px;
+     text-align: center;
 }
 
 .izq{
-	margin: 90px;
-	margin-top: 80px;
+	margin: 70px;
+	margin-top: 20px;
 	width: 300px;
 	height: 750px;
-	background-color: rgb(37, 109, 190);
+	background-color:   #047cfc  ;
     border: 100px;
     border-radius: 20px;
 }
 .bbva{
-    width: 2000px;
-	height: 110px;
+	font-family: helvetica;
+    font-size: 30px;
+    width: 2400px;
+	height: 130px;
 	list-style: none;
     padding: 10px;
-    background: #082d7c;
+    color: #05070a;
+	text-align: center;
     max-width: 1900px;
     margin:-10px;
+	background:#047cfc;
 }
