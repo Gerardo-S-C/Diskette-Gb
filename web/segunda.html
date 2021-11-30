@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/segunda.css">
+      <link rel="stylesheet" href="./CSS/animaciones2.css">
     <title>Como hacer una transacción bancaria?</title>
 </head>
 <body>
@@ -43,6 +44,13 @@
         Lo primero que tienes que verificar es que la página web a la que entrarás tenga un pequeño candado cerrado al principio de la barra de direcciones. Ese candado indica que el sitio es seguro, de manera que, si no lo tiene, puede que se trate de un sitio web que usa los colores y tipografía del banco para extraer datos de los usuarios.
         Así como nunca debes ingresar tu información bancaria desde una computadora o dispositivo que no es tuyo, lo ideal es que nunca entres a la página de internet de un banco desde un enlace que haya llegado a ti por correo electrónico o por un mensaje de texto.</p>
     <br>
+    <div class="animation ps-5">
+    <div class="container" id="texto_guia_nav">
+      <div class="tutorial_caja2 caja_dialogos col-md-4 offset-md-4">
+        <h3>Una vez se sienta seguro de esta página, proceda con el enlace de la izquierda</h3>
+      </div>
+    </div>
+  </div>
     <ul>
     <h3>Tener en cuenta lo siguiente</h3>
         <li>La fecha en que deseas que se realiace el pago.</li>
@@ -54,6 +62,21 @@
     </ul>
     <a><h2>Sitios recomendados</h2></p>
     <a href="segunda2.html">www.http//ayudabancaria-transferencia.net</a>
-    <div> anuncios en gris </div>
+    <div>  <br> <br>anuncios</div>
+        <script src="./JS/animaciones.js"></script>
+  <script>
+    $(document).ready(function() {
+    setTimeout(showTooltip, 0)
+      });
+    function showTooltip()
+      {
+          $("#texto_guia_nav").hide("slow");
+          setTimeout(hideTooltip, 6000)
+      }
+    function hideTooltip()
+      {
+      $("#texto_guia_nav").show("slow");
+      }
+  </script>
 </body>
 </html>
