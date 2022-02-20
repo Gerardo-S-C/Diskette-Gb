@@ -44,7 +44,7 @@ public class Administrador{
                 ps= con.prepareStatement(q4);
                 rs=ps.executeQuery();
                 System.out.println("Usuario Registrado");
-                rs.close();
+
             con.close();
         }catch(Exception ed){
             System.out.println("Error al registar");
@@ -82,6 +82,9 @@ public class Administrador{
             ps= con.prepareStatement(q4);
             rs=ps.executeQuery();
             System.out.println("Eliminacion del usuario exitoso");
+            
+//            rs.close();
+//            ps.close();
             con.close();
         }catch(Exception ed){
             System.out.println("Error, usuario no encontrado");
@@ -222,7 +225,8 @@ public class Administrador{
                 usu.setId(rs.getInt(1));
                 usu.setNombre(rs.getString(2));
                 listaUsu.add(usu);
-                
+                rs.close();
+                ps.close();
             }
             System.out.println("Exito");
         }catch(Exception e){
