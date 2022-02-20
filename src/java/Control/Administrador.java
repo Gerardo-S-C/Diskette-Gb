@@ -225,8 +225,7 @@ public class Administrador{
                 usu.setId(rs.getInt(1));
                 usu.setNombre(rs.getString(2));
                 listaUsu.add(usu);
-                rs.close();
-                ps.close();
+
             }
             System.out.println("Exito");
         }catch(Exception e){
