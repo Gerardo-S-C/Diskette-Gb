@@ -44,7 +44,7 @@ public class Administrador{
                 ps= con.prepareStatement(q4);
                 rs=ps.executeQuery();
                 System.out.println("Usuario Registrado");
-
+                rs.close();
             con.close();
         }catch(Exception ed){
             System.out.println("Error al registar");
