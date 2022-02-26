@@ -315,18 +315,34 @@ public class Administrador{
             ps = con.prepareStatement(q1);
             rs = ps.executeQuery();
             while(rs.next()){
-                
                 Usuario usu = new Usuario();
                 usu.setId(rs.getInt(1));
                 usu.setNombre(rs.getString(2));
                 listaUsu.add(usu);
-                con.close();
-                ps.close();
-                rs.close();
             }
-            System.out.println("Exito");
+            System.out.println("Exito en la consulta de los usuarios");
         }catch(Exception e){
             System.out.println("Error al buscar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta USU)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta USU)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta USU)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
         
     return listaUsu;
