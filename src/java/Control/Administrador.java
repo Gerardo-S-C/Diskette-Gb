@@ -51,12 +51,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
+                    System.out.println("ResultSet closed");
                 }
                 if(ps != null){
                     ps.close();
+                    System.out.println("PreparedStatement closed");
                 }
                 if(con != null){
                     con.close();
+                    System.out.println("Connection closed");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -98,12 +101,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
+                    System.out.println("ResultSet closed");
                 }
                 if(ps != null){
                     ps.close();
+                    System.out.println("PreparedStatement closed");
                 }
                 if(con != null){
                     con.close();
+                    System.out.println("Connection closed");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -147,12 +153,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
+                    System.out.println("ResultSet closed");
                 }
                 if(ps != null){
                     ps.close();
+                    System.out.println("PreparedStatement closed");
                 }
                 if(con != null){
                     con.close();
+                    System.out.println("Connection closed");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -194,12 +203,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
+                    System.out.println("ResultSet closed");
                 }
                 if(ps != null){
                     ps.close();
+                    System.out.println("PreparedStatement closed");
                 }
                 if(con != null){
                     con.close();
+                    System.out.println("Connection closed");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -227,9 +239,11 @@ public class Administrador{
             try{
                 if(ps != null){
                     ps.close();
+                    System.out.println("PreparedStatement closed");
                 }
                 if(con != null){
                     con.close();
+                    System.out.println("Connection closed");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -242,17 +256,41 @@ public class Administrador{
     //Obtiene en correo del administrador para asignar la sesion
     public String getAdminName(String name) throws SQLException{
         Connection con = Conexion.getConexion();
-        String sql = "SELECT * FROM administrador WHERE nom_adm=?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, name);
-        ResultSet rs = ps.executeQuery();
-        
-        if(rs.next()){
-            return rs.getString("nom_adm");
-        }
-        con.close();
-        ps.close();
-        rs.close();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try{
+            String sql = "SELECT * FROM administrador WHERE nom_adm=?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+            System.out.println("Admin: "+name+" encontrado");
+            
+            if(rs.next()){
+                return rs.getString("nom_adm");
+            }
+            
+        }catch(Exception ed){
+            System.out.println("Error al registar");
+            System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }     
         return null;
     }
     
