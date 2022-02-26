@@ -176,15 +176,13 @@ public class Administrador{
                 usu = new Usuario();
                 usu.setNombre(rs.getString("nom_adm"));
                 usu.setCorreo(correo);
-                rs.close();
+                
             }
             
             if(rs.absolute(1)){
                 return true;
             }
 
-            con.close();
-            
         }catch(Exception e){
             System.out.println("Error al consultar la base de datos");
             System.out.println(e.getMessage());
