@@ -51,15 +51,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed");
+                    System.out.println("ResultSet closed (Admin login)");
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed");
+                    System.out.println("PreparedStatement closed (Admin login)");
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed");
+                    System.out.println("Connection closed (Admin login)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -101,15 +101,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed");
+                    System.out.println("ResultSet closed (User register)");
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed");
+                    System.out.println("PreparedStatement closed (User register)");
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed");
+                    System.out.println("Connection closed (User register)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -153,15 +153,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed");
+                    System.out.println("ResultSet closed (User del TBUsu)");
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed");
+                    System.out.println("PreparedStatement closed (User del TBUsu)");
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed");
+                    System.out.println("Connection closed (User del TBUsu)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -203,15 +203,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed");
+                    System.out.println("ResultSet closed (User del TBAsig)");
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed");
+                    System.out.println("PreparedStatement closed (User del TBAsig)");
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed");
+                    System.out.println("Connection closed (User del TBAsig)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -239,11 +239,11 @@ public class Administrador{
             try{
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed");
+                    System.out.println("PreparedStatement closed (User del TBConsulta)");
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed");
+                    System.out.println("Connection closed (User del TBConsulta)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -276,15 +276,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed");
+                    System.out.println("ResultSet closed (Admin log name)");
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed");
+                    System.out.println("PreparedStatement closed (Admin log name)");
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed");
+                    System.out.println("Connection closed (Admin log name)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
