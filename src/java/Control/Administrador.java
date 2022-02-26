@@ -32,22 +32,17 @@ public class Administrador{
             ps=con.prepareStatement(consulta);
             ps.setString(1, correo);
             ps.setString(2, pass);
-            
             rs=ps.executeQuery();
-            
             Usuario usu = null;
             
             if(rs.next()){
                 usu = new Usuario();
                 usu.setNombre(rs.getString("nom_adm"));
-                usu.setCorreo(correo);
-                
+                usu.setCorreo(correo);   
             }
-            
             if(rs.absolute(1)){
                 return true;
             }
-
         }catch(Exception e){
             System.out.println("Error al consultar la base de datos");
             System.out.println(e.getMessage());
@@ -73,12 +68,11 @@ public class Administrador{
     
     //Registra a cualquier usuario nuevo en el sistema
     public static int registrarUsuario(Usuario e){
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
         try{
-            //obtiene la conexion con la BD
-            Connection con = Conexion.getConexion();
             //inserta al usuario nuevo en la BD
                 String q = "INSERT ignore INTO `usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
                         + "values(?,?,?)";
@@ -97,27 +91,35 @@ public class Administrador{
                 ps= con.prepareStatement(q4);
                 rs=ps.executeQuery();
                 System.out.println("Usuario Registrado");
-                
-                //cierra los threads
-            con.close();
-            rs.close();
-            ps.close();
         }catch(Exception ed){
             System.out.println("Error al registar");
             System.out.println(ed.getMessage());
-        
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
+                if(con != null){
+                    con.close();
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
         return estatus;
         
     }
     //Borra a cualquier usuario del sistema
     public static int borrarUsuariotablaUsuario(int id){
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
-        
         try{
-            Connection con = Conexion.getConexion();
             String q1 = "SET foreign_key_checks = 0;";
             ps= con.prepareStatement(q1);
             rs=ps.executeQuery();
@@ -138,24 +140,34 @@ public class Administrador{
             ps= con.prepareStatement(q4);
             rs=ps.executeQuery();
             System.out.println("Eliminacion del usuario exitoso");
-            
-            con.close();
-            ps.close();
-            rs.close();
         }catch(Exception ed){
             System.out.println("Error, usuario no encontrado");
             System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
+                if(con != null){
+                    con.close();
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
     return estatus;
     }
     //Borra las asignaciones del usuario borrado
     public static int borrarUsuariotablaAsignacion(int id){
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
-        int estatus = 0;
-              
+        int estatus = 0;  
         try{
-            Connection con = Conexion.getConexion();
             String q1 = "SET foreign_key_checks = 0;";
             ps= con.prepareStatement(q1);
             rs=ps.executeQuery();
@@ -174,36 +186,55 @@ public class Administrador{
             String q4 = "SET sql_safe_updates=1;";
             ps= con.prepareStatement(q4);
             rs=ps.executeQuery();
-            System.out.println("Eliminacion del usuario exitoso");
-            
-            con.close();
-            rs.close();
-            ps.close();
+            System.out.println("Eliminacion de sus asignaciones exitoso");
         }catch(Exception ed){
             System.out.println("Error, usuario no encontrado");
             System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
+                if(con != null){
+                    con.close();
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
     return estatus;
     }
     //Borra la asignacion de todas las actividades para consulta del sistema
     public static int borrarUsuariotablaConsulta(String nom){
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
         int estatus=0;
-        
         try{
-            Connection con = Conexion.getConexion();
             String q =  "delete from consultas where nom_usu= ?";
-            
-            PreparedStatement ps = con.prepareStatement(q);
+            ps = con.prepareStatement(q);
             ps.setString(1, nom);
             
             estatus = ps.executeUpdate();
-            System.out.println("Eliminacion del usuario exitoso");
-            
-            con.close();
-            ps.close();
+            System.out.println("Eliminacion de las consultas exitoso");
         }catch(Exception ed){
             System.out.println("Error, usuario no encontrado");
             System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(ps != null){
+                    ps.close();
+                }
+                if(con != null){
+                    con.close();
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
     return estatus;
     }
@@ -224,6 +255,8 @@ public class Administrador{
         rs.close();
         return null;
     }
+    
+    
     //Resultado de la consulta de los usuarios:
     /*
         | id_usu | nom_usu | nom_blo | nom_act | dif_dif | pro_dif | id_asig | id_act_blo |
