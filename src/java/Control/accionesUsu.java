@@ -22,8 +22,9 @@ public class accionesUsu extends Conexion{
         ResultSet rs=null;
         int estatus = 0;
         try{
+            Connection con = Conexion.getConexion();
             String consulta="select * from usuario where cor_usu = ? and con_usu = ?";
-            ps=getConexion().prepareStatement(consulta);
+            ps=con.prepareStatement(consulta);
             ps.setString(1, correo);
             ps.setString(2, pass);
             

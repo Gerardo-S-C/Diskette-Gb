@@ -26,7 +26,9 @@ public class Administrador{
         ResultSet rs=null;
         int estatus = 0;
         try{
+            //obtiene la conexion con la BD
             Connection con = Conexion.getConexion();
+            //inserta al usuario nuevo en la BD
                 String q = "INSERT ignore INTO `usuario` (`nom_usu`, `con_usu`, `cor_usu`)"
                         + "values(?,?,?)";
                 
@@ -44,8 +46,11 @@ public class Administrador{
                 ps= con.prepareStatement(q4);
                 rs=ps.executeQuery();
                 System.out.println("Usuario Registrado");
-
+                
+                //cierra los threads
             con.close();
+            rs.close();
+            ps.close();
         }catch(Exception ed){
             System.out.println("Error al registar");
             System.out.println(ed.getMessage());
@@ -82,7 +87,10 @@ public class Administrador{
             ps= con.prepareStatement(q4);
             rs=ps.executeQuery();
             System.out.println("Eliminacion del usuario exitoso");
+            
             con.close();
+            ps.close();
+            rs.close();
         }catch(Exception ed){
             System.out.println("Error, usuario no encontrado");
             System.out.println(ed.getMessage());
@@ -116,7 +124,10 @@ public class Administrador{
             ps= con.prepareStatement(q4);
             rs=ps.executeQuery();
             System.out.println("Eliminacion del usuario exitoso");
+            
             con.close();
+            rs.close();
+            ps.close();
         }catch(Exception ed){
             System.out.println("Error, usuario no encontrado");
             System.out.println(ed.getMessage());
@@ -136,7 +147,9 @@ public class Administrador{
             
             estatus = ps.executeUpdate();
             System.out.println("Eliminacion del usuario exitoso");
+            
             con.close();
+            ps.close();
         }catch(Exception ed){
             System.out.println("Error, usuario no encontrado");
             System.out.println(ed.getMessage());
@@ -145,12 +158,13 @@ public class Administrador{
     }
     //Inicio de sesion exclusivo del administrador
     public boolean inicioSesion(String correo, String pass){
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
         try{
             String consulta="select * from administrador where nom_adm = ? and con_adm = ?";
-            ps=getConexion().prepareStatement(consulta);
+            ps=con.prepareStatement(consulta);
             ps.setString(1, correo);
             ps.setString(2, pass);
             
@@ -162,12 +176,14 @@ public class Administrador{
                 usu = new Usuario();
                 usu.setNombre(rs.getString("nom_adm"));
                 usu.setCorreo(correo);
+                con.close();
+                rs.close();
             }
             
             if(rs.absolute(1)){
                 return true;
             }
-            
+            ps.close();
             
         }catch(Exception e){
             System.out.println("Error al consultar la base de datos");
@@ -175,7 +191,7 @@ public class Administrador{
             System.out.println(e.getStackTrace());
         }finally{
             try{
-                if(getConexion() != null) getConexion().close();
+                if(con != null) con.close();
                 if(ps != null) ps.close();
                 if(rs != null) rs.close();
             }catch(Exception e){
@@ -188,15 +204,18 @@ public class Administrador{
     }
     //Obtiene en correo del administrador para asignar la sesion
     public String getAdminName(String name) throws SQLException{
+        Connection con = Conexion.getConexion();
         String sql = "SELECT * FROM administrador WHERE nom_adm=?";
-        PreparedStatement ps = getConexion().prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, name);
         ResultSet rs = ps.executeQuery();
-
+        
         if(rs.next()){
             return rs.getString("nom_adm");
         }
-
+        con.close();
+        ps.close();
+        rs.close();
         return null;
     }
     //Resultado de la consulta de los usuarios:
@@ -211,10 +230,12 @@ public class Administrador{
         //List<UsuarioConsulta> listCon = new ArrayList<UsuarioConsulta>();
         PreparedStatement ps=null;
         ResultSet rs=null;
+        Connection con=null;
         int estatus = 0;
         try{
+            con = Conexion.getConexion();
             String q1 = "select * from usuario";
-            ps = getConexion().prepareStatement(q1);
+            ps = con.prepareStatement(q1);
             rs = ps.executeQuery();
             while(rs.next()){
                 
@@ -222,7 +243,9 @@ public class Administrador{
                 usu.setId(rs.getInt(1));
                 usu.setNombre(rs.getString(2));
                 listaUsu.add(usu);
-                
+                con.close();
+                ps.close();
+                rs.close();
             }
             System.out.println("Exito");
         }catch(Exception e){

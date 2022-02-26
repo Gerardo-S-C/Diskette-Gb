@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./CSS/iniciar.css" />
-    < <meta name="google-signin-client_id"
+    <meta name="google-signin-client_id"
                 content="864494698898-3g3ougdhoh4gojms4nc54afktastj07t.apps.googleusercontent.com" />
             <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Iniciar Sesión</title>
