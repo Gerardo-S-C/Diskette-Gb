@@ -20,6 +20,57 @@ import Modelo.UsuarioConsulta;
 import java.sql.*;
 import java.util.*;
 public class Administrador{
+    //Inicio de sesion exclusivo del administrador
+    public boolean inicioSesion(String correo, String pass){
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            //query para comparar datos del form con la BD
+            String consulta="select * from administrador where nom_adm = ? and con_adm = ?";
+            ps=con.prepareStatement(consulta);
+            ps.setString(1, correo);
+            ps.setString(2, pass);
+            
+            rs=ps.executeQuery();
+            
+            Usuario usu = null;
+            
+            if(rs.next()){
+                usu = new Usuario();
+                usu.setNombre(rs.getString("nom_adm"));
+                usu.setCorreo(correo);
+                
+            }
+            
+            if(rs.absolute(1)){
+                return true;
+            }
+
+        }catch(Exception e){
+            System.out.println("Error al consultar la base de datos");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                }
+                if(ps != null){
+                    ps.close();
+                }
+                if(con != null){
+                    con.close();
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return false;
+    }
+    
     //Registra a cualquier usuario nuevo en el sistema
     public static int registrarUsuario(Usuario e){
         PreparedStatement ps=null;
@@ -156,50 +207,7 @@ public class Administrador{
         }
     return estatus;
     }
-    //Inicio de sesion exclusivo del administrador
-    public boolean inicioSesion(String correo, String pass){
-        Connection con = Conexion.getConexion();
-        PreparedStatement ps=null;
-        ResultSet rs=null;
-        int estatus = 0;
-        try{
-            String consulta="select * from administrador where nom_adm = ? and con_adm = ?";
-            ps=con.prepareStatement(consulta);
-            ps.setString(1, correo);
-            ps.setString(2, pass);
-            
-            rs=ps.executeQuery();
-            
-            Usuario usu = null;
-            
-            if(rs.next()){
-                usu = new Usuario();
-                usu.setNombre(rs.getString("nom_adm"));
-                usu.setCorreo(correo);
-                
-            }
-            
-            if(rs.absolute(1)){
-                return true;
-            }
-
-        }catch(Exception e){
-            System.out.println("Error al consultar la base de datos");
-            System.out.println(e.getMessage());
-            System.out.println(e.getStackTrace());
-        }finally{
-            try{
-                if(con != null) con.close();
-                if(ps != null) ps.close();
-                if(rs != null) rs.close();
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                System.out.println(e.getStackTrace());
-            }
-        }
-        
-        return false;
-    }
+    
     //Obtiene en correo del administrador para asignar la sesion
     public String getAdminName(String name) throws SQLException{
         Connection con = Conexion.getConexion();
