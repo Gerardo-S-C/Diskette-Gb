@@ -85,7 +85,8 @@
                                 String progreso = usuC.getPro_dif();
                                 String progresof = usuC.getPro_dif_dif1();
                                 String progresod = usuHD.getPro_dif_dif2();
-                                System.out.println(progresod);
+                                System.out.println(progresof+" ez");
+                                System.out.println(progresod+" hd");
                             %>
                             <style>
                                 .barraestafa<%=u.getId()%>::after{

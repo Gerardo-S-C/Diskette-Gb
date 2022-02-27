@@ -54,6 +54,9 @@
                                 List<Bloques> listablo = Administrador.ConsBloques();
                                 List<Actividades> listaact = Administrador.ConsActividades();
                                 List<Dificultades> listdif = Administrador.ConsDificultadess();
+                                //Recorrera los bloques que hay (Estafas y Virus) para asignarlos a los acordeones
+                                // blo -> es la variable que recorrera los valores
+                                // listablo -> es la lista con los valores de los bloques
                                 for(Bloques blo : listablo ){
                             %>
                         <div class="accordion-item">
@@ -63,6 +66,8 @@
                           <div class="accordion-body">
                             <div class="tituloact">
                                 <%
+                                    //Mostrara las actividades que hay en cada bloque mediante la ID del bloque
+                                    //para hacer la consulta con la BD y tener la asignacion correcta
                                     List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo());
                                     for(Act_Blo actblo : injoin ){
                               %>
@@ -85,6 +90,8 @@
                                         <h2>Dificultades</h2>
                                         <form name="ActualizarDif1" method="post" action="ActualizarDif1" id="1">
                                             <%
+                                                //Mostrara la dificultad de cada actividad conforme a la BD
+                                                //Para esta parte es la dificultad facil
                                                 for(Dificultades dif : listdif){
                                             %>
                                             <input type="submit" class="btn-material1" id="easy" name="<%=dif.getDif_dif()%>" value="<%=dif.getDif_dif()%>">
@@ -113,6 +120,7 @@
                                         <h2>Dificultades</h2>
                                         <form name="ActualizarDif1" method="post" action="ActualizarDif1" id="1">
                                             <%
+                                                //Para esta parte es la dificultad dificil
                                                 for(Dificultades dif : listdif){
                                             %>
                                             <input type="submit" class="btn-material1" id="easy" name="<%=dif.getDif_dif()%>" value="<%=dif.getDif_dif()%>">

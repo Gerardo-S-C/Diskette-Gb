@@ -12,11 +12,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./CSS/iniciar.css" />
-    <meta
-      name="google-signin-client_id"
-      content="864494698898-3g3ougdhoh4gojms4nc54afktastj07t.apps.googleusercontent.com"
-    />
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id"
+                content="864494698898-3g3ougdhoh4gojms4nc54afktastj07t.apps.googleusercontent.com" />
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Iniciar Sesión</title>
   </head>
 
@@ -81,7 +79,7 @@
                       //            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
                       console.log("Email: " + profile.getEmail());
 
-                      document.InicioSesion.correo.value = profile.getEmail();
+                      document.InicioSesion.email.value = profile.getEmail();
 
                       // The ID token you need to pass to your backend:
                       var id_token = googleUser.getAuthResponse().id_token;
