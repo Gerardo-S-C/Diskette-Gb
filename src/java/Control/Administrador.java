@@ -303,10 +303,9 @@ public class Administrador{
         //List<UsuarioConsulta> listCon = new ArrayList<UsuarioConsulta>();
         PreparedStatement ps=null;
         ResultSet rs=null;
-        Connection con=null;
+        Connection con= Conexion.getConexion();
         int estatus = 0;
         try{
-            con = Conexion.getConexion();
             String q1 = "select * from usuario";
             ps = con.prepareStatement(q1);
             rs = ps.executeQuery();
@@ -317,7 +316,6 @@ public class Administrador{
                 listaUsu.add(usu);
                 System.out.println("Exito en la consulta de "+usu.getNombre());
             }
-            con.close();
             System.out.println("Exito en la consulta de los usuarios");
         }catch(Exception e){
             System.out.println("Error al buscar");
@@ -325,10 +323,6 @@ public class Administrador{
             System.out.println(e.getStackTrace());
         }finally{
             try{
-                if(con != null){
-                    con.close();
-                    System.out.println("Connection closed (Consulta USU)");
-                }
                 if(rs != null){
                     rs.close();
                     System.out.println("ResultSet closed (Consulta USU)");
@@ -336,6 +330,10 @@ public class Administrador{
                 if(ps != null){
                     ps.close();
                     System.out.println("PreparedStatement closed (Consulta USU)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta USU)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
