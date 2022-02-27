@@ -11,12 +11,7 @@ package Control;
  */
 
 import static Control.Conexion.getConexion;
-import Modelo.Act_Blo;
-import Modelo.Actividades;
-import Modelo.Bloques;
-import Modelo.Dificultades;
-import Modelo.Usuario;
-import Modelo.UsuarioConsulta;
+import Modelo.*;
 import java.sql.*;
 import java.util.*;
 public class Administrador{
@@ -347,11 +342,14 @@ public class Administrador{
         
     return listaUsu;
     }
+    
+
     //Esta es para la parte de actividades del administrador
     //solo mostrará lo que hay asignado, aun no se moveran de lugar
     //las actividades ni bloques ni dificultades, solo será visual
     public static List<Bloques> getBloques() throws SQLException{
         List<Bloques> listblo = new ArrayList<Bloques>();
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
@@ -361,7 +359,7 @@ public class Administrador{
                         "inner join act_dif on act_dif.id_act_dif = act_blo.id_act_dif\n" +
                         "inner join actividades on actividades.id_act = act_dif.id_act\n" +
                         "inner join dificultades on dificultades.id_dif = act_dif.id_dif";
-            ps = getConexion().prepareStatement(q);
+            ps = con.prepareStatement(q);
             rs = ps.executeQuery();
             while(rs.next()){
                 Bloques blo = new Bloques ();
@@ -373,68 +371,49 @@ public class Administrador{
             System.out.println("Bloques consultados");
         }catch(Exception e){
             System.out.println("Error al consultar bloques");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta BLO)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta BLO)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta BLO)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
         return listblo;
     }
+    
+    
     //Este ultimo metodo esta incompletos, aun no se les asigna un uso real//
     /*--------------------------------------------------------------------------*/
     //Estos metodos son un conjunto individual de las tablas para consultar sus datos y poder moverlos
     //desde el administrador (Varios son de prueba para verificar que el sistema funcione como debe)
-    /*[Actividades][Dificultades][Bloques] (con los siguientes datos)
+    /*[Bloques][Actividades][Dificultades](con los siguientes datos)
+    Bloques : {1}[Estafas]{2}[Virus]
     Actividades : {1}[phishing]{2}[spamming]{3}[.exe]
-    Dificultades : {1}[facil]{2}[dificil]
-    Bloques : {1}[Estafas]{2}[Virus]*/
-    //Metodos para pura consulta (Mostrar en admin y usuario los datos desde la BD)
-    public static List<Actividades> ConsActividades() throws SQLException{
-        PreparedStatement ps=null;
-        ResultSet rs=null;
-        int estatus = 0;
-        List<Actividades> lista = new ArrayList<Actividades>();
-        try{
-            String q = "SELECT * FROM actividades";
-            ps = getConexion().prepareStatement(q);
-            rs = ps.executeQuery();
-            while(rs.next()){
-                Actividades act = new Actividades();
-                act.setId_act(rs.getInt(1));
-                act.setNom_act(rs.getString(2));
-                lista.add(act);
-            }
-            System.out.println("Actividades consultadas correctamente");
-        }catch(Exception e){
-            System.out.println("Error al buscar y asignar");
-        }
-        return lista;
-    }
-    public static List<Dificultades> ConsDificultadess() throws SQLException{
-        PreparedStatement ps=null;
-        ResultSet rs=null;
-        int estatus = 0;
-        List<Dificultades> lista = new ArrayList<Dificultades>();
-            try{
-                String q = "SELECT * FROM dificultades";
-                ps = getConexion().prepareStatement(q);
-                rs = ps.executeQuery();
-                while(rs.next()){
-                    Dificultades dif = new Dificultades();
-                    dif.setId_dif(rs.getInt(1));
-                    dif.setDif_dif(rs.getString(3));
-                    lista.add(dif);
-            }
-            System.out.println("Dificultades consultadas correctamente");
-        }catch(Exception e){
-            System.out.println("Error al buscar y asignar");
-        }
-        return lista;
-    }
+    Dificultades : {1}[facil]{2}[dificil]*/
+    
     public static List<Bloques> ConsBloques() throws SQLException{
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
         List<Bloques> lista = new ArrayList<Bloques>();
             try{
                 String q = "SELECT * FROM bloques";
-                ps = getConexion().prepareStatement(q);
+                ps = con.prepareStatement(q);
                 rs = ps.executeQuery();
                 while(rs.next()){
                     Bloques blo = new Bloques();
@@ -445,13 +424,123 @@ public class Administrador{
             System.out.println("Actividades consultadas correctamente");
         }catch(Exception e){
             System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta BLOGEN)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta BLOGEN)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta BLOGEN)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
         return lista;
     }
+    
+    //Metodos para pura consulta (Mostrar en admin y usuario los datos desde la BD)
+    public static List<Actividades> ConsActividades() throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Actividades> lista = new ArrayList<Actividades>();
+        try{
+            String q = "SELECT * FROM actividades";
+            ps = con.prepareStatement(q);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Actividades act = new Actividades();
+                act.setId_act(rs.getInt(1));
+                act.setNom_act(rs.getString(2));
+                lista.add(act);
+            }
+            System.out.println("Actividades consultadas correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta ACTGEN)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta ACTGEN)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta ACTGEN)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
+    
+    
+    public static List<Dificultades> ConsDificultadess() throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Dificultades> lista = new ArrayList<Dificultades>();
+            try{
+                String q = "SELECT * FROM dificultades";
+                ps = con.prepareStatement(q);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    Dificultades dif = new Dificultades();
+                    dif.setId_dif(rs.getInt(1));
+                    dif.setDif_dif(rs.getString(3));
+                    lista.add(dif);
+            }
+            System.out.println("Dificultades consultadas correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta DIFGEN)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta DIFGEN)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta DIFGEN)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
+
     //Regresa las actividades con su respectivo bloque asignandolo a solo una dificultad
     //para evitar duplicados en la consulta
     public static List<Act_Blo> ActividadesXBloque(int bloque) throws SQLException{
         List<Act_Blo> actblo = new ArrayList<Act_Blo>();
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
@@ -462,7 +551,7 @@ public class Administrador{
                     "inner join actividades on actividades.id_act = act_dif.id_act\n" +
                     "inner join dificultades on dificultades.id_dif = act_dif.id_dif\n" +
                     "where bloques.id_blo=? and dificultades.id_dif=1";   
-         ps = getConexion().prepareStatement(q);
+         ps = con.prepareStatement(q);
          ps.setInt(1, bloque);
          rs = ps.executeQuery();
          while(rs.next()){
@@ -473,14 +562,35 @@ public class Administrador{
              info.setNom_act(rs.getString(4));
              actblo.add(info);
          }
-            System.out.println("Select exitoso");
+            System.out.println("Select ACTxBLO exitoso");
             
-        }catch(Exception ed){
+        }catch(Exception e){
             System.out.println("Error al buscar al usuario asignado");
-            System.out.println(ed.getMessage()); 
+            System.out.println(e.getMessage()); 
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (ACT_BLO)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (ACT_BLO)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta ACT_BLO)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
         return actblo;
     }
+    
+    
     //Metodos para cambiar los valores de estas tablas sin alterar la ID de cada
     //una porque se trabaja con PKs y FKs
     //Actualizar la dificultad de una actividad:
