@@ -378,46 +378,46 @@ public class accionesUsu extends Conexion{
     
     //Este metodo es para consultar la lista de usuarios registrados, sin importar si hayan iniciado 
     //sesion o no para su asignacion de bloques y actividades
-    public static List<Usuario> consultaGral(){
-        List<Usuario> lista = new ArrayList<Usuario>();
-        Connection con = Conexion.getConexion();
-        PreparedStatement ps=null;
-        ResultSet rs=null;
-        int estatus = 0;
-        try{
-            String q = "SELECT * FROM usuario";
-            //DELETE FROM `diskettegb`.`usuario` WHERE (`id_usu` = '2');
-            ps = con.prepareStatement(q);
-            rs = ps.executeQuery();
-//            while (rs.next()){
-//                Usuario u = new Usuario ();
-//                u.setNombre(rs.getString("nom_usu"));
+//    public static List<Usuario> consultaGral(){
+//        List<Usuario> lista = new ArrayList<Usuario>();
+//        Connection con = Conexion.getConexion();
+//        PreparedStatement ps=null;
+//        ResultSet rs=null;
+//        int estatus = 0;
+//        try{
+//            String q = "SELECT * FROM usuario";
+//            //DELETE FROM `diskettegb`.`usuario` WHERE (`id_usu` = '2');
+//            ps = con.prepareStatement(q);
+//            rs = ps.executeQuery();
+////            while (rs.next()){
+////                Usuario u = new Usuario ();
+////                u.setNombre(rs.getString("nom_usu"));
+////            }
+//        }catch(Exception e){
+//            System.out.println("Error al buscar al usuario asignado consultaGral");
+//            System.out.println(e.getMessage());
+//            System.out.println(e.getStackTrace());
+//        }finally{
+//            try{
+//                if(rs != null){
+//                    rs.close();
+//                    System.out.println("ResultSet closed (Usu_GEN)");
+//                }
+//                if(ps != null){
+//                    ps.close();
+//                    System.out.println("PreparedStatement closed (Usu_GEN)");
+//                }
+//                if(con != null){
+//                    con.close();
+//                    System.out.println("Connection closed (Usu_GEN)");
+//                }
+//            }catch(Exception e2){
+//                System.out.println(e2.getMessage());
+//                System.out.println(e2.getStackTrace());
 //            }
-        }catch(Exception e){
-            System.out.println("Error al buscar al usuario asignado buscarUsuDif_dificl");
-            System.out.println(e.getMessage());
-            System.out.println(e.getStackTrace());
-        }finally{
-            try{
-                if(rs != null){
-                    rs.close();
-                    System.out.println("ResultSet closed (Usu_GEN)");
-                }
-                if(ps != null){
-                    ps.close();
-                    System.out.println("PreparedStatement closed (Usu_GEN)");
-                }
-                if(con != null){
-                    con.close();
-                    System.out.println("Connection closed (Usu_GEN)");
-                }
-            }catch(Exception e2){
-                System.out.println(e2.getMessage());
-                System.out.println(e2.getStackTrace());
-            }
-        }
-        return lista;
-    }    
+//        }
+//        return lista;
+//    }    
     
     //Estos metodos son para deshabilitar y rehabilitar las actualizaciones con FK 
     //dentro de MySql

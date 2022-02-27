@@ -297,6 +297,7 @@ public class Administrador{
     //necesita arreglarse para obtener los datos a mostrar en la consulta de 
     //usuarios, los bloques con sus actividades y progresos correspondientes
     //desde el administrador
+    //Ya no necesita arreglo, lol
     public static List<Usuario> getAllUsuarios() throws SQLException{
         List<Usuario> listaUsu = new ArrayList<Usuario>();
         //List<UsuarioConsulta> listCon = new ArrayList<UsuarioConsulta>();
@@ -315,6 +316,7 @@ public class Administrador{
                 usu.setNombre(rs.getString(2));
                 listaUsu.add(usu);
                 System.out.println("Exito en la consulta de "+usu.getNombre());
+                rs.close();
             }
             System.out.println("Exito en la consulta de los usuarios");
         }catch(Exception e){
