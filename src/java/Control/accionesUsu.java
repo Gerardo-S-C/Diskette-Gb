@@ -18,20 +18,17 @@ import java.util.*;
 public class accionesUsu extends Conexion{
     //Inicia la sesión del usuario verificando que esté en la BD
     public boolean inicioSesion(String correo, String pass){
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
         try{
-            Connection con = Conexion.getConexion();
             String consulta="select * from usuario where cor_usu = ? and con_usu = ?";
             ps=con.prepareStatement(consulta);
             ps.setString(1, correo);
             ps.setString(2, pass);
-            
             rs=ps.executeQuery();
-            
             Usuario usu = null;
-            
             while(rs.next()){
                 int id_usu = rs.getInt(1);
                 System.out.println(id_usu);
@@ -53,37 +50,70 @@ public class accionesUsu extends Conexion{
             if(rs.absolute(1)){
                 return true;
             }
-            
-            
         }catch(Exception e){
             System.out.println("Error al consultar la base de datos");
             System.out.println(e.getMessage());
             System.out.println(e.getStackTrace());
         }finally{
             try{
-                if(getConexion() != null) getConexion().close();
-                if(ps != null) ps.close();
-                if(rs != null) rs.close();
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                System.out.println(e.getStackTrace());
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (User login)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (User login)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (User login)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
             }
         }
-        
         return false;
     }
+    
     //Obtiene el nombre del usuario mediante el correo con el que ingresa
     //Y lo asigna como parametro de la sesión
     public String getNameByEmail(String email) throws SQLException{
-        String sql = "SELECT * FROM usuario WHERE cor_usu=?";
-        PreparedStatement ps = getConexion().prepareStatement(sql);
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
-
-        if(rs.next()){
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try{
+            String sql = "SELECT * FROM usuario WHERE cor_usu=?";    
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
             return rs.getString("nom_usu");
+            }
+        }catch(Exception ed){
+            System.out.println("Error al registar");
+            System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (User log name)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (User log name)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (User log name)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
-
         return null;
     }
     //Cuando un usuario ingresa por primera vez, se le asigna las actividades

@@ -314,6 +314,7 @@ public class Administrador{
                 usu.setId(rs.getInt(1));
                 usu.setNombre(rs.getString(2));
                 listaUsu.add(usu);
+                System.out.println("Exito en la consulta de"+usu);
             }
             System.out.println("Exito en la consulta de los usuarios");
         }catch(Exception e){
