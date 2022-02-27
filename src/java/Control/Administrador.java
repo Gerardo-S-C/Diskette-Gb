@@ -316,8 +316,8 @@ public class Administrador{
                 usu.setNombre(rs.getString(2));
                 listaUsu.add(usu);
                 System.out.println("Exito en la consulta de "+usu.getNombre());
-                rs.close();
             }
+            con.close();
             System.out.println("Exito en la consulta de los usuarios");
         }catch(Exception e){
             System.out.println("Error al buscar");
@@ -325,6 +325,10 @@ public class Administrador{
             System.out.println(e.getStackTrace());
         }finally{
             try{
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta USU)");
+                }
                 if(rs != null){
                     rs.close();
                     System.out.println("ResultSet closed (Consulta USU)");
@@ -332,10 +336,6 @@ public class Administrador{
                 if(ps != null){
                     ps.close();
                     System.out.println("PreparedStatement closed (Consulta USU)");
-                }
-                if(con != null){
-                    con.close();
-                    System.out.println("Connection closed (Consulta USU)");
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
