@@ -44,9 +44,24 @@
                         <br>
                         <div class="BC">
                             <div class="wrapper">
-                                 <button type="submit" id="boton" class="button">Confirmar</button>
-                                <p class="warnings" id="warnings"></p>
+                                <button type="submit" id="boton" class="button">Confirmar</button>
                             </div>    
+                            <div class="wrapper">
+                                <p class="warnings" id="warnings"></p>
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                    <script>
+                                        function onSignIn(googleUser) {
+                                          // Useful data for your client-side scripts:
+                                          var profile = googleUser.getBasicProfile();
+                                          //            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                                          console.log("Email: " + profile.getEmail());
+                                          document.InicioSesion.email.value = profile.getEmail();
+                                          // The ID token you need to pass to your backend:
+                                          var id_token = googleUser.getAuthResponse().id_token;
+                                          //console.log("ID Token: " + id_token);
+                                        }
+                                    </script>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -59,21 +74,8 @@
             </div>
             <div class="BA">
                 <div class="wrapper">
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                    <a href="index.html" onclick="signOut();" class="button warnings">Salir de la sesión de google</a>
-                    <script>
-                        function onSignIn(googleUser) {
-                          // Useful data for your client-side scripts:
-                          var profile = googleUser.getBasicProfile();
-                          //            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                          console.log("Email: " + profile.getEmail());
-                          document.InicioSesion.email.value = profile.getEmail();
-                          // The ID token you need to pass to your backend:
-                          var id_token = googleUser.getAuthResponse().id_token;
-                          //console.log("ID Token: " + id_token);
-                        }
-                    </script>
-                    <script>
+                    <a href="index.html" onclick="signOut();" class="button warnings button2">Salir de la sesión de google</a>
+                                        <script>
                       function signOut() {
                         var auth2 = gapi.auth2.getAuthInstance();
                         auth2.signOut().then(function () {
@@ -93,6 +95,7 @@
             </defs>
         </svg>
     </main>
+    
     <script src="./JS/validaciones.js"></script>
 </body>
 </html>

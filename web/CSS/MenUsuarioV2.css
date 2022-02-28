@@ -158,6 +158,14 @@ body{
     padding-top: 5px;
 }
 
+.email{
+    margin-bottom: 20px;
+}
+
+.password{
+    margin-bottom: 25px;
+}
+
 /*contraseña*/
 
 .sec .contenido .perfil .info .inputpass{
@@ -294,9 +302,232 @@ span{
     }
 }
 
+
+/*footer*/
+
+footer{
+    position: absolute;
+    top: 970px;
+    width: 100%;
+    background: #202020;
+    color: white;   
+    
+}
+
+.container-footer-all{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+}
+
+.container-body{
+    display: flex;
+    justify-content: space-between;
+}
+
+.colum1{
+    max-width: 400px;
+}
+
+.colum1 h1{
+    font-size: 22px;
+}
+
+.colum1 p{
+    font-size: 14px;
+    color: #C7C7C7;
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.colum2{
+    max-width: 400px;
+    
+}
+
+.colum2 h1{
+    font-size: 22px;
+}
+
+.row{
+    margin-top: 20px;
+    display: flex;
+}
+
+.row img{
+    width: 36px;
+    height: 36px;
+}
+
+.row label{
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #C7C7C7;
+}
+
+.colum3{
+    max-width: 400px;
+}
+
+.colum3 h1{
+    font-size: 22px;
+}
+
+.row2{
+    margin-top: 20px;
+    display: flex;
+}
+
+.row2 img{
+    width: 36px;
+    height: 36px;
+}
+
+.row2 label{
+    margin-top: 10px;
+    margin-left: 20px;
+    max-width: 140px;
+}
+
+.container-footer{
+    width: 100%;  
+    background: #101010;
+}
+
+.footer{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;  
+    padding: 20px;
+}
+
+.copyright{
+    color: #C7C7C7;
+}
+
+.copyright a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.information a{
+    text-decoration: none;
+    color: #C7C7C7;
+}
+
+
+@media screen and (max-width: 1100px){
+    
+    .container-body{
+        flex-wrap: wrap;
+    }
+    
+    .colum1{
+        max-width: 100%;
+    }
+    
+    .colum2,
+    .colum3{
+        margin-top: 40px;
+    }
+}
+
+
 /*Responsive*/
 
 @media screen and (max-width: 720px){
 
+    /*responsive del header*/
+
+    .menu .icono-cabeza h1 a{
+        font-size: 25px;
+        -webkit-text-stroke: 1px #2A337A;
+    }
+
+    .menu .list-container .lists li a{
+        margin: 0px 5px;
+        padding: 3px;
+        font-size: 8px;
+    }
+
+    /*responsive del contenido*/
+
+    .sec{
+        margin-top: 600px;
+    }
+
+    .sec .contenido{
+        height: 101%;
+        padding: 8px;
+        display: block;
+    }
+
+    .sec .contenido .perfil .foto{
+        padding: 14px;
+        height: 20%;
+        align-items: center;
+    }
+
+    .sec .contenido .perfil .foto .imgfoto{
+        width: 70%;
+    }
+
+    .sec .contenido .perfil .info{
+        padding: 15px;
+        margin-top: 0;
+    }
+
+        
+    .sec .contenido .perfil .info h2{
+        padding-top: 5px;
+        font-size: 20px;
+    }
+
+    h2{
+        font-size: 20px;
+    }
+
     
+    .sec .contenido .perfil .info p{
+        padding-top: 2px;
+        font-size: 10px;
+    }
+
+    p{
+        font-size: 10px;
+    }
+
+    .email{
+        margin-bottom: 1px;
+    }
+    
+    .password{
+        margin-bottom: 1px;
+    }
+
+    input{
+        font-size: 10px;
+        padding: 5px 5px;
+    }
+
+    span{
+        position: relative;
+        left: 90px;
+        top: 0px;
+        cursor: pointer;
+    }
+
+    .fa{
+        font-size: 7px;
+    }
+    
+    /*responsive del footer, checa la altura de .contenido alan*/
+
+    footer{
+        top: 1300px;
+    }
+
 }

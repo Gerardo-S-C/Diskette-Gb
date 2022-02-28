@@ -36,7 +36,7 @@
                         <br>
                         <div class="BC">
                             <div class="wrapper">
-                                <button type="submit" onclick="validar();" class="button" id="boton" href="./IniciarSesion.html">Confirmar</button>
+                                <button type="submit" class="button" id="boton" href="./IniciarSesion.html">Confirmar</button>
                             <!--    <p class="warnings" id="warnings"></p>-->
                             </div>
                         </div>
