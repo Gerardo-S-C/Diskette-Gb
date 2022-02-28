@@ -45,7 +45,7 @@
 
             <div class="list-container">
                 <ul class="lists">
-                    <li><a href="MenUsuarioV2.html" class="activo">Inicio</a></li>
+                    <li><a href="MenUsuario.jsp" class="activo">Inicio</a></li>
                     <li><a href="actividades.jsp">Actividades</a></li>
                     <li><a href="AvisosV2.html">Aviso de Privacidad</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>

@@ -12,79 +12,55 @@
     <title>Registro</title>
 </head>
 <body>
+    
     <main>
         <section class="datos">
-            <p class="Titulo">Crear Cuenta</p>  
-                <form name="registrarUsuario" action="GuardarUsu" method="POST" id="registrarUsuario">    
-                    <div class="botones">
-                        <div class="datosUsuario">
-                            <div class="grupo" id="grupo_name">
-                                <label for="" type="text" class="campos">Nombre: </label>
-                                <input type="text" id="grupo_name" class="form-control formulario__input" aria-describedby="passwordHelpBlock">   
-                                <p class="formulario__input-error">El nombre tiene que ser de 4 a 40 dígitos y solo puede contener letras</p>    
+            <p class="Titulo">Crear Cuenta</p>
+            <div class="botones">
+                <form name="" action="./IniciarSesion.html" method="POST" id="form">    
+                            <label for="" class="campos">Nombre: </label>
+                            <input type="" id="name" class="form-control" aria-describedby="passwordHelpBlock" required>
+                        <br>
+                        <br>
+                            <label for="" class="campos">Correo electrónico: </label>
+                            <input type="email" id="email" class="form-control" aria-describedby="passwordHelpBlock" required>
+                        <br>
+                        <br>
+                            <label for="" class="campos">Contraseña: </label>
+                            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" required>
+                        <br>
+                        <br>
+                            <label for="" class="campos">Confirmar Contraseña: </label>
+                            <input type="password" id="password" class="form-control" aria-describedby="passwordHelpBlock" required>
+                        <br>
+                        <br>
+                        <div class="BC">
+                            <div class="wrapper">
+                                <button type="submit" onclick="validar();" class="button" id="boton" href="./IniciarSesion.html">Confirmar</button>
+                            <!--    <p class="warnings" id="warnings"></p>-->
                             </div>
-                            <div class="grupo" id="grupo_email">
-                                <label for="" class="campos">Correo electrónico: </label>
-                                <input type="email" id="grupo_email" name="email" class="form-control formulario__input" aria-describedby="passwordHelpBlock"> 
-                                <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
-                            </div>
-                            <div class="grupo" id="grupo_password1">
-                                <label for="" class="campos">Contraseña: </label>
-                                <input type="password" id="grupo_password1" name="password1" class="form-control formulario__input" aria-describedby="passwordHelpBlock" max="12"/>
-                                <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
-                            </div>
-                            <div class="grupo" id="grupo_password2">
-                                <label for="" class="campos">Confirmar Contraseña: </label>
-                                <input type="password" id="password2" name="password2" class="form-control formulario__input" aria-describedby="passwordHelpBlock"/>
-                                <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
-                            </div> 
-                            <div class="BC">
-                                <div class="wrapper">
-                                    <button type="submit" class="button" id="boton">Confirmar</button>
-                                    <!--    <p class="warnings" id="warnings"></p>-->
-                                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                        <script>
-                                        function onSignIn(googleUser) {
-                                        // Useful data for your client-side scripts:
-                                        var profile = googleUser.getBasicProfile();
-                                        //            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                                        console.log("Full Name: " + profile.getName());
-                                        console.log("Email: " + profile.getEmail());
-                                        document.registrarUsuario.name.value = profile.getName();
-                                        document.registrarUsuario.email.value = profile.getEmail();
-                                        // The ID token you need to pass to your backend:
-                                        var id_token = googleUser.getAuthResponse().id_token;
-                                        //console.log("ID Token: " + id_token);
-                                        }
-                                        </script>
-                                </div>        
-                            </div>    
                         </div>
                     </div>
                 </form>
+            </div>
         </section>
-
         <div class="BV">
             <div class="wrapper">
                 <a class="button2" href="./index.html">Volver</a>
             </div>
+            <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+            <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />    
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                    </filter>
+                </defs>
+            </svg>
         </div>
-        <div class="BA">
-            <div class="wrapper">      
-
-            </div>
-     </div>
-        <!-- Filter: https://css-tricks.com/gooey-effect/ -->
-        <svg style="visibility: hidden; position: absolute" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <defs>
-                <filter id="goo">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                    <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-                </filter>
-            </defs>
-        </svg>
     </main>
+   
+   
     <script src="./JS/validacion.js"></script>
 </body>
 </html>
