@@ -1,0 +1,87 @@
+:root{
+    --black: black;
+    --red: #2A337A;
+    --gray: rgb(48, 46, 46);
+    --white:white;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #9FA9FA;
+    overflow-x: hidden;
+    font-family: 'Secular One', serif; 
+    /*la fuente la cambio más tarde*/
+}
+
+/*menu*/
+#header{
+    position: relative;
+    width: 100%;
+}
+
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #9FA9FA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+}
+
+.menu .icono-cabeza{
+    margin-left: 20px;
+}
+
+.menu .icono-cabeza h1 a{
+    font-family: Patua One;
+    text-decoration: none;
+    font-size: 35px;
+    font-weight: 400;
+    color: var(--white);
+    -webkit-text-stroke: 1.5px #2A337A;
+}
+
+.menu .list-container{
+    margin-right: 20px;
+}
+
+.menu .list-container .lists{
+    display: flex;
+}
+
+.menu .list-container .lists li{
+    list-style: none;
+}
+
+.menu .list-container .lists li a{
+    text-decoration: none;
+    margin: 0px 10px;
+    padding: 8px;
+    color: var(--black);
+    border-radius: 24px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.menu .list-container .lists li a.activo{
+    background: var(--red);
+    color: #fff;
+}
+
+.menu .list-container .lists li a:hover{
+    background: var(--red);
+    color: #fff;
+}
+
+.span-menu > .fa-bars{
+    display: none;
+}
