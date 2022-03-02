@@ -293,7 +293,7 @@ span{
 }
 
 .barraestafa2::after{
-    --barraavance:50%
+    --barraavance:0%
 }
 
 @keyframes barraaa{
