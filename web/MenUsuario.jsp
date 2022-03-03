@@ -23,6 +23,9 @@ c<!DOCTYPE html>
     System.out.println(usuC.getPro_dif());
     List<Dificultades> listdif = Administrador.ConsDificultadess();
     String progreso = usuC.getPro_dif();
+    String email = accionesUsu.getEmailByName(nombre);
+    System.out.println(email);
+    String password = accionesUsu.getPassByEmail(email);
     %>
     <style>
         .barraestafa2::after{
@@ -40,7 +43,7 @@ c<!DOCTYPE html>
             <div class="list-container">
                 <ul class="lists">
                     <li><a href="MenUsuario.jsp" class="activo">Inicio</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <!--<li><a href="perfil.html">Perfil</a></li>-->
                     <li><a href="actividades.jsp">Actividades</a></li>
                     <li><a href="AvisoDePrivacidad.html">Aviso de Privacidad</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>
@@ -58,14 +61,14 @@ c<!DOCTYPE html>
                     <div class="info">
                         <div class="email">
                             <h2>Correo electrónico:</h2>
-                            <p>alanmzg69@gmail.com</p>
+                            <p><%=email%></p>
                         </div>
                         <br>
                         <br>
                         <div class="password">
                             <h2>Contraseña:</h2>
                             <div class="inputpass">
-                                <input type="password" id="password" placeholder="Password">
+                                <input type="password" id="password" placeholder="Password" value="<%=password%>">
                                 <span>
                                     <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i>
                                 </span>

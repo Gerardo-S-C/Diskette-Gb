@@ -114,7 +114,82 @@ public class accionesUsu extends Conexion{
         }
         return null;
     }
-    
+    public static String getEmailByName(String name) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try{
+            String sql = "SELECT cor_usu FROM usuario WHERE nom_usu=?";    
+            ps = con.prepareStatement(sql);
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+            return rs.getString("cor_usu");
+            }
+        }catch(Exception ed){
+            System.out.println("Error al consultar");
+            System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (User email by name)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (User email by name)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (User email by name)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return null;
+    }
+    public static String getPassByEmail(String email) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        try{
+            String sql = "SELECT con_usu FROM usuario WHERE cor_usu=?";    
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+            return rs.getString("con_usu");
+            }
+        }catch(Exception ed){
+            System.out.println("Error al consultar");
+            System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (User pass by email)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (User pass by email)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (User pass by email)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return null;
+    }
     //Cuando un usuario ingresa por primera vez, se le asigna las actividades
     //Si ya estaba registrado, este mismo proceso se ejecuta, pero no hay cambios    
     public String AsignarSimulaciones () throws SQLException{

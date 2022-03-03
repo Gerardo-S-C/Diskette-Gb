@@ -23,7 +23,7 @@
             <div class="list-container">
                 <ul class="lists">
                     <li><a href="MenUsuario.jsp">Inicio</a></li>
-                    <li><a href="perfil.html">Perfil</a></li>
+                    <!--<li><a href="perfil.html">Perfil</a></li>-->
                     <li><a href="#" class="activo">Actividades</a></li>
                     <li><a href="AvisoDePrivacidad.html">Aviso de Privacidad</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>
@@ -46,11 +46,11 @@
                             <div class="descripcion">
                                 <h2>Pishing</h2>
                                 <br>
-                                <p>bla bla bla</p>
+                                <p>¿Cómo identificar el phishing? Aqui mismo podras experimentar e identificarlo!</p>
                                 <div class="botones">
                                     <p>Iniciar</p>
-                                    <a type="button" class="btn-material" href="simulacion_navegador.html">Fácil</a>
-                                    <a type="button" class="btn-material" href="">Difícil</a>
+                                    <a type="button" class="btn-material" href="simulacion_buscar.html">Fácil</a>
+                                    <a type="button" class="btn-material" href="simulacion_buscar2.html">Difícil</a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             <div class="descripcion">
                                 <h2>Spam</h2>
                                 <br>
-                                <p>bla bla bla</p>
+                                <p>El molesto SPAM siempre aparecera, aqui veras como solucionar algunas situaciones en las que aparece</p>
                                 <div class="botones">
                                     <p>Iniciar</p>
                                     <a type="button" class="btn-material" href="">Fácil</a>
