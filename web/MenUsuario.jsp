@@ -19,19 +19,13 @@ c<!DOCTYPE html>
     <%
     String nombre = (String) session.getAttribute("Usuario");
     System.out.println(nombre);
-    UsuarioConsulta usuC = accionesUsu.buscarUsuAsigProm(nombre);
-    System.out.println(usuC.getPro_dif());
     List<Dificultades> listdif = Administrador.ConsDificultadess();
-    String progreso = usuC.getPro_dif();
     String email = accionesUsu.getEmailByName(nombre);
     System.out.println(email);
     String password = accionesUsu.getPassByEmail(email);
+    int idbloEstafas=1;
+    List<Act_Blo> act_blo = Administrador.ActividadesXBloque(idbloEstafas);
     %>
-    <style>
-        .barraestafa2::after{
-            --barraavance:<%=progreso+"%"%>;
-        }
-    </style>
     <title>Inicio</title>
 </head>
 <body>
@@ -95,12 +89,31 @@ c<!DOCTYPE html>
                         <p>Aquí podrás visualizar los avances que llevas en cada actividad, recuerda que para continuar o empezar alguna debes ir al apartado de Actividades localizado en la parte superior de tu pantalla.</p>
                         <br>
                         <div class="act">
+                            <%
+                                for (Act_Blo ab : act_blo){
+                                System.out.println(ab.getNom_act());
+                                List<Bloques> blo = Administrador.ConsBloques();
+                                for (Bloques bloques : blo){
+                                    System.out.println(bloques.getNom_blo());
+                                    String bloq = "Estafas";
+                                    UsuarioConsulta usuC = accionesUsu.buscarUsuAsigProm(nombre,bloq,ab.getNom_act());
+                                    String progreso = usuC.getPro_dif();
+                                    System.out.println(usuC.getPro_dif());   
+                                %>
+                                <style>
+                                    .barraestafa2<%=ab.getNom_act()%>::after{
+                                        --barraavance:<%=progreso+"%"%>;
+                                    }
+                                </style>
+                                <%
+                                }
+                                %>
                             <div class="cuadros">
-                                <p>Phishing</p> <div id="progreso" class="barraestafa barraestafa2"> </div>
-                            </div>
-                            <div class="cuadros">
-                                <p>Spam</p> <div class="barraestafa barraestafa2"> </div>
-                            </div>
+                                <p><%=ab.getNom_act()%></p> <div id="progreso" class="barraestafa barraestafa2<%=ab.getNom_act()%>"> </div>
+                            </div>                                
+                            <%    
+                                }   
+                            %>
                         </div>
                     </div>
                 </div>

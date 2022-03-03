@@ -355,7 +355,7 @@ public class accionesUsu extends Conexion{
     //en la BD
     
     //Actualizar este metodo para que sea en los diferentes bloques y actividades
-    public static UsuarioConsulta buscarUsuAsigProm(String nombre) throws SQLException{
+    public static UsuarioConsulta buscarUsuAsigProm(String nombre, String blo, String act) throws SQLException{
         UsuarioConsulta usu = new UsuarioConsulta();
         Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
@@ -363,9 +363,11 @@ public class accionesUsu extends Conexion{
         int estatus = 0;
         try{
             String q = "SELECT *, AVG(pro_dif) FROM consultas \n" +
-                       "where nom_usu = ? and nom_blo = 'Estafas' and nom_act = 'phishing';";
+                       "where nom_usu = ? and nom_blo = ? and nom_act = ?;";
             ps = con.prepareStatement(q);
             ps.setString(1, nombre);
+            ps.setString(2, blo);
+            ps.setString(3, act);
             rs = ps.executeQuery();
 
             if(rs.next()){
@@ -493,7 +495,6 @@ public class accionesUsu extends Conexion{
 //        }
 //        return lista;
 //    }    
-    
     //Estos metodos son para deshabilitar y rehabilitar las actualizaciones con FK 
     //dentro de MySql
     public static void abrir() throws SQLException{
