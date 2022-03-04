@@ -1,3 +1,4 @@
+//autotexto
 function autoType(elementClass, typingSpeed){
     var thhis = $(elementClass);
     thhis.css({

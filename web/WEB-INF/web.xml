@@ -28,6 +28,10 @@
         <servlet-name>ActualizarDif1</servlet-name>
         <servlet-class>Servlet.ActualizarDif1</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AumentarProgresoEZSP</servlet-name>
+        <servlet-class>Servlet.AumentarProgresoEZSP</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BorrarUsu</servlet-name>
         <url-pattern>/BorrarUsu</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ActualizarDif1</servlet-name>
         <url-pattern>/ActualizarDif1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarProgresoEZSP</servlet-name>
+        <url-pattern>/AumentarProgresoEZSP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

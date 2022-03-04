@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/Universal2.css">
+    <link rel="stylesheet" href="./CSS/simulacion.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Milenio, Noticias y más</title>
+</head>
+<body class="grid-container">
+        <header class="header">
+          <img src="./img/Logo.png" alt="Logo el Universal"></header>
+        <nav class="navbar"><h5>-</h5>
+
+        
+        <div class="parent">
+
+          </div>  </nav>
+        <aside class="sidebar">
+            
+        <div class="parent2">
+
+
+              </div></nav>  <h5>-</h5>
+
+              <div class="parent3">
+                </aside>
+        <article class="main"><img src="./img/Universal parte.png">
+
+            <br>
+
+            <img src="./img/Universal fu.png"></article>
+        <footer class="footer"></footer>
+
+
+ id context
+          
+        <div class="modal" id="texto_guia_nav" tabindex="-1" role="dialog" aria-labelledby="modal aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <script>function alerta(){
+                    alert("aaaaaaaaaaa");
+      
+                    setTimeout(mensaje, 4000);
+                }
+                </script>
+                <h4>
+                  Felicidades terminaste la simulación con exito, te daremos mas informacion sobre el SPAM 
+                </h4>
+              </div>
+      
+              <div class="center_button">
+                <button type="button" class="btn_i"><a href="./infospam.html">Vamos</a></button>
+              </div>
+              
+
+      
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="./JS/animaciones.js"></script>
+        <script>
+          $(document).ready(function(){
+            $("#context").modal('show');
+          });
+          $('#context').on('hidden.bs.modal', function (e) {
+            autoType(".type-js",100);
+    
+            setTimeout(mensaje, 4000);
+          })
+    
+        </script>
+
+<script>
+  $(document).ready(function() {
+  setTimeout(showTooltip, 0)
+    });
+  function showTooltip()
+    {
+        $("#texto_guia_nav").hide("slow");
+        setTimeout(hideTooltip, 3000)
+    }
+  function hideTooltip()
+    {
+    $("#texto_guia_nav").show("slow");
+    }
+</script>
+
+
+</body>
+
+
+</html>    

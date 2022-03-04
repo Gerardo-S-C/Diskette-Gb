@@ -64,7 +64,7 @@
                                 <p>El molesto SPAM siempre aparecera, aqui veras como solucionar algunas situaciones en las que aparece</p>
                                 <div class="botones">
                                     <p>Iniciar</p>
-                                    <a type="button" class="btn-material" href="">Fácil</a>
+                                    <a type="button" class="btn-material" href="buscador.html">Fácil</a>
                                     <a type="button" class="btn-material" href="">Difícil</a>
                                 </div>
                             </div>
