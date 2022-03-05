@@ -96,7 +96,7 @@ c<!DOCTYPE html>
                                 for (Bloques bloques : blo){
                                     System.out.println(bloques.getNom_blo());
                                     String bloq = "Estafas";
-                                    UsuarioConsulta usuC = accionesUsu.buscarUsuAsigProm(nombre,bloq,ab.getNom_act());
+                                    UsuarioConsulta usuC = accionesUsu.buscarUsuAsigPromUsu(nombre,bloq,ab.getNom_act());
                                     String progreso = usuC.getPro_dif();
                                     System.out.println(usuC.getPro_dif());   
                                 %>

@@ -355,7 +355,7 @@ public class accionesUsu extends Conexion{
     //en la BD
     
     //Actualizar este metodo para que sea en los diferentes bloques y actividades
-    public static UsuarioConsulta buscarUsuAsigProm(String nombre, String blo, String act) throws SQLException{
+    public static UsuarioConsulta buscarUsuAsigPromUsu(String nombre, String blo, String act) throws SQLException{
         UsuarioConsulta usu = new UsuarioConsulta();
         Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
@@ -403,7 +403,53 @@ public class accionesUsu extends Conexion{
         }
         return usu;
     }
-    
+    public static UsuarioConsulta buscarUsuAsigProm(String nombre) throws SQLException{
+        UsuarioConsulta usu = new UsuarioConsulta();
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            String q = "SELECT *, AVG(pro_dif) FROM consultas \n" +
+                       "where nom_usu = ? and nom_blo = 'Estafas' and nom_act = 'phishing';";
+            ps = con.prepareStatement(q);
+            ps.setString(1, nombre);
+
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                usu.setId(rs.getInt(1));
+                usu.setNom_usu(rs.getString(2));
+                usu.setDif_dif(rs.getString(5));
+                usu.setPro_dif_dif1(rs.getString(6));   
+                usu.setPro_dif(rs.getString(9));
+            }
+            System.out.println("Usuario asignado, encontrado para el promedio");
+        }catch(Exception e){
+            System.out.println("Error al buscar al usuario asignado buscarUsuAsigProm");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Asig Prom)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Asig Prom)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Asig Prom)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return usu;
+    }
     //Busca el progreso de la dificultad "dificil" por separado porque el metodo anterior
     //buscarUsuAsigProm ya obtiene el valor de la dificultad "facil"
     
