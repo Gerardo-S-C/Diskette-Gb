@@ -3,6 +3,17 @@
     --red: #2A337A;
     --gray: rgb(48, 46, 46);
     --white:white;
+
+    --fondo: #9FA9FA;
+    --boton: #7F88C7;
+    --cuadro: #4E537A;
+    --blanco: #ffffff;
+
+    
+    --bg: #1a1e24;
+    --color: #eee;
+    
+    --font: Montserrat, Roboto, Helvetica, Arial, sans-serif;
 }
 
 *{
@@ -86,6 +97,7 @@ body{
     display: none;
 }
 
+
 /*section que tiene todo*/
 
 .sec{
@@ -104,10 +116,9 @@ body{
     margin: auto;
     border-radius: 10px;
     padding: 15px;
-    display: grid;
-    grid-template-columns: 50% 50%;
     box-shadow: 0 7px 25px rgba(0,0,0,0.08);
 }
+
 
 /*titulo*/
 .titulo{
@@ -127,137 +138,36 @@ body{
     -webkit-text-stroke: 0.2px #000000;
 }
 
-/*estafas*/
-
-.sec .contenido .estafas{
-    padding: 5px;
-}
-
-/*virus*/
-
-.sec .contenido .virus{
-    padding: 5px;
-}
-
-/*actividades*/
-
-.acts{
+.texto{
     padding: 18px;
-    background-color: #7f87c736;
+    background-color: #7f87c726;
     border-width: 3px;
     border-style: solid;
     border-color:#4E537A;
     border-radius: 10px;
     height: 80%;
     margin: 10px;
+    overflow: auto;
 }
 
-/*phishing*/
-
-.sec .contenido .estafas .phishing{
-    margin: auto;
-    margin-top: 30px;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: 30% 70%;
+.texto p{
+    
+    text-align: justify;
+    font-size: 15px;
 }
 
 
-/*imagenes*/
-.img{
-    background-color: #5568fb70;
-    margin-left: 7px;
-    margin-right: 10px;
-    padding: 5PX;
+/*scrollbar*/
 
-    border-width: 3px;
-    border-style: solid;
-    border-color:#4E537A;
-    border-radius: 10px;
+.texto::-webkit-scrollbar{
+    width: 12px;
+    background-color: #efefef;
+    border-radius: 8px;
 }
 
-.imgp{
-    width: 100%;
-}
-
-.imgs{
-    padding: 5px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 100%;
-}
-
-/*div de descripcion*/
-
-.descripcion{
-    padding: 15px;
-    background-color: white;
-    border-width: 3px;
-    border-style: solid;
-    border-color:#4E537A;
-    border-radius: 10px;
-}
-
-/*spam*/
-
-.sec .contenido .estafas .spam{
-    margin: auto;
-    margin-top: 30px;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: 30% 70%;
-}
-
-/*botones de inicio*/
-
-.botones{
-    margin-top: 15px;
-    margin-left: 15px;
-}
-
-.botones p{
-    font-size: 20px
-}
-
-.btn-material {
-    margin-left: ;
-    margin-right: 25px;
-    text-decoration: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px 15px;
-    border-radius: 5px;
-    background-color: #7F88C7;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-      0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    color: #fff;
-    transition: background-color 15ms linear,
-      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  
-    height: 50px;
-    line-height: 2.25rem;
-    font-family: Roboto, sans-serif;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-  
-.btn-material:hover, .btn-material:focus {
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
-      0 4px 5px 0 rgba(0, 0, 0, 0.14),
-      0 1px 10px 0 rgba(0, 0, 0, 0.12);
-    background-color: #4E537A;
-}
-  
-.btn-material:active {
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-      0 8px 10px 1px rgba(0, 0, 0, 0.14),
-      0 3px 14px 2px rgba(0, 0, 0, 0.12);
-    background-color: #776c95;
+.texto::-webkit-scrollbar-thumb{
+    background: #9faafa88;
+    border-radius: 8px;
 }
 
 
@@ -376,6 +286,72 @@ footer{
     color: #C7C7C7;
 }
 
+.BA{
+    position: absolute;
+    left: 97%;
+    top: 98%;
+    transform: translateX(-97%) translateY(-98%);
+}
+
+.wrapper {
+    padding: 1.5rem 0;
+    filter: url('#goo');
+}
+
+.button2 {
+    display: inline-block;
+    text-align: center;
+    background: var(--boton);
+    color: var(--blanco);
+    font-weight: bold;
+    padding: 1.18em 1.32em 1.03em;
+    line-height: 1;
+    border-radius: 1em;
+    position: relative;
+    min-width: 4.23em;
+    text-decoration: none;
+    font-family: var(--font);
+    font-size: 1em;
+}
+
+.button2:before,
+.button2:after {
+    width: 2.4em;
+    height: 1.95em;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: var(--boton);
+    border-radius: 40%;
+    transition: transform 1s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.button2:before {
+    top: -25%;
+    left: 20%;
+}
+
+.button2:after {
+    bottom: -25%;
+    right: 20%;
+}
+
+.button2:hover:before,
+.button2:hover:after {
+    transform: none;
+}
+
+
+@media screen and (max-width: 1700px){
+    .BA{
+        
+        left: 92%;
+        top: 98%;
+        transform: translateX(-92%) translateY(-98%);
+        }
+}
 
 @media screen and (max-width: 1100px){
     
@@ -391,49 +367,16 @@ footer{
     .colum3{
         margin-top: 40px;
     }
-}
-
-
-/*responsive*/
-
-@media (max-width: 1500px){
     h2{
         font-size: 25px;
     }
 
-    p{
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 992px){
-
-    h2{
-        font-size: 22px;
-    }
-
-    p{
-        font-size: 12px;
-    }
-
-    .sec .contenido{
-        height: 75%;
-    }
-
-    .acts{
-        margin: 2px;
-        height: 80%;
-    }
-
-    .sec .contenido .estafas .phishing{
-        margin-top: 5px;
-    }
-
-    .btn-material{
-        height: 30px;
-        font-size: 12px;
-
-    }
+    .BA{
+        
+        left: 90%;
+        top: 98%;
+        transform: translateX(-90%) translateY(-98%);
+        }
 
 }
 
@@ -453,43 +396,13 @@ footer{
     }
 
     h2{
-        font-size: 18px;
+        font-size: 20px;
     }
 
-    p{
-        font-size: 10px;
+    .BA{
+        
+    left: 89%;
+    top: 98%;
+    transform: translateX(-89%) translateY(-98%);
     }
-
-    .titulo{
-        height: 10%;
-    }
-
-    .phishing{
-        height: 45%;
-    }
-
-    .spam{
-        height: 45%;
-    }
-
-    .sec .contenido{
-        height: 90%;
-        display: block;
-    }
-
-    .acts{
-        margin: 2px;
-        height: 85%;
-    }
-
-    .sec .contenido .estafas .phishing{
-        margin-top: 5px;
-    }
-
-    .btn-material{
-        height: 20px;
-        font-size: 8px;
-
-    }
-
 }

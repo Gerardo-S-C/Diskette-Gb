@@ -403,7 +403,7 @@ public class accionesUsu extends Conexion{
         }
         return usu;
     }
-    public static UsuarioConsulta buscarUsuAsigProm(String nombre) throws SQLException{
+    public static UsuarioConsulta buscarUsuAsigPromUsuTOT(String nombre) throws SQLException{
         UsuarioConsulta usu = new UsuarioConsulta();
         Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
@@ -411,9 +411,110 @@ public class accionesUsu extends Conexion{
         int estatus = 0;
         try{
             String q = "SELECT *, AVG(pro_dif) FROM consultas \n" +
-                       "where nom_usu = ? and nom_blo = 'Estafas' and nom_act = 'phishing';";
+                       "where nom_usu = ? ;";
             ps = con.prepareStatement(q);
             ps.setString(1, nombre);
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                usu.setId(rs.getInt(1));
+                usu.setNom_usu(rs.getString(2));
+                usu.setDif_dif(rs.getString(5));
+                usu.setPro_dif_dif1(rs.getString(6));   
+                usu.setPro_dif(rs.getString(9));
+            }
+            System.out.println("Usuario asignado, encontrado para el promedio TOT");
+        }catch(Exception e){
+            System.out.println("Error al buscar al usuario asignado buscarUsuAsigProm");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Asig Prom)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Asig Prom)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Asig Prom)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return usu;
+    }
+    
+    //Este metodo debe solicitar el nombre del usuario, el bloque a consultar y la actividad a consultar de dicho bloque
+    public static UsuarioConsulta buscarUsuAsig(String nombre, String blo, String act) throws SQLException{
+        UsuarioConsulta usu = new UsuarioConsulta();
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            String q = "SELECT * FROM consultas \n" +
+                       "where nom_usu = ? and nom_blo = ? and nom_act = ?;";
+            ps = con.prepareStatement(q);
+            ps.setString(1, nombre);
+            ps.setString(2, blo);
+            ps.setString(3, act);
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                usu.setId(rs.getInt(1));
+                usu.setNom_usu(rs.getString(2));
+                usu.setNom_blo(rs.getString(3));
+                usu.setNom_act(rs.getString(4));
+                usu.setDif_dif(rs.getString(5));
+                usu.setPro_dif_dif1(rs.getString(6));   
+//                usu.setPro_dif(rs.getString(9));
+            }
+            System.out.println("Usuario asignado, encontrado para la dificultad facil de las ");
+        }catch(Exception e){
+            System.out.println("Error al buscar al usuario asignado buscarUsuAsigProm");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Asig Prom)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Asig Prom)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Asig Prom)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return usu;
+    }
+    
+    public static UsuarioConsulta buscarUsuAsigPromEZ(String nombre,String blo, String act) throws SQLException{
+        UsuarioConsulta usu = new UsuarioConsulta();
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            String q = "SELECT *, AVG(pro_dif) FROM consultas \n" +
+                       "where nom_usu = ? and nom_blo = ? and nom_act = ? and dif_dif='facil';";
+            ps = con.prepareStatement(q);
+            ps.setString(1, nombre);
+            ps.setString(2, blo);
+            ps.setString(3, act);
 
             rs = ps.executeQuery();
 
@@ -424,7 +525,7 @@ public class accionesUsu extends Conexion{
                 usu.setPro_dif_dif1(rs.getString(6));   
                 usu.setPro_dif(rs.getString(9));
             }
-            System.out.println("Usuario asignado, encontrado para el promedio");
+            System.out.println("Usuario asignado, encontrado para el promedio PH");
         }catch(Exception e){
             System.out.println("Error al buscar al usuario asignado buscarUsuAsigProm");
             System.out.println(e.getMessage());
@@ -455,7 +556,7 @@ public class accionesUsu extends Conexion{
     
     //Igual actualizar este metodo para que busque y obtenga valores de las diferentes
     //dificultades con diferentes bloques
-    public static UsuarioConsulta buscarUsuDif_dificil(String nombre) throws SQLException{
+    public static UsuarioConsulta buscarUsuDif_dificil(String nombre,String blo, String act) throws SQLException{
         UsuarioConsulta usu = new UsuarioConsulta();
         Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
@@ -464,15 +565,18 @@ public class accionesUsu extends Conexion{
         try{
             con = Conexion.getConexion();
             String q = "SELECT * FROM consultas \n" +
-                       "where nom_usu = ? and nom_blo = 'Estafas' and nom_act = 'phishing' and dif_dif = 'dificil';";
+                       "where nom_usu = ? and nom_blo = ? and nom_act = ? and dif_dif = 'dificil';";
             ps = con.prepareStatement(q);
             ps.setString(1, nombre);
+            ps.setString(2, blo);
+            ps.setString(3, act);
+
             rs = ps.executeQuery();
 
             if(rs.next()){
                 usu.setPro_dif_dif2(rs.getString(6));
             }
-            System.out.println("Usuario asignado, encontrado para la dificultad dificil");
+            System.out.println("Usuario asignado, encontrado para la dificultad dificil PH");
         }catch(Exception e){
             System.out.println("Error al buscar al usuario asignado buscarUsuDif_dificl");
             System.out.println(e.getMessage());
@@ -498,7 +602,7 @@ public class accionesUsu extends Conexion{
         }
         return usu;
     }
-    
+
     //Este metodo es para consultar la lista de usuarios registrados, sin importar si hayan iniciado 
     //sesion o no para su asignacion de bloques y actividades
 //    public static List<Usuario> consultaGral(){

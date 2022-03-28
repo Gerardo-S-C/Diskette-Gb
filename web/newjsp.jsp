@@ -1,3 +1,7 @@
+<%@page import="Control.accionesUsu"%>
+<%@page import="Modelo.*"%>
+<%@page import="java.util.List"%>
+<%@page import="Control.Administrador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/actividadesV2.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/MenuAdm2V2.css">
     <link rel="shortcut icon" href="./img/diskettelogo.jpg">
     <title>Actividades</title>
 </head>
@@ -18,14 +23,12 @@
     <header id="header">
         <nav class="menu">
             <div class="icono-cabeza">
-                <h1><a href="MenUsuario.jsp">DisketteGb</a></h1>
+                <h1><a href="MenuAdm.jsp">DisketteGb</a></h1>
             </div>
             <div class="list-container">
                 <ul class="lists">
-                    <li><a href="MenUsuario.jsp">Inicio</a></li>
-                    <!--<li><a href="perfil.html">Perfil</a></li>-->
-                    <li><a href="#" class="activo">Actividades</a></li>
-                    <li><a href="AvisoDePrivacidad.html">Aviso de Privacidad</a></li>
+                    <li><a href="MenuAdm.jsp">Usuarios</a></li>
+                    <li><a href="MenuAdm2.jsp" class="activo">Actividades</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>
                 </ul>
             </div>
@@ -34,53 +37,102 @@
     <main>
         <section class="sec" id="menu">
             <div class="contenido">
-                <div class="estafas">
+                <%
+                    List<Bloques> listablo = Administrador.ConsBloques();
+                    List<Actividades> listaact = Administrador.ConsActividades();
+                    List<Dificultades> listdif = Administrador.ConsDificultadess();
+                    List<Act_Blo> listcons = Administrador.Consulta();
+                    //Recorrera los bloques que hay (Estafas y Virus) para asignarlos a los acordeones
+                    // blo -> es la variable que recorrera los valores
+                    // listablo -> es la lista con los valores de los bloques
+                    for(Bloques blo : listablo){
+                        System.out.println("bloque "+blo.getNom_blo());
+                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo());  
+                        for(Act_Blo actblo : injoin ){
+                            System.out.println("actividad "+actblo.getNom_act());
+                            List<Dificultades> dif = Administrador.ConsDificultadess();
+                            for(Dificultades d : dif){
+                                System.out.println("dificultad "+d.getDif_dif());
+                                for(Act_Blo c : listcons){
+                                   System.out.println(c.getId_act_blo());
+                                   continue;
+                                }break;
+                            }break;
+                        }break;
+                    }                                     
+                    for(Bloques blo : listablo ){
+                        System.out.println(blo.getNom_blo());
+                %>
+                <div class="<%=blo.getNom_blo()%>">
                     <div class="titulo">
-                        <h2>ESTAFAS</h2>
+                        <h2><%=blo.getNom_blo()%></h2>
                     </div>
                     <div class="acts">
-                        <div class="phishing">
+                        <%
+                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo());  
+                        for(Act_Blo actblo : injoin ){
+                            System.out.println(actblo.getNom_act());
+                            List<Dificultades> dif = Administrador.ConsDificultadess();
+                        %>
+                        <div class="<%=actblo.getNom_act()%>">
                             <div class="img">
-                                <img src="./img/phishing.png" class="imgp">
+                                <img src="./img/a<%=actblo.getNom_act()%>.png" class="img<%=actblo.getNom_act()%>">
                             </div>
                             <div class="descripcion">
-                                <h2>Pishing</h2>
-                                <br>
-                                <p>¿Cómo identificar el phishing? Aqui mismo podras experimentar e identificarlo!</p>
+                                <h2><%=actblo.getNom_act()%></h2>
                                 <div class="botones">
-                                    <p>Iniciar</p>
-                                    <a type="button" class="btn-material" href="simulacion_buscar.html">Fácil</a>
-                                    <a type="button" class="btn-material" href="simulacion_buscar2.html">Difícil</a>
+                                    <div class="dificultades">
+                                    <%
+                                        for(Dificultades d : dif){
+                                            System.out.println(d.getId_dif()+" "+d.getDif_dif());
+                                        %>
+                                        <div class="dropdown">
+                                            <div class="tipodif">
+                                                <p><%=d.getId_dif()%> <%=d.getDif_dif()%></p>
+                                            </div>                                            
+                                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Cambiar dificultad
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
+                                                    <input type="hidden" name="facil" value="facil" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="id" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="id" value="<%=blo.getNom_blo()%>" class="dropdown-item" readonly>
+                                                    <input type="submit" id="boton" class="dropdown-item" value="Fácil">
+                                                </form>
+                                                <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
+                                                    <input type="hidden" name="dificil" value="dificil" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
+                                                    <input type="submit" id="boton" class="dropdown-item" value="Difícil">
+                                                </form>
+                                            </ul>
+                                        </div>
+                                        <br>                                       
+                                        <%
+                                        }
+                                        %>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Cambiar de bloque
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><a class="dropdown-item" href="#">Estafas</a></li>
+                                          <li><a class="dropdown-item" href="#">Virus</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="spam">
-                            <div class="img">
-                                <img src="./img/spamming.png" class="imgs">
-                            </div>
-                            <div class="descripcion">
-                                <h2>Spam</h2>
-                                <br>
-                                <p>El molesto SPAM siempre aparecera, aqui veras como solucionar algunas situaciones en las que aparece</p>
-                                <div class="botones">
-                                    <p>Iniciar</p>
-                                    <a type="button" class="btn-material" href="buscador.html">Fácil</a>
-                                    <a type="button" class="btn-material" href="">Difícil</a>
-                                </div>
-                            </div>
-                        </div>
+                        <%
+                            }
+                        %>
                     </div>
                 </div>
-                <div class="virus">
-                    <div class="titulo">
-                        <h2>VIRUS</h2>
-                    </div>
-                    <div class="acts">
-                        <h2>PRÓXIMAMENTE</h2>
-                        <div class="ejecutables"></div>
-                        <div class="links"></div>
-                    </div>
-                </div>
+                <%
+                    }
+                %>
             </div>
         </section>
     </main>
@@ -152,5 +204,7 @@
       
           </div>
       </footer>
-</body>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+      </body>
 </html>

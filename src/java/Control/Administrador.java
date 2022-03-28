@@ -591,39 +591,129 @@ public class Administrador{
         return actblo;
     }
     
-    
-    //Metodos para cambiar los valores de estas tablas sin alterar la ID de cada
-    //una porque se trabaja con PKs y FKs
-    //Actualizar la dificultad de una actividad:
-    public static Dificultades ActualizarDificultad() throws SQLException{
+    //Metodo para consultar la tabla consultas para manipular las dificultades asignadas a cada usuario
+    //desde el Administrador
+    public static List<Act_Blo> Consulta() throws SQLException{
+        List<Act_Blo> cons = new ArrayList<Act_Blo>();
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
         try{
-            String q = "UPDATE dificultades SET dif_dif= '' WHERE (id_dif = '')";
-            ps = getConexion().prepareStatement(q);
-            estatus = ps.executeUpdate();
+         String q = "SELECT * FROM act_blo;";   
+         ps = con.prepareStatement(q);
+         rs = ps.executeQuery();
+         while(rs.next()){
+             Act_Blo info = new Act_Blo();
+             info.setId_act_blo(rs.getInt(1));
+             cons.add(info);
+         }
+            System.out.println("Select consultas exitoso");
+        }catch(Exception e){
+            System.out.println("Error al buscar al usuario asignado");
+            System.out.println(e.getMessage()); 
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (consultas)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (consultas)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta tabla consultas)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return cons;
+    }
+    //cambia la dificultad dentro de la tabla de consultas que es la que mostrara las
+    //dificultades dentro de la consulta de actividades y mostrara el cambio en las cuentas
+    //de los usuarios cuando inicien sesion (supuestamente)
+    public static int CambioDifGen(String blo, String act, String dif, int id ) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        
+        try{
+         String q = "UPDATE consultas SET dif_dif = ? \n" +
+                    "WHERE nom_blo = ? AND nom_act = ? AND id_act_blo = ? ;";   
+         ps = con.prepareStatement(q);
+         
+         rs = ps.executeQuery();
+            System.out.println("Update dificultad exitoso");
         }catch(Exception e){
             System.out.println("Error al actualizar la dificultad");
+            System.out.println(e.getMessage()); 
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (consultas)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (consultas)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta tabla consultas)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
-        return null;
+        
+        
+        return estatus;
     }
     
-    public static void CambioDif(String dif, int id) throws SQLException{
+    //Metodos para cambiar los valores de estas tablas sin alterar la ID de cada
+    //una porque se trabaja con PKs y FKs
+    //Actualizar la dificultad de TODAS las actividades:
+    public static void CambioDif_tb_dificultades(String dif, int id) throws SQLException{
+        Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
         try{
         String sql = "UPDATE dificultades SET dif_dif = ? WHERE (id_dif = ?)";
-        ps = getConexion().prepareStatement(sql);
+        ps = con.prepareStatement(sql);
         ps.setString(1, dif);
         ps.setInt(2, id);
         estatus = ps.executeUpdate();
         }catch(Exception ed){
             System.out.println("Error al actualizar");
             System.out.println(ed.getMessage());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (CambioDif_tb_dificultades)");
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (CambioDif_tb_dificultades)");
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (CambioDif_tb_dificultades)");
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
         }
-       
     }
     
 }

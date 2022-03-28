@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,80 +9,211 @@
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/actividadesV2.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/MenuAdm2V2.css">
     <link rel="shortcut icon" href="./img/diskettelogo.jpg">
     <title>Actividades</title>
 </head>
 <body>
     <header id="header">
+
         <nav class="menu">
+
             <div class="icono-cabeza">
-                <h1><a href="MenUsuario.jsp">DisketteGb</a></h1>
+                <h1><a href="MenuAdmV2.html">DisketteGb</a></h1>
             </div>
+
             <div class="list-container">
                 <ul class="lists">
-                    <li><a href="MenUsuario.jsp">Inicio</a></li>
-                    <!--<li><a href="perfil.html">Perfil</a></li>-->
-                    <li><a href="#" class="activo">Actividades</a></li>
-                    <li><a href="AvisoDePrivacidad.html">Aviso de Privacidad</a></li>
-                    <li><a href="logout.jsp">Cerrar Sesión</a></li>
+                    <li><a href="MenuAdmV2.html">Usuarios</a></li>
+                    <li><a href="MenuAdm2V2.html" class="activo">Actividades</a></li>
+                    <li><a href="index.html">Cerrar Sesión</a></li>
                 </ul>
             </div>
+
         </nav>
+
     </header>
+
+    
     <main>
+
         <section class="sec" id="menu">
+
             <div class="contenido">
+
                 <div class="estafas">
+
                     <div class="titulo">
+
                         <h2>ESTAFAS</h2>
+
                     </div>
+
                     <div class="acts">
+
                         <div class="phishing">
+
                             <div class="img">
-                                <img src="./img/phishing.png" class="imgp">
+                                <img src="./IMG/phishing.png" class="imgp">
                             </div>
+
                             <div class="descripcion">
-                                <h2>Pishing</h2>
-                                <br>
-                                <p>¿Cómo identificar el phishing? Aqui mismo podras experimentar e identificarlo!</p>
+
+                                <h2>Phishing</h2>
+
                                 <div class="botones">
-                                    <p>Iniciar</p>
-                                    <a type="button" class="btn-material" href="simulacion_buscar.html">Fácil</a>
-                                    <a type="button" class="btn-material" href="simulacion_buscar2.html">Difícil</a>
+                                    <div class="dificultades">
+                                        <div class="dropdown">
+                                            <div class="tipodif">
+                                                <p>Fácil</p>
+                                            </div>
+                                            
+                                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Cambiar dificultad
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Fácil</a></li>
+                                            <li><a class="dropdown-item" href="#">Dificil</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <br>
+                                        
+                                        <div class="dropdown">
+                                            <div class="tipodif">
+                                                <p>Difícil</p>
+                                            </div>
+
+                                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Cambiar dificultad
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Fácil</a></li>
+                                            <li><a class="dropdown-item" href="#">Dificil</a></li>
+                                            </ul>
+
+                                            
+                                        </div>
+
+                                        
+                                    </div>
+
+                                    <br>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Cambiar de bloque
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><a class="dropdown-item" href="#">Estafas</a></li>
+                                          <li><a class="dropdown-item" href="#">Virus</a></li>
+                                        </ul>
+                                    </div>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                         <div class="spam">
+
                             <div class="img">
-                                <img src="./img/spamming.png" class="imgs">
+
+                                <img src="./IMG/spamming.png" class="imgs">
+
                             </div>
+
                             <div class="descripcion">
+
                                 <h2>Spam</h2>
-                                <br>
-                                <p>El molesto SPAM siempre aparecera, aqui veras como solucionar algunas situaciones en las que aparece</p>
+
                                 <div class="botones">
-                                    <p>Iniciar</p>
-                                    <a type="button" class="btn-material" href="buscador.html">Fácil</a>
-                                    <a type="button" class="btn-material" href="">Difícil</a>
+
+                                    <div class="dificultades">
+                                        <div class="dropdown">
+                                            <div class="tipodif">
+                                                <p>Fácil</p>
+                                            </div>
+                                            
+                                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Cambiar dificultad
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Fácil</a></li>
+                                            <li><a class="dropdown-item" href="#">Dificil</a></li>
+                                            </ul>
+                                        </div>
+
+
+                                        <br>
+                                        
+                                        <div class="dropdown">
+                                            <div class="tipodif">
+                                                <p>Difícil</p>
+                                            </div>
+
+                                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Cambiar dificultad
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#">Fácil</a></li>
+                                            <li><a class="dropdown-item" href="#">Dificil</a></li>
+                                            </ul>
+
+                                            
+                                        </div>
+
+                                        
+                                    </div>
+
+                                    <br>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                          Cambiar de bloque
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                          <li><a class="dropdown-item" href="#">Estafas</a></li>
+                                          <li><a class="dropdown-item" href="#">Virus</a></li>
+                                        </ul>
+                                    </div>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 <div class="virus">
+
                     <div class="titulo">
+
                         <h2>VIRUS</h2>
+
                     </div>
+
                     <div class="acts">
-                        <h2>PRÓXIMAMENTE</h2>
+
                         <div class="ejecutables"></div>
+
                         <div class="links"></div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
+
     <footer>
         <div class="container-footer-all">
               
@@ -152,5 +282,7 @@
       
           </div>
       </footer>
-</body>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+      </body>
 </html>

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : MenuAdm2
-    Created on : 16/11/2021, 03:56:14 PM
-    Author     : illum
---%>
 <%@page import="Control.accionesUsu"%>
 <%@page import="Modelo.*"%>
 <%@page import="java.util.List"%>

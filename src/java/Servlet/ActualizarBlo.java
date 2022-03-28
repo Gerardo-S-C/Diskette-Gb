@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author illum
  */
-public class ActualizarDif1 extends HttpServlet {
+public class ActualizarBlo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +33,7 @@ public class ActualizarDif1 extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException{
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -55,10 +55,9 @@ public class ActualizarDif1 extends HttpServlet {
 //                response.sendRedirect("MenuAdm2.jsp");
             }
             else{
-                System.out.println("Error al actualizar dificultad aa");
+                System.out.println("Error al actualizar bloque");
                 response.sendRedirect("error.jsp");
             }
-            
         }
     }
 

@@ -95,8 +95,8 @@ body{
 
 .sec .contenido{
     position: absolute;
-    width: 90%;
-    height: 80%;
+    width: 95%;
+    height: 85%;
     left: 50%;
     top: 55%;
     transform: translateX(-50%) translateY(-55%);
@@ -109,6 +109,7 @@ body{
     box-shadow: 0 7px 25px rgba(0,0,0,0.08);
 }
 
+
 /*titulo*/
 .titulo{
     padding: 18px;
@@ -118,13 +119,32 @@ body{
     border-color:#4E537A;
     border-radius: 10px;
     height: 15%;
-    margin: 10px;
+    margin: 5px;
     margin-bottom: 20px;
 
     text-align: center;
     font-size: 30px;
     color: #fff;
     -webkit-text-stroke: 0.2px #000000;
+}
+
+/*dropdowns*/
+
+.dificultades .dropdown{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.dropdown{
+    margin-top: 0;
+}
+
+.dropdown .tipodif p{
+    font-size: 17px;
+}
+
+#dropdownMenuButton1{
+    top: 50px;
 }
 
 /*estafas*/
@@ -142,14 +162,14 @@ body{
 /*actividades*/
 
 .acts{
-    padding: 18px;
+    padding: 12px;
     background-color: #7f87c736;
     border-width: 3px;
     border-style: solid;
     border-color:#4E537A;
     border-radius: 10px;
     height: 80%;
-    margin: 10px;
+    margin: 5px;
 }
 
 /*phishing*/
@@ -176,11 +196,11 @@ body{
     border-radius: 10px;
 }
 
-.imgp{
+.imgphishing{
     width: 100%;
 }
 
-.imgs{
+.imgspamming{
     padding: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -198,9 +218,9 @@ body{
     border-radius: 10px;
 }
 
-/*spam*/
+/*spamming*/
 
-.sec .contenido .estafas .spam{
+.sec .contenido .estafas .spamming{
     margin: auto;
     margin-top: 30px;
     border-radius: 10px;
@@ -212,7 +232,6 @@ body{
 
 .botones{
     margin-top: 15px;
-    margin-left: 15px;
 }
 
 .botones p{
@@ -220,7 +239,6 @@ body{
 }
 
 .btn-material {
-    margin-left: ;
     margin-right: 25px;
     text-decoration: none;
     -webkit-appearance: none;
@@ -377,6 +395,8 @@ footer{
 }
 
 
+
+
 @media screen and (max-width: 1100px){
     
     .container-body{
@@ -428,6 +448,9 @@ footer{
     .sec .contenido .estafas .phishing{
         margin-top: 5px;
     }
+    .sec .contenido .estafas .spamming{
+        margin-top: 5px;
+    }
 
     .btn-material{
         height: 30px;
@@ -456,8 +479,12 @@ footer{
         font-size: 18px;
     }
 
-    p{
-        font-size: 10px;
+    button{
+        font-size: 5px;
+    }
+
+    .dropdown .tipodif p{
+        font-size: 15px;
     }
 
     .titulo{
@@ -468,12 +495,17 @@ footer{
         height: 45%;
     }
 
-    .spam{
+    .spamming{
         height: 45%;
     }
 
+    .dificultades .dropdown{
+        display: block;
+    }
+
     .sec .contenido{
-        height: 90%;
+        margin-top: 80px;
+        height: 1000px;
         display: block;
     }
 
@@ -485,11 +517,20 @@ footer{
     .sec .contenido .estafas .phishing{
         margin-top: 5px;
     }
+    .sec .contenido .estafas .spamming{
+        margin-top: 5px;
+    }
+
 
     .btn-material{
         height: 20px;
         font-size: 8px;
 
+    }
+
+    
+    footer{
+        top: 1100px;
     }
 
 }

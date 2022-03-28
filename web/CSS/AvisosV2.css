@@ -120,6 +120,7 @@ body{
     height: 15%;
     margin: 10px;
     margin-bottom: 20px;
+
     text-align: center;
     font-size: 30px;
     color: #fff;
@@ -296,7 +297,21 @@ footer{
 }
 
 @media screen and (max-width: 720px){
+
+    /*responsive del header*/
+
+    .menu .icono-cabeza h1 a{
+        font-size: 25px;
+        -webkit-text-stroke: 1px #2A337A;
+    }
+
+    .menu .list-container .lists li a{
+        margin: 0px 5px;
+        padding: 3px;
+        font-size: 8px;
+    }
+
     h2{
         font-size: 20px;
     }
-}   
+}

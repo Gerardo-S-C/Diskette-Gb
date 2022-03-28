@@ -391,6 +391,19 @@ footer{
 
 @media (max-width: 768px){
 
+    /*responsive del header*/
+
+    .menu .icono-cabeza h1 a{
+        font-size: 25px;
+        -webkit-text-stroke: 1px #2A337A;
+    }
+
+    .menu .list-container .lists li a{
+        margin: 0px 5px;
+        padding: 3px;
+        font-size: 8px;
+    }
+
     #nombre .contenedor{
 
         transform: translateX(-50%) translateY(-110%);
