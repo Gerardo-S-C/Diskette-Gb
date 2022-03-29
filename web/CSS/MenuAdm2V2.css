@@ -147,15 +147,15 @@ body{
     top: 50px;
 }
 
-/*estafas*/
+/*Estafas*/
 
-.sec .contenido .estafas{
+.sec .contenido .Estafas{
     padding: 5px;
 }
 
-/*virus*/
+/*Virus*/
 
-.sec .contenido .virus{
+.sec .contenido .Virus{
     padding: 5px;
 }
 
@@ -174,7 +174,7 @@ body{
 
 /*phishing*/
 
-.sec .contenido .estafas .phishing{
+.sec .contenido .Estafas .phishing{
     margin: auto;
     margin-top: 30px;
     border-radius: 10px;
@@ -220,7 +220,7 @@ body{
 
 /*spamming*/
 
-.sec .contenido .estafas .spamming{
+.sec .contenido .Estafas .spamming{
     margin: auto;
     margin-top: 30px;
     border-radius: 10px;
@@ -445,10 +445,10 @@ footer{
         height: 80%;
     }
 
-    .sec .contenido .estafas .phishing{
+    .sec .contenido .Estafas .phishing{
         margin-top: 5px;
     }
-    .sec .contenido .estafas .spamming{
+    .sec .contenido .Estafas .spamming{
         margin-top: 5px;
     }
 
@@ -514,10 +514,10 @@ footer{
         height: 85%;
     }
 
-    .sec .contenido .estafas .phishing{
+    .sec .contenido .Estafas .phishing{
         margin-top: 5px;
     }
-    .sec .contenido .estafas .spamming{
+    .sec .contenido .Estafas .spamming{
         margin-top: 5px;
     }
 

@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CSS/MenuAdm2V2.css">
+    <link rel="stylesheet" href="./CSS/MenuAdm2V2.css?1.0">
     <link rel="shortcut icon" href="./img/diskettelogo.jpg">
     <title>Actividades</title>
 </head>
@@ -59,7 +59,7 @@
                                 }break;
                             }break;
                         }break;
-                    }                                     
+                    }                  
                     for(Bloques blo : listablo ){
                         System.out.println(blo.getNom_blo());
                 %>
@@ -69,22 +69,23 @@
                     </div>
                     <div class="acts">
                         <%
-                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo());  
+                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo()); 
                         for(Act_Blo actblo : injoin ){
                             System.out.println(actblo.getNom_act());
                             List<Dificultades> dif = Administrador.ConsDificultadess();
                         %>
                         <div class="<%=actblo.getNom_act()%>">
                             <div class="img">
-                                <img src="./img/a<%=actblo.getNom_act()%>.png" class="img<%=actblo.getNom_act()%>">
+                                <img src="./img/<%=actblo.getNom_act()%>.png" class="img<%=actblo.getNom_act()%>">
                             </div>
                             <div class="descripcion">
                                 <h2><%=actblo.getNom_act()%></h2>
                                 <div class="botones">
                                     <div class="dificultades">
                                     <%
-                                        for(Dificultades d : dif){
+                                        for(Dificultades d : dif){                    
                                             System.out.println(d.getId_dif()+" "+d.getDif_dif());
+                                            int cons = 0;
                                         %>
                                         <div class="dropdown">
                                             <div class="tipodif">
@@ -95,6 +96,50 @@
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
+                                                <%
+                                                    switch(actblo.getNom_act()){
+                                                        case "phishing":
+                                                            switch (d.getDif_dif()){
+                                                                case "facil":
+                                                                cons = 1;   
+                                                                break;
+                                                                case "dificil":
+                                                                cons = 2;   
+                                                                break;
+                                                            }
+                                                            break;
+                                                        case "spamming":
+                                                            switch (d.getDif_dif()){
+                                                                case "facil":
+                                                                cons = 3;   
+                                                                break;
+                                                                case "dificil":
+                                                                cons = 4;   
+                                                                break;
+                                                            }
+                                                            break;
+                                                        case "ejecutables":
+                                                            switch (d.getDif_dif()){
+                                                                case "facil":
+                                                                cons = 5;   
+                                                                break;
+                                                                case "dificil":
+                                                                cons = 6;   
+                                                                break;
+                                                            }
+                                                            break;
+                                                        case "links":
+                                                            switch (d.getDif_dif()){
+                                                                case "facil":
+                                                                cons = 7;   
+                                                                break;
+                                                                case "dificil":
+                                                                cons = 8;   
+                                                                break;
+                                                            }
+                                                            break;
+                                                    }
+                                                %>
                                                     <input type="hidden" name="facil" value="facil" class="dropdown-item" readonly>
                                                     <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
                                                     <input type="hidden" name="id" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
@@ -109,8 +154,8 @@
                                             </ul>
                                         </div>
                                         <br>                                       
-                                        <%
-                                        }
+                                        <%                                         
+                                        }                                        
                                         %>
                                     </div>
                                     <div class="dropdown">
