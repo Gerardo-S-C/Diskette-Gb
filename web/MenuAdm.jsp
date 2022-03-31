@@ -28,7 +28,7 @@
             <div class="list-container">
                 <ul class="lists">
                     <li><a href="MenuAdm.jsp" class="activo">Usuarios</a></li>
-                    <li><a href="newjsp.jsp">Actividades</a></li>
+                    <li><a href="MenuAdm2.jsp">Actividades</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>
                 </ul>
             </div>

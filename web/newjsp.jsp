@@ -72,7 +72,6 @@
                         List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo()); 
                         for(Act_Blo actblo : injoin ){
                             System.out.println(actblo.getNom_act());
-                            List<Dificultades> dif = Administrador.ConsDificultadess();
                         %>
                         <div class="<%=actblo.getNom_act()%>">
                             <div class="img">
@@ -83,13 +82,14 @@
                                 <div class="botones">
                                     <div class="dificultades">
                                     <%
+                                        List<Dificultades> dif = Administrador.ConsDificultadess();
                                         for(Dificultades d : dif){                    
                                             System.out.println(d.getId_dif()+" "+d.getDif_dif());
                                             int cons = 0;
                                         %>
                                         <div class="dropdown">
                                             <div class="tipodif">
-                                                <p><%=d.getId_dif()%> <%=d.getDif_dif()%></p>
+                                                <p><%=d.getDif_dif()%></p>
                                             </div>                                            
                                             <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             Cambiar dificultad
@@ -97,58 +97,19 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
                                                 <%
-                                                    switch(actblo.getNom_act()){
-                                                        case "phishing":
-                                                            switch (d.getDif_dif()){
-                                                                case "facil":
-                                                                cons = 1;   
-                                                                break;
-                                                                case "dificil":
-                                                                cons = 2;   
-                                                                break;
-                                                            }
-                                                            break;
-                                                        case "spamming":
-                                                            switch (d.getDif_dif()){
-                                                                case "facil":
-                                                                cons = 3;   
-                                                                break;
-                                                                case "dificil":
-                                                                cons = 4;   
-                                                                break;
-                                                            }
-                                                            break;
-                                                        case "ejecutables":
-                                                            switch (d.getDif_dif()){
-                                                                case "facil":
-                                                                cons = 5;   
-                                                                break;
-                                                                case "dificil":
-                                                                cons = 6;   
-                                                                break;
-                                                            }
-                                                            break;
-                                                        case "links":
-                                                            switch (d.getDif_dif()){
-                                                                case "facil":
-                                                                cons = 7;   
-                                                                break;
-                                                                case "dificil":
-                                                                cons = 8;   
-                                                                break;
-                                                            }
-                                                            break;
-                                                    }
+                                                    
                                                 %>
                                                     <input type="hidden" name="facil" value="facil" class="dropdown-item" readonly>
                                                     <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="id" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="id" value="<%=blo.getNom_blo()%>" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="actividad" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="bloque" value="<%=blo.getNom_blo()%>" class="dropdown-item" readonly>
                                                     <input type="submit" id="boton" class="dropdown-item" value="Fácil">
                                                 </form>
                                                 <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
                                                     <input type="hidden" name="dificil" value="dificil" class="dropdown-item" readonly>
                                                     <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="actividad" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
+                                                    <input type="hidden" name="bloque" value="<%=blo.getNom_blo()%>" class="dropdown-item" readonly>
                                                     <input type="submit" id="boton" class="dropdown-item" value="Difícil">
                                                 </form>
                                             </ul>

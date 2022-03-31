@@ -637,6 +637,8 @@ public class Administrador{
     //cambia la dificultad dentro de la tabla de consultas que es la que mostrara las
     //dificultades dentro de la consulta de actividades y mostrara el cambio en las cuentas
     //de los usuarios cuando inicien sesion (supuestamente)
+    //Recoge el bloque, la actividad del bloque junto con su dificultad
+    //la id va de 1 a 8, dependiendo el caso a cambiar. Los impares son dificultades faciles y los pares dificiles
     public static int CambioDifGen(String blo, String act, String dif, int id ) throws SQLException{
         Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
@@ -647,8 +649,11 @@ public class Administrador{
          String q = "UPDATE consultas SET dif_dif = ? \n" +
                     "WHERE nom_blo = ? AND nom_act = ? AND id_act_blo = ? ;";   
          ps = con.prepareStatement(q);
-         
-         rs = ps.executeQuery();
+         ps.setString(1, dif);
+         ps.setString(2, blo);
+         ps.setString(3, act);
+         ps.setInt(4, id);
+         estatus = ps.executeUpdate();
             System.out.println("Update dificultad exitoso");
         }catch(Exception e){
             System.out.println("Error al actualizar la dificultad");
