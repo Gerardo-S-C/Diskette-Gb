@@ -82,11 +82,11 @@
                         <div class="descripcion">
                             <h2>Links</h2>
                             <br>
-                            <p>¿Cómo identificar el phishing? Aqui mismo podras experimentar e identificarlo!</p>
+                            <p>¿Cómo identificar un virus? ¿Te atreves a intentarlo?</p>
                             <div class="botones">
                                 <p>Iniciar</p>
-                                <a type="button" class="btn-material" href=".html">Fácil</a>
-                                <a type="button" class="btn-material" href=".html">Difícil</a>
+                                <a type="button" class="btn-material" href="buscador_virus_dif.html">Fácil</a>
+                                <a type="button" class="btn-material" href="buscador_virus_dif2.html">Difícil</a>
                             </div>
                         </div>
                     </div>

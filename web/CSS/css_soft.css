@@ -1,0 +1,19 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+header{
+    background: #0277BD;
+    color: white;
+    height: 90px;
+    width: 100%;
+}
+body{
+    height: 60%;
+    width: 80;
+    
+}
+img{
+    margin-top: 10px;
+    height: 80px;
+    margin-left: 20px;
+}
