@@ -72,17 +72,22 @@
                     </div>
                 </div>
                 <div class="virus">
-                    <div class="img">
-                        <img src="./img/links.png" class="imgp">
+                    <div class="titulo">
+                        <h2>VIRUS</h2>
                     </div>
-                    <div class="descripcion">
-                        <h2>Links</h2>
-                        <br>
-                        <p>¿Cómo identificar el phishing? Aqui mismo podras experimentar e identificarlo!</p>
-                        <div class="botones">
-                            <p>Iniciar</p>
-                            <a type="button" class="btn-material" href="simulacion_buscar.html">Fácil</a>
-                            <a type="button" class="btn-material" href="simulacion_buscar2.html">Difícil</a>
+                    <div class="acts">
+                        <div class="img">
+                            <img src="./img/linkss.png" class="imgp">
+                        </div>
+                        <div class="descripcion">
+                            <h2>Links</h2>
+                            <br>
+                            <p>¿Cómo identificar el phishing? Aqui mismo podras experimentar e identificarlo!</p>
+                            <div class="botones">
+                                <p>Iniciar</p>
+                                <a type="button" class="btn-material" href=".html">Fácil</a>
+                                <a type="button" class="btn-material" href=".html">Difícil</a>
+                            </div>
                         </div>
                     </div>
                 </div>
