@@ -56,15 +56,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (User login)");
+                    System.out.println("ResultSet closed (User login) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User login)");
+                    System.out.println("PreparedStatement closed (User login) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User login)");
+                    System.out.println("Connection closed (User login) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -97,15 +97,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (User log name)");
+                    System.out.println("ResultSet closed (User log name) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User log name)");
+                    System.out.println("PreparedStatement closed (User log name) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User log name)");
+                    System.out.println("Connection closed (User log name) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -135,15 +135,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (User email by name)");
+                    System.out.println("ResultSet closed (User email by name) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User email by name)");
+                    System.out.println("PreparedStatement closed (User email by name) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User email by name)");
+                    System.out.println("Connection closed (User email by name) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -173,15 +173,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (User pass by email)");
+                    System.out.println("ResultSet closed (User pass by email) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User pass by email)");
+                    System.out.println("PreparedStatement closed (User pass by email) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User pass by email)");
+                    System.out.println("Connection closed (User pass by email) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -211,7 +211,7 @@ public class accionesUsu extends Conexion{
                 "on act_dif.id_act_dif = act_blo.id_act_dif\n" +
                 "\n" +
                 "\n" +
-                "where not exists (select nom_usu, nom_blo, nom_act, id_asig, id_act_blo\n" +
+                "where not exists (select nom_usu, nom_blo, nom_act, id_asig, id_act_blo, estatus\n" +
                 "from consultas where usuario.nom_usu = consultas.nom_usu \n" +
                 "AND bloques.nom_blo = consultas.nom_blo \n" +
                 "AND actividades.nom_act = consultas.nom_act);";
@@ -225,15 +225,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Asignacion Simu)");
+                    System.out.println("ResultSet closed (Asignacion Simu) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Asignacion Simu)");
+                    System.out.println("PreparedStatement closed (Asignacion Simu) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Asignacion Simu)");
+                    System.out.println("Connection closed (Asignacion Simu) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -277,15 +277,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Aumento EZ)");
+                    System.out.println("ResultSet closed (Aumento EZ) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Aumento EZ)");
+                    System.out.println("PreparedStatement closed (Aumento EZ) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Aumento EZ)");
+                    System.out.println("Connection closed (Aumento EZ) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -331,15 +331,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Aumento HD)");
+                    System.out.println("ResultSet closed (Aumento HD) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Aumento HD)");
+                    System.out.println("PreparedStatement closed (Aumento HD) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Aumento HD)");
+                    System.out.println("Connection closed (Aumento HD) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -375,7 +375,7 @@ public class accionesUsu extends Conexion{
                 usu.setNom_usu(rs.getString(2));
                 usu.setDif_dif(rs.getString(5));
                 usu.setPro_dif_dif1(rs.getString(6));   
-                usu.setPro_dif(rs.getString(9));
+                usu.setPro_dif(rs.getString(10));
             }
             System.out.println("Usuario asignado, encontrado para el promedio");
         }catch(Exception e){
@@ -386,15 +386,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Asig Prom)");
-                }
-                if(ps != null){
-                    ps.close();
-                    System.out.println("PreparedStatement closed (Asig Prom)");
+                    System.out.println("ResultSet closed (Asig Prom) "+rs);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Asig Prom)");
+                    System.out.println("Connection closed (Asig Prom) "+con);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Asig Prom) "+ps);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -415,15 +415,13 @@ public class accionesUsu extends Conexion{
             ps = con.prepareStatement(q);
             ps.setString(1, nombre);
             rs = ps.executeQuery();
-
             if(rs.next()){
                 usu.setId(rs.getInt(1));
                 usu.setNom_usu(rs.getString(2));
                 usu.setDif_dif(rs.getString(5));
                 usu.setPro_dif_dif1(rs.getString(6));   
-                usu.setPro_dif(rs.getString(9));
+                usu.setPro_dif(rs.getString(10));
             }
-            System.out.println("Usuario asignado, encontrado para el promedio TOT");
         }catch(Exception e){
             System.out.println("Error al buscar al usuario asignado buscarUsuAsigProm");
             System.out.println(e.getMessage());
@@ -432,15 +430,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Asig Prom)");
+                    System.out.println("ResultSet closed (Asig Prom) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Asig Prom)");
+                    System.out.println("PreparedStatement closed (Asig Prom) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Asig Prom)");
+                    System.out.println("Connection closed (Asig Prom) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -484,15 +482,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Asig Prom)");
+                    System.out.println("ResultSet closed (Asig Prom) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Asig Prom)");
+                    System.out.println("PreparedStatement closed (Asig Prom) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Asig Prom)");
+                    System.out.println("Connection closed (Asig Prom) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -534,15 +532,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Asig Prom)");
+                    System.out.println("ResultSet closed (Asig Prom) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Asig Prom)");
+                    System.out.println("PreparedStatement closed (Asig Prom) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Asig Prom)");
+                    System.out.println("Connection closed (Asig Prom) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -585,15 +583,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Usu_DifHD)");
+                    System.out.println("ResultSet closed (Usu_DifHD) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Usu_DifHD)");
+                    System.out.println("PreparedStatement closed (Usu_DifHD) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Usu_DifHD)");
+                    System.out.println("Connection closed (Usu_DifHD) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -602,7 +600,84 @@ public class accionesUsu extends Conexion{
         }
         return usu;
     }
-
+    
+    public static int UsuActivo(String nombre) throws SQLException{
+        Connection con=Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            abrir();
+            String q2 = "update consultas set estatus = 0 where nom_usu = ?";
+            ps = con.prepareStatement(q2);
+            ps.setString(1, nombre);
+            estatus = ps.executeUpdate();
+            cerrar();
+            System.out.println("Estado del usuario cambiado a \"Activo\" ");
+        }catch(Exception e){
+            System.out.println("Error, en la sintaxis, no se pudo actualizar el estado");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Activo) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Activo) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Activo) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return estatus;
+    }
+    
+    public static int UsuInactivo(String nombre) throws SQLException{
+        Connection con=Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            abrir();
+            String q2 = "update consultas set estatus = 1 where nom_usu = ?";
+            ps = con.prepareStatement(q2);
+            ps.setString(1, nombre);
+            estatus = ps.executeUpdate();
+            cerrar();
+            System.out.println("Estado del usuario cambiado a \"Inactivo\" ");
+        }catch(Exception e){
+            System.out.println("Error, en la sintaxis, no se pudo actualizar el estado");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Inactivo) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Inactivo) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Inactivo) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return estatus;
+    }
     //Este metodo es para consultar la lista de usuarios registrados, sin importar si hayan iniciado 
     //sesion o no para su asignacion de bloques y actividades
 //    public static List<Usuario> consultaGral(){
@@ -663,15 +738,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (open)");
+                    System.out.println("ResultSet closed (open) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (open)");
+                    System.out.println("PreparedStatement closed (open) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (open)");
+                    System.out.println("Connection closed (open) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -696,15 +771,15 @@ public class accionesUsu extends Conexion{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (close)");
+                    System.out.println("ResultSet closed (close) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (close)");
+                    System.out.println("PreparedStatement closed (close) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (close)");
+                    System.out.println("Connection closed (close) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());

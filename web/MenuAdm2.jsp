@@ -28,6 +28,7 @@
             <div class="list-container">
                 <ul class="lists">
                     <li><a href="MenuAdm.jsp">Usuarios</a></li>
+                    <li><a href="MenuAdm3.jsp">Usuarios Inactivos</a></li>
                     <li><a href="MenuAdm2.jsp" class="activo">Actividades</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>
                 </ul>

@@ -28,6 +28,7 @@
             <div class="list-container">
                 <ul class="lists">
                     <li><a href="MenuAdm.jsp" class="activo">Usuarios</a></li>
+                    <li><a href="MenuAdm3.jsp">Usuarios Inactivos</a></li>
                     <li><a href="MenuAdm2.jsp">Actividades</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>
                 </ul>
@@ -48,6 +49,10 @@
                         List<Actividades> listaact = Administrador.ConsActividades();
                         List<Dificultades> listdif = Administrador.ConsDificultadess();
                         for (Usuario u : lista) {
+                            UsuarioConsulta Estatus = Administrador.EstatusUsuario(u.getNombre());
+                            int Stat = Estatus.getEstatus();
+                            if(Stat<1){
+                                System.out.println("Usuario "+u.getNombre()+" activo");
                             UsuarioConsulta usuCTOT = accionesUsu.buscarUsuAsigPromUsuTOT(u.getNombre());
                             String progresoTot = usuCTOT.getPro_dif();
                     %>
@@ -79,10 +84,10 @@
                                     System.out.println("dificil "+progresod);
                             %>
                             <style>
-                                .barraestafaf<%=actblo.getNom_act()%>::after{
+                                .barraestafaf<%=actblo.getNom_act()%><%=u.getId()%>::after{
                                     --barraavance:<%=progresof + "%"%>;
                                 }
-                                .barraestafad<%=actblo.getNom_act()%>::after{
+                                .barraestafad<%=actblo.getNom_act()%><%=u.getId()%>::after{
                                     --barraavance:<%=progresod + "%"%>;
                                 }
                             </style>
@@ -91,26 +96,30 @@
                             </div>
                             <div class="progresousu">
                                 <br>
-                                <p class="PF">Progreso Fácil</p> <div class="barraestafa3 barraestafaf<%=actblo.getNom_act()%>"></div>
+                                <p class="PF">Progreso Fácil</p> <div class="barraestafa3 barraestafaf<%=actblo.getNom_act()%><%=u.getId()%>"></div>
                                 <br>
-                                <p class="PD">Progreso Difícil</p> <div class="barraestafa5 barraestafad<%=actblo.getNom_act()%>"> </div>
+                                <p class="PD">Progreso Difícil</p> <div class="barraestafa5 barraestafad<%=actblo.getNom_act()%><%=u.getId()%>"> </div>
                             </div>
                             <br>
                             <%
                                     }
                                 }
                             %>
-                            <form name="BorrarUsu" method="post" id="form" action="BorrarUsu">
+                            <form name="BajaUsu" method="post" id="form" action="BajaUsu">
                                         <br>
                                         <input type="hidden" name="id" value="<%=u.getId()%>" readonly>
                                         <input type="hidden" name="nombre" value="<%=u.getNombre()%>" readonly>
-                                        <input type="submit" id="boton" class="btn-material" value="Dar de baja">
+                                        <input type="submit" id="boton" class="btn-material" value="Stand By">
                             </form>
                         <br>
                         </div>
                         </div>
                     </div>
                     <%
+                            }
+                            else if(Stat==1){
+                            System.out.println("Usuario "+u.getNombre()+" inactivo, consultar apartado \"BAJAS\" ");
+                            }
                         }
                     %>
                 </div>

@@ -11,7 +11,7 @@ package Modelo;
  */
 public class Usuario {
     //datos generales del usuario
-    private int id;
+    private int id,estatus;
     private String nombre, password, correo;
     
     public Usuario (){
@@ -48,6 +48,14 @@ public class Usuario {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
     }
     
     

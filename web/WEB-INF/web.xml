@@ -5,6 +5,10 @@
         <servlet-class>Servlet.BorrarUsu</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>BajaUsu</servlet-name>
+        <servlet-class>Servlet.BajaUsu</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>GuardarUsu</servlet-name>
         <servlet-class>Servlet.GuardarUsu</servlet-class>
     </servlet>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>BorrarUsu</servlet-name>
         <url-pattern>/BorrarUsu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BajaUsu</servlet-name>
+        <url-pattern>/BajaUsu</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GuardarUsu</servlet-name>

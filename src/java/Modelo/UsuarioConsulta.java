@@ -10,7 +10,7 @@ package Modelo;
  * @author illum
  */
 public class UsuarioConsulta {
-    private int id, id_asig, id_act_blo;
+    private int id, id_asig, id_act_blo, estatus;
     private String nom_usu, nom_blo, nom_act, dif_dif, pro_dif, pro_dif_dif1, pro_dif_dif2;
     
     public UsuarioConsulta(){
@@ -95,6 +95,14 @@ public class UsuarioConsulta {
 
     public void setPro_dif_dif2(String pro_dif_dif2) {
         this.pro_dif_dif2 = pro_dif_dif2;
+    }
+
+    public int getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(int estatus) {
+        this.estatus = estatus;
     }
     
 }

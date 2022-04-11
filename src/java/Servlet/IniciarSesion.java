@@ -50,6 +50,7 @@ public class IniciarSesion extends HttpServlet {
                     HttpSession session = request.getSession(true);
                     String NomUsu = au.getNameByEmail(correo);
                     au.AsignarSimulaciones();
+                    au.UsuActivo(NomUsu);
                     //System.out.println(NomUsu);
                     session.setAttribute("Usuario", NomUsu);
                     response.sendRedirect("MenUsuario.jsp");

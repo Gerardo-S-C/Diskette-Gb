@@ -65,20 +65,25 @@
                                 <div class="botones">
                                     <p>Iniciar</p>
                                     <a type="button" class="btn-material" href="buscador.html">Fácil</a>
-                                    <a type="button" class="btn-material" href="">Difícil</a>
+                                    <a type="button" class="btn-material" href="buscador2.html">Difícil</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="virus">
-                    <div class="titulo">
-                        <h2>VIRUS</h2>
+                    <div class="img">
+                        <img src="./img/links.png" class="imgp">
                     </div>
-                    <div class="acts">
-                        <h2>PRÓXIMAMENTE</h2>
-                        <div class="ejecutables"></div>
-                        <div class="links"></div>
+                    <div class="descripcion">
+                        <h2>Links</h2>
+                        <br>
+                        <p>¿Cómo identificar el phishing? Aqui mismo podras experimentar e identificarlo!</p>
+                        <div class="botones">
+                            <p>Iniciar</p>
+                            <a type="button" class="btn-material" href="simulacion_buscar.html">Fácil</a>
+                            <a type="button" class="btn-material" href="simulacion_buscar2.html">Difícil</a>
+                        </div>
                     </div>
                 </div>
             </div>

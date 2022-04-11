@@ -46,15 +46,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Admin login)");
+                    System.out.println("ResultSet closed (Admin login) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Admin login)");
+                    System.out.println("PreparedStatement closed (Admin login) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Admin login)");
+                    System.out.println("Connection closed (Admin login) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -96,15 +96,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (User register)");
+                    System.out.println("ResultSet closed (User register) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User register)");
+                    System.out.println("PreparedStatement closed (User register) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User register)");
+                    System.out.println("Connection closed (User register) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -114,6 +114,7 @@ public class Administrador{
         return estatus;
         
     }
+    
     //Borra a cualquier usuario del sistema
     public static int borrarUsuariotablaUsuario(int id){
         Connection con = Conexion.getConexion();
@@ -148,15 +149,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (User del TBUsu)");
+                    System.out.println("ResultSet closed (User del TBUsu) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User del TBUsu)");
+                    System.out.println("PreparedStatement closed (User del TBUsu) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User del TBUsu)");
+                    System.out.println("Connection closed (User del TBUsu) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -165,6 +166,7 @@ public class Administrador{
         }
     return estatus;
     }
+    
     //Borra las asignaciones del usuario borrado
     public static int borrarUsuariotablaAsignacion(int id){
         Connection con = Conexion.getConexion();
@@ -198,15 +200,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (User del TBAsig)");
+                    System.out.println("ResultSet closed (User del TBAsig) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User del TBAsig)");
+                    System.out.println("PreparedStatement closed (User del TBAsig) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User del TBAsig)");
+                    System.out.println("Connection closed (User del TBAsig) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -215,6 +217,7 @@ public class Administrador{
         }
     return estatus;
     }
+    
     //Borra la asignacion de todas las actividades para consulta del sistema
     public static int borrarUsuariotablaConsulta(String nom){
         Connection con = Conexion.getConexion();
@@ -234,11 +237,11 @@ public class Administrador{
             try{
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (User del TBConsulta)");
+                    System.out.println("PreparedStatement closed (User del TBConsulta) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (User del TBConsulta)");
+                    System.out.println("Connection closed (User del TBConsulta) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -271,15 +274,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Admin log name)");
+                    System.out.println("ResultSet closed (Admin log name) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Admin log name)");
+                    System.out.println("PreparedStatement closed (Admin log name) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Admin log name)");
+                    System.out.println("Connection closed (Admin log name) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -288,7 +291,6 @@ public class Administrador{
         }     
         return null;
     }
-    
     
     //Resultado de la consulta de los usuarios:
     /*
@@ -325,15 +327,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Consulta USU)");
+                    System.out.println("ResultSet closed (Consulta USU) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Consulta USU)");
+                    System.out.println("PreparedStatement closed (Consulta USU) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta USU)");
+                    System.out.println("Connection closed (Consulta USU) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -344,7 +346,6 @@ public class Administrador{
     return listaUsu;
     }
     
-
     //Esta es para la parte de actividades del administrador
     //solo mostrará lo que hay asignado, aun no se moveran de lugar
     //las actividades ni bloques ni dificultades, solo será visual
@@ -378,15 +379,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Consulta BLO)");
+                    System.out.println("ResultSet closed (Consulta BLO) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Consulta BLO)");
+                    System.out.println("PreparedStatement closed (Consulta BLO) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta BLO)");
+                    System.out.println("Connection closed (Consulta BLO) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -396,7 +397,6 @@ public class Administrador{
         return listblo;
     }
     
-    
     //Este ultimo metodo esta incompletos, aun no se les asigna un uso real//
     /*--------------------------------------------------------------------------*/
     //Estos metodos son un conjunto individual de las tablas para consultar sus datos y poder moverlos
@@ -405,7 +405,6 @@ public class Administrador{
     Bloques : {1}[Estafas]{2}[Virus]
     Actividades : {1}[phishing]{2}[spamming]{3}[.exe]
     Dificultades : {1}[facil]{2}[dificil]*/
-    
     public static List<Bloques> ConsBloques() throws SQLException{
         Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
@@ -431,15 +430,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Consulta BLOGEN)");
+                    System.out.println("ResultSet closed (Consulta BLOGEN) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Consulta BLOGEN)");
+                    System.out.println("PreparedStatement closed (Consulta BLOGEN) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta BLOGEN)");
+                    System.out.println("Connection closed (Consulta BLOGEN) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -475,15 +474,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Consulta ACTGEN)");
+                    System.out.println("ResultSet closed (Consulta ACTGEN) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Consulta ACTGEN)");
+                    System.out.println("PreparedStatement closed (Consulta ACTGEN) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta ACTGEN)");
+                    System.out.println("Connection closed (Consulta ACTGEN) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -492,7 +491,6 @@ public class Administrador{
         }
         return lista;
     }
-    
     
     public static List<Dificultades> ConsDificultadess() throws SQLException{
         Connection con = Conexion.getConexion();
@@ -519,15 +517,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (Consulta DIFGEN)");
+                    System.out.println("ResultSet closed (Consulta DIFGEN) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (Consulta DIFGEN)");
+                    System.out.println("PreparedStatement closed (Consulta DIFGEN) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta DIFGEN)");
+                    System.out.println("Connection closed (Consulta DIFGEN) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -573,15 +571,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (ACT_BLO)");
+                    System.out.println("ResultSet closed (ACT_BLO) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (ACT_BLO)");
+                    System.out.println("PreparedStatement closed (ACT_BLO) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta ACT_BLO)");
+                    System.out.println("Connection closed (Consulta ACT_BLO) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -617,15 +615,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (consultas)");
+                    System.out.println("ResultSet closed (consultas) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (consultas)");
+                    System.out.println("PreparedStatement closed (consultas) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta tabla consultas)");
+                    System.out.println("Connection closed (Consulta tabla consultas) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -634,6 +632,7 @@ public class Administrador{
         }
         return cons;
     }
+    
     //cambia la dificultad dentro de la tabla de consultas que es la que mostrara las
     //dificultades dentro de la consulta de actividades y mostrara el cambio en las cuentas
     //de los usuarios cuando inicien sesion (supuestamente)
@@ -644,7 +643,6 @@ public class Administrador{
         PreparedStatement ps=null;
         ResultSet rs=null;
         int estatus = 0;
-        
         try{
          String q = "UPDATE consultas SET dif_dif = ? \n" +
                     "WHERE nom_blo = ? AND nom_act = ? AND id_act_blo = ? ;";   
@@ -663,15 +661,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (consultas)");
+                    System.out.println("ResultSet closed (consultas) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (consultas)");
+                    System.out.println("PreparedStatement closed (consultas) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (Consulta tabla consultas)");
+                    System.out.println("Connection closed (Consulta tabla consultas) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -704,15 +702,15 @@ public class Administrador{
             try{
                 if(rs != null){
                     rs.close();
-                    System.out.println("ResultSet closed (CambioDif_tb_dificultades)");
+                    System.out.println("ResultSet closed (CambioDif_tb_dificultades) "+rs);
                 }
                 if(ps != null){
                     ps.close();
-                    System.out.println("PreparedStatement closed (CambioDif_tb_dificultades)");
+                    System.out.println("PreparedStatement closed (CambioDif_tb_dificultades) "+ps);
                 }
                 if(con != null){
                     con.close();
-                    System.out.println("Connection closed (CambioDif_tb_dificultades)");
+                    System.out.println("Connection closed (CambioDif_tb_dificultades) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -721,4 +719,46 @@ public class Administrador{
         }
     }
     
+    public static UsuarioConsulta EstatusUsuario(String nombre) throws SQLException{
+        UsuarioConsulta usu = new UsuarioConsulta();
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+            String q = "SELECT *, AVG(estatus) FROM consultas \n" +
+                       "where nom_usu = ?;";
+            ps = con.prepareStatement(q);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                usu.setEstatus(rs.getInt(10));
+            }
+            System.out.println("Usuario asignado, encontrado para el estatus");
+        }catch(Exception e){
+            System.out.println("Error al buscar al usuario asignado EstatusUsuario");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Estatus) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Estatus) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Estatus) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return usu;
+    }
 }
