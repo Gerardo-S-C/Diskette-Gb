@@ -59,17 +59,19 @@ public class ActualizarDif1 extends HttpServlet {
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }else if(id==2){
                         id2=2;
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                 }
                 else if(actividad.equals(spamming)){
@@ -78,17 +80,19 @@ public class ActualizarDif1 extends HttpServlet {
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }else if(id==2){
                         id2=4;
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                 }
                 else if(actividad.equals(ejecutables)){
@@ -97,17 +101,19 @@ public class ActualizarDif1 extends HttpServlet {
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }else if(id==2){
                         id2=6;
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                 }
                 else if(actividad.equals(links)){
@@ -116,17 +122,19 @@ public class ActualizarDif1 extends HttpServlet {
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }else if(id==2){
                         id2=8;
                         System.out.println(id2+" id2");
                         //Administrador.CambioDif_tb_dificultades(facil, id);
                         Administrador.CambioDifGen(bloque, actividad, facil, id2);
-                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, facil, id2);
+                        System.out.println("Actulizado a facil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                 }
             }else if (dificil!=null){
@@ -136,18 +144,20 @@ public class ActualizarDif1 extends HttpServlet {
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         System.out.println(id2+" id2");
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                     else if (id==2){
                         id2=2;
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         System.out.println(id2+" id2");
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                 }
                 else if(actividad.equals(spamming)){
@@ -155,16 +165,18 @@ public class ActualizarDif1 extends HttpServlet {
                         id2=3;
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");   
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");   
                     }else if(id==2){
                         id2=4;
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);;
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp"); 
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp"); 
                     }
                 }
                 else if(actividad.equals(ejecutables)){
@@ -173,18 +185,20 @@ public class ActualizarDif1 extends HttpServlet {
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         System.out.println(id2+" id2");
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                     else if (id==2){
                         id2=6;
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         System.out.println(id2+" id2");
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                 }
                 else if(actividad.equals(links)){
@@ -193,18 +207,20 @@ public class ActualizarDif1 extends HttpServlet {
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         System.out.println(id2+" id2");
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                     else if (id==2){
                         id2=8;
                         //Administrador.CambioDif_tb_dificultades(dificil, id);
                         System.out.println(id2+" id2");
                         Administrador.CambioDifGen(bloque, actividad, dificil, id2);
-                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id);
-                        response.sendRedirect("newjsp.jsp");
-                        //response.sendRedirect("MenuAdm2.jsp");
+                        Administrador.CambioDifGenADM(bloque, actividad, dificil, id2);
+                        System.out.println("Actulizado a dificil la actividad "+actividad+" de id_dif "+id+" del bloque "+bloque+"\n");
+                        //response.sendRedirect("newjsp.jsp");
+                        response.sendRedirect("MenuAdm2.jsp");
                     }
                 }
             }else{

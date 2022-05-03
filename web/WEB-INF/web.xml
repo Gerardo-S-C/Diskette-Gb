@@ -40,6 +40,26 @@
         <servlet-name>ActualizarBlo</servlet-name>
         <servlet-class>Servlet.ActualizarBlo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AumentarProgresoHDSP</servlet-name>
+        <servlet-class>Servlet.AumentarProgresoHDSP</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AumentarProgresoEZLK</servlet-name>
+        <servlet-class>Servlet.AumentarProgresoEZLK</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AumentarProgresoHDLK</servlet-name>
+        <servlet-class>Servlet.AumentarProgresoHDLK</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AumentarProgresoEZEX</servlet-name>
+        <servlet-class>Servlet.AumentarProgresoEZEX</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AumentarProgresoHDEX</servlet-name>
+        <servlet-class>Servlet.AumentarProgresoHDEX</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BorrarUsu</servlet-name>
         <url-pattern>/BorrarUsu</url-pattern>
@@ -79,6 +99,26 @@
     <servlet-mapping>
         <servlet-name>ActualizarBlo</servlet-name>
         <url-pattern>/ActualizarBlo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarProgresoHDSP</servlet-name>
+        <url-pattern>/AumentarProgresoHDSP</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarProgresoEZLK</servlet-name>
+        <url-pattern>/AumentarProgresoEZLK</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarProgresoHDLK</servlet-name>
+        <url-pattern>/AumentarProgresoHDLK</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarProgresoEZEX</servlet-name>
+        <url-pattern>/AumentarProgresoEZEX</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AumentarProgresoHDEX</servlet-name>
+        <url-pattern>/AumentarProgresoHDEX</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

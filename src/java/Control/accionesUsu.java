@@ -18,6 +18,7 @@ public class accionesUsu extends Conexion{
     public boolean inicioSesion(String correo, String pass){
         Connection con = Conexion.getConexion();
         PreparedStatement ps=null;
+        PreparedStatement ps2=null;
         ResultSet rs=null;
         int estatus = 0;
         try{
@@ -32,11 +33,18 @@ public class accionesUsu extends Conexion{
                 System.out.println(id_usu);
                 //Asigna los bloques y actividades al usuario si es nuevo
                 //Si no lo es, pasa por alto este parametro
-                String p = "INSERT INTO asignacion (`id_usu`, `id_blo`) "
-                        + "VALUES (?, '1'),(?, '2');";
-                ps=getConexion().prepareStatement(p);
+                String p = "insert into asignacion (id_usu, id_blo)\n" +
+                            "select ?, 1 from asignacion \n" +
+                            "where not exists (select id_usu, id_blo from asignacion where id_usu = ? and id_blo = 1);";
+                String p2 = "insert into asignacion (id_usu, id_blo)\n" +
+                            "select ?, 2 from asignacion \n" +
+                            "where not exists (select id_usu, id_blo from asignacion where id_usu = ? and id_blo = 2);";
+                ps=con.prepareStatement(p);
+                ps2=con.prepareStatement(p2);
                 ps.setInt(1, id_usu);
                 ps.setInt(2, id_usu);
+                ps2.setInt(1, id_usu);
+                ps2.setInt(2, id_usu);
                 estatus=ps.executeUpdate();
 //                System.out.println(estatus);
             }
@@ -61,6 +69,10 @@ public class accionesUsu extends Conexion{
                 if(ps != null){
                     ps.close();
                     System.out.println("PreparedStatement closed (User login) "+ps);
+                }
+                if(ps2 != null){
+                    ps2.close();
+                    System.out.println("PreparedStatement closed (User login) "+ps2);
                 }
                 if(con != null){
                     con.close();
@@ -261,6 +273,7 @@ public class accionesUsu extends Conexion{
             ps = con.prepareStatement(q2);
             String progresoEZ=usucon.getPro_dif_dif1();
             int progreso = Integer.parseInt(progresoEZ);
+            System.out.println("\n"+progreso+"\n"+usucon.getNom_usu()+"\n"+usucon.getNom_blo()+"\n"+usucon.getNom_act()+"\n"+usucon.getDif_dif());
             ps.setInt(1, progreso);
             ps.setString(2, usucon.getNom_usu());
             ps.setString(3, usucon.getNom_blo());
@@ -292,7 +305,6 @@ public class accionesUsu extends Conexion{
                 System.out.println(e2.getStackTrace());
             }
         }
-
         return estatus;
     }
     
@@ -363,11 +375,13 @@ public class accionesUsu extends Conexion{
         int estatus = 0;
         try{
             String q = "SELECT *, AVG(pro_dif) FROM consultas \n" +
-                       "where nom_usu = ? and nom_blo = ? and nom_act = ?;";
+                       "where nom_usu = ? "
+                    //+  "and nom_blo = ? "
+                    +  "and nom_act = ?;";
             ps = con.prepareStatement(q);
             ps.setString(1, nombre);
-            ps.setString(2, blo);
-            ps.setString(3, act);
+            //ps.setString(2, blo);
+            ps.setString(2, act);
             rs = ps.executeQuery();
 
             if(rs.next()){

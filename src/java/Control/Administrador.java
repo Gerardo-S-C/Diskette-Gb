@@ -11,6 +11,8 @@ package Control;
  */
 
 import static Control.Conexion.getConexion;
+import static Control.accionesUsu.abrir;
+import static Control.accionesUsu.cerrar;
 import Modelo.*;
 import java.sql.*;
 import java.util.*;
@@ -447,7 +449,49 @@ public class Administrador{
         }
         return lista;
     }
-    
+    public static List<Bloques> ConsBloquesNVO(String nom) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Bloques> lista = new ArrayList<Bloques>();
+            try{
+                String q = "select distinct nom_blo from consultas where nom_usu = ? ;";
+                ps = con.prepareStatement(q);
+                ps.setString(1, nom);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    Bloques blo = new Bloques();
+                    //blo.setId_blo(rs.getInt(1));
+                    blo.setNom_blo(rs.getString(1));
+                    lista.add(blo);
+            }
+            System.out.println("Bloques consultadas correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar bloques");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta BLOGEN 2) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta BLOGEN 2) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta BLOGEN 2) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
     //Metodos para pura consulta (Mostrar en admin y usuario los datos desde la BD)
     public static List<Actividades> ConsActividades() throws SQLException{
         Connection con = Conexion.getConexion();
@@ -483,6 +527,50 @@ public class Administrador{
                 if(con != null){
                     con.close();
                     System.out.println("Connection closed (Consulta ACTGEN) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
+    
+    public static List<Actividades> ConsActividadesNVO(String nom) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Actividades> lista = new ArrayList<Actividades>();
+        try{
+            String q = "select distinct nom_act from consultas where nom_usu = ? ;";
+            ps = con.prepareStatement(q);
+            ps.setString(1, nom);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Actividades act = new Actividades();
+                //act.setId_act(rs.getInt(1));
+                act.setNom_act(rs.getString(1));
+                lista.add(act);
+            }
+            System.out.println("Actividades consultadas correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta ACTGEN 2) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta ACTGEN 2) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta ACTGEN 2) "+con);
                 }
             }catch(Exception e2){
                 System.out.println(e2.getMessage());
@@ -534,7 +622,50 @@ public class Administrador{
         }
         return lista;
     }
-
+    
+    public static List<Dificultades> ConsDificultadessNVO() throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Dificultades> lista = new ArrayList<Dificultades>();
+            try{
+                String q = "";
+                ps = con.prepareStatement(q);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    Dificultades dif = new Dificultades();
+                    dif.setId_dif(rs.getInt(1));
+                    dif.setDif_dif(rs.getString(3));
+                    lista.add(dif);
+            }
+            System.out.println("Dificultades consultadas correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta DIFGEN) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta DIFGEN) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta DIFGEN) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
+    
     //Regresa las actividades con su respectivo bloque asignandolo a solo una dificultad
     //para evitar duplicados en la consulta
     public static List<Act_Blo> ActividadesXBloque(int bloque) throws SQLException{
@@ -676,8 +807,6 @@ public class Administrador{
                 System.out.println(e2.getStackTrace());
             }
         }
-        
-        
         return estatus;
     }
     
@@ -760,5 +889,257 @@ public class Administrador{
             }
         }
         return usu;
+    }
+    
+    //metodos para la consulta de actividades mediante la asignacion de actividades
+    //al administrador, ni de pedo documento esto, lol
+    public static List<Bloques> ConsBloquesADM() throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Bloques> lista = new ArrayList<Bloques>();
+            try{
+                String q = "select distinct nom_blo from consultas_admin order by nom_blo asc;";
+                ps = con.prepareStatement(q);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    Bloques blo = new Bloques();
+                    blo.setNom_blo(rs.getString(1));
+                    lista.add(blo);
+            }
+            System.out.println("Bloques consultados correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta BLOGENADM) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta BLOGENADM) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta BLOGENADM) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
+    
+    //consultar actividades de un bloque especifico
+    public static List<Actividades> ConsActividadesADM(String blo) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Actividades> lista = new ArrayList<Actividades>();
+            try{
+                String q = "select distinct nom_act from consultas_admin where nom_blo = ? ;";
+                ps = con.prepareStatement(q);
+                ps.setString(1, blo);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    Actividades act = new Actividades();
+                    act.setNom_act(rs.getString(1));
+                    lista.add(act);
+            }
+            System.out.println("Actividades consultados correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta ACTGENADM) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta ACTGENADM) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta ACTGENADM) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
+    
+    public static List<Dificultades> ConsDificultadesADM(String act) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        List<Dificultades> lista = new ArrayList<Dificultades>();
+            try{
+                String q = "select dif_dif,id_dif from consultas_admin where nom_act = ? ;";
+                ps = con.prepareStatement(q);
+                ps.setString(1, act);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    Dificultades dif = new Dificultades();
+                    dif.setDif_dif(rs.getString(1));
+                    dif.setId_dif(rs.getInt(2));
+                    lista.add(dif);
+            }
+            System.out.println("Dificultades consultados correctamente");
+        }catch(Exception e){
+            System.out.println("Error al buscar y asignar");
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (Consulta DIFGENADM) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (Consulta DIFGENADM) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta DIFGENADM) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return lista;
+    }
+    
+    public static int CambioDifGenADM(String blo, String act, String dif, int id ) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+         String q = "UPDATE consultas_admin SET dif_dif = ? \n" +
+                    "WHERE nom_blo = ? AND nom_act = ? AND id_act_blo = ? ;";   
+         ps = con.prepareStatement(q);
+         ps.setString(1, dif);
+         ps.setString(2, blo);
+         ps.setString(3, act);
+         ps.setInt(4, id);
+         estatus = ps.executeUpdate();
+            System.out.println("Update dificultad_adm exitoso");
+        }catch(Exception e){
+            System.out.println("Error al actualizar la dificultad");
+            System.out.println(e.getMessage()); 
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (consultasADM) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (consultasADM) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta tabla consultasADM) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return estatus;
+    }
+    
+    public static int CambioBloqueADM(String blo, String act) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+        abrir();
+         String q = "UPDATE consultas_admin SET nom_blo = ? WHERE nom_act = ? ;";   
+         ps = con.prepareStatement(q);
+         ps.setString(1, blo);
+         ps.setString(2, act);
+         estatus = ps.executeUpdate();
+         cerrar();
+            System.out.println("Update bloque_adm exitoso");
+        }catch(Exception e){
+            System.out.println("Error al actualizar el bloque");
+            System.out.println(e.getMessage()); 
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (BLOADM) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (BLOADM) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta tabla BLOADM) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return estatus;
+    }
+    public static int CambioBloque(String blo, String act) throws SQLException{
+        Connection con = Conexion.getConexion();
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        int estatus = 0;
+        try{
+        abrir();
+         String q = "UPDATE consultas SET nom_blo = ? WHERE nom_act = ? ;";   
+         ps = con.prepareStatement(q);
+         ps.setString(1, blo);
+         ps.setString(2, act);
+         estatus = ps.executeUpdate();
+         cerrar();
+            System.out.println("Update bloque exitoso");
+        }catch(Exception e){
+            System.out.println("Error al actualizar el bloque");
+            System.out.println(e.getMessage()); 
+            System.out.println(e.getStackTrace());
+        }finally{
+            try{
+                if(rs != null){
+                    rs.close();
+                    System.out.println("ResultSet closed (BLO) "+rs);
+                }
+                if(ps != null){
+                    ps.close();
+                    System.out.println("PreparedStatement closed (BLO) "+ps);
+                }
+                if(con != null){
+                    con.close();
+                    System.out.println("Connection closed (Consulta tabla BLO) "+con);
+                }
+            }catch(Exception e2){
+                System.out.println(e2.getMessage());
+                System.out.println(e2.getStackTrace());
+            }
+        }
+        return estatus;
     }
 }

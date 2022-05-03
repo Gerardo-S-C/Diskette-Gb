@@ -46,13 +46,12 @@
                     <%
                         List<Usuario> lista = Administrador.getAllUsuarios();
                         List<Bloques> listablo = Administrador.ConsBloques();
-                        List<Actividades> listaact = Administrador.ConsActividades();
-                        List<Dificultades> listdif = Administrador.ConsDificultadess();
                         for (Usuario u : lista) {
                             UsuarioConsulta Estatus = Administrador.EstatusUsuario(u.getNombre());
+                            List<Bloques> listablonvo = Administrador.ConsBloquesNVO(u.getNombre());
                             int Stat = Estatus.getEstatus();
                             if(Stat<1){
-                                System.out.println("Usuario "+u.getNombre()+" activo");
+                                System.out.println("\n Usuario "+u.getNombre()+" activo \n");
                             UsuarioConsulta usuCTOT = accionesUsu.buscarUsuAsigPromUsuTOT(u.getNombre());
                             String progresoTot = usuCTOT.getPro_dif();
                     %>
@@ -70,18 +69,25 @@
                         <div class="accordion-body">
                         <%
                             for(Bloques b : listablo){
+                                System.out.println("");
                                 System.out.println(b.getNom_blo());
                                 List<Act_Blo> injoin = Administrador.ActividadesXBloque(b.getId_blo());
                                 for(Act_Blo actblo : injoin ){
-                                    System.out.println(actblo.getNom_act());
-                                    System.out.println(u.getNombre()+" "+b.getNom_blo()+" "+actblo.getNom_act());
-                                    System.out.println("Nombre "+b.getId_blo()+" "+actblo.getId_act_blo());
                                     UsuarioConsulta usuCEZ = accionesUsu.buscarUsuAsigPromEZ(u.getNombre(),b.getNom_blo(),actblo.getNom_act());
                                     UsuarioConsulta usuCHD = accionesUsu.buscarUsuDif_dificil(u.getNombre(),b.getNom_blo(),actblo.getNom_act());
                                     String progresof = usuCEZ.getPro_dif_dif1();
                                     String progresod = usuCHD.getPro_dif_dif2();
-                                    System.out.println("facil "+progresof);
-                                    System.out.println("dificil "+progresod);
+                                    System.out.println("\n------------------------------------------");
+                                    System.out.println("Actividad: "+actblo.getNom_act());
+                                    System.out.println("------------------------------------------\n");
+                                    System.out.println("\n------------------------------------------");
+                                    System.out.println(u.getNombre()+" "+b.getNom_blo()+" "+actblo.getNom_act());
+                                    System.out.println("Nombre. ID_blo: "+b.getId_blo()+" ID_act_blo: "+actblo.getId_act_blo());
+                                    System.out.println("------------------------------------------\n");
+                                    System.out.println("\n------------------------------------------");
+                                    System.out.println("facil: "+progresof);
+                                    System.out.println("dificil: "+progresod);
+                                    System.out.println("------------------------------------------\n");
                             %>
                             <style>
                                 .barraestafaf<%=actblo.getNom_act()%><%=u.getId()%>::after{

@@ -1,8 +1,9 @@
-<%@page import="Control.accionesUsu"%>
 <%@page import="Modelo.*"%>
+<%@page import="Control.accionesUsu"%>
 <%@page import="java.util.List"%>
 <%@page import="Control.Administrador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CSS/MenuAdm2V2.css?1.0">
+    <link rel="stylesheet" href="./CSS/MenuAdmV2.css">
     <link rel="shortcut icon" href="./img/diskettelogo.jpg">
-    <title>Actividades</title>
+    <title>Usuarios</title>
 </head>
 <body>
     <header id="header">
@@ -27,120 +27,112 @@
             </div>
             <div class="list-container">
                 <ul class="lists">
-                    <li><a href="MenuAdm.jsp">Usuarios</a></li>
-                    <li><a href="MenuAdm2.jsp" class="activo">Actividades</a></li>
+                    <li><a href="MenuAdm.jsp" class="activo">Usuarios</a></li>
+                    <li><a href="MenuAdm3.jsp">Usuarios Inactivos</a></li>
+                    <li><a href="MenuAdm2.jsp">Actividades</a></li>
                     <li><a href="logout.jsp">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </nav>
-    </header>
+    </header>  
     <main>
         <section class="sec" id="menu">
             <div class="contenido">
-                <%
-                    List<Bloques> listablo = Administrador.ConsBloques();
-                    List<Actividades> listaact = Administrador.ConsActividades();
-                    List<Dificultades> listdif = Administrador.ConsDificultadess();
-                    List<Act_Blo> listcons = Administrador.Consulta();
-                    //Recorrera los bloques que hay (Estafas y Virus) para asignarlos a los acordeones
-                    // blo -> es la variable que recorrera los valores
-                    // listablo -> es la lista con los valores de los bloques
-                    for(Bloques blo : listablo){
-                        System.out.println("bloque "+blo.getNom_blo());
-                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo());  
-                        for(Act_Blo actblo : injoin ){
-                            System.out.println("actividad "+actblo.getNom_act());
-                            List<Dificultades> dif = Administrador.ConsDificultadess();
-                            for(Dificultades d : dif){
-                                System.out.println("dificultad "+d.getDif_dif());
-                                for(Act_Blo c : listcons){
-                                   System.out.println(c.getId_act_blo());
-                                   continue;
-                                }break;
-                            }break;
-                        }break;
-                    }                  
-                    for(Bloques blo : listablo ){
-                        System.out.println(blo.getNom_blo());
-                %>
-                <div class="<%=blo.getNom_blo()%>">
-                    <div class="titulo">
-                        <h2><%=blo.getNom_blo()%></h2>
-                    </div>
-                    <div class="acts">
-                        <%
-                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo()); 
-                        for(Act_Blo actblo : injoin ){
-                            System.out.println(actblo.getNom_act());
-                        %>
-                        <div class="<%=actblo.getNom_act()%>">
-                            <div class="img">
-                                <img src="./img/<%=actblo.getNom_act()%>.png" class="img<%=actblo.getNom_act()%>">
-                            </div>
-                            <div class="descripcion">
-                                <h2><%=actblo.getNom_act()%></h2>
-                                <div class="botones">
-                                    <div class="dificultades">
-                                    <%
-                                        List<Dificultades> dif = Administrador.ConsDificultadess();
-                                        for(Dificultades d : dif){                    
-                                            System.out.println(d.getId_dif()+" "+d.getDif_dif());
-                                            int cons = 0;
-                                        %>
-                                        <div class="dropdown">
-                                            <div class="tipodif">
-                                                <p><%=d.getDif_dif()%></p>
-                                            </div>                                            
-                                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Cambiar dificultad
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
-                                                <%
-                                                    
-                                                %>
-                                                    <input type="hidden" name="facil" value="facil" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="actividad" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="bloque" value="<%=blo.getNom_blo()%>" class="dropdown-item" readonly>
-                                                    <input type="submit" id="boton" class="dropdown-item" value="Fácil">
-                                                </form>
-                                                <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
-                                                    <input type="hidden" name="dificil" value="dificil" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="actividad" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
-                                                    <input type="hidden" name="bloque" value="<%=blo.getNom_blo()%>" class="dropdown-item" readonly>
-                                                    <input type="submit" id="boton" class="dropdown-item" value="Difícil">
-                                                </form>
-                                            </ul>
-                                        </div>
-                                        <br>                                       
-                                        <%                                         
-                                        }                                        
-                                        %>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                          Cambiar de bloque
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                          <li><a class="dropdown-item" href="#">Estafas</a></li>
-                                          <li><a class="dropdown-item" href="#">Virus</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <%
+                <div class="progresos">
+                    <h2>Progreso de Usuarios</h2>
+                </div>  
+                <br>
+                <div class="usuarios">
+                    <%
+                        List<Usuario> lista = Administrador.getAllUsuarios();
+                        List<Bloques> listablo = Administrador.ConsBloques();
+                        List<Bloques> listablonvo = Administrador.ConsBloquesNVO();
+                        for (Usuario u : lista) {
+                            UsuarioConsulta Estatus = Administrador.EstatusUsuario(u.getNombre());
+                            int Stat = Estatus.getEstatus();
+                            if(Stat<1){
+                                System.out.println("\n Usuario "+u.getNombre()+" activo \n");
+                            UsuarioConsulta usuCTOT = accionesUsu.buscarUsuAsigPromUsuTOT(u.getNombre());
+                            String progresoTot = usuCTOT.getPro_dif();
+                    %>
+                    <div class="accordion"> 
+                        <style>
+                            .barraestafa<%=u.getId()%>::after{
+                                --barraavance:<%=progresoTot + "%"%>;
                             }
-                        %>
+                        </style>
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <strong class="estafasact"><%=u.getNombre()%></strong><strong class="estafasact">Progreso Total</strong> 
+                                <div class="barraestafa barraestafa<%=u.getId()%>"> </div>
+                            </button>
+                        <div class="accordion-body">
+                        <%
+                            for(Bloques b : listablonvo){
+                                System.out.println("");
+                                System.out.println(b.getNom_blo());
+                                List<Act_Blo> injoin = Administrador.ActividadesXBloque(b.getId_blo());
+                                for(Act_Blo actblo : injoin ){
+                                    UsuarioConsulta usuCEZ = accionesUsu.buscarUsuAsigPromEZ(u.getNombre(),b.getNom_blo(),actblo.getNom_act());
+                                    UsuarioConsulta usuCHD = accionesUsu.buscarUsuDif_dificil(u.getNombre(),b.getNom_blo(),actblo.getNom_act());
+                                    String progresof = usuCEZ.getPro_dif_dif1();
+                                    String progresod = usuCHD.getPro_dif_dif2();
+                                    System.out.println("\n------------------------------------------");
+                                    System.out.println("Actividad: "+actblo.getNom_act());
+                                    System.out.println("------------------------------------------\n");
+                                    System.out.println("\n------------------------------------------");
+                                    System.out.println(u.getNombre()+" "+b.getNom_blo()+" "+actblo.getNom_act());
+                                    System.out.println("Nombre. ID_blo: "+b.getId_blo()+" ID_act_blo: "+actblo.getId_act_blo());
+                                    System.out.println("------------------------------------------\n");
+                                    System.out.println("\n------------------------------------------");
+                                    System.out.println("facil: "+progresof);
+                                    System.out.println("dificil: "+progresod);
+                                    System.out.println("------------------------------------------\n");
+                            %>
+                            <style>
+                                .barraestafaf<%=actblo.getNom_act()%><%=u.getId()%>::after{
+                                    --barraavance:<%=progresof + "%"%>;
+                                }
+                                .barraestafad<%=actblo.getNom_act()%><%=u.getId()%>::after{
+                                    --barraavance:<%=progresod + "%"%>;
+                                }
+                            </style>
+                            <div class="tituloact">
+                                <strong class="phishing"><%=actblo.getNom_act()%></strong>
+                            </div>
+                            <div class="progresousu">
+                                <br>
+                                <p class="PF">Progreso Fácil</p> <div class="barraestafa3 barraestafaf<%=actblo.getNom_act()%><%=u.getId()%>"></div>
+                                <br>
+                                <p class="PD">Progreso Difícil</p> <div class="barraestafa5 barraestafad<%=actblo.getNom_act()%><%=u.getId()%>"> </div>
+                            </div>
+                            <br>
+                            <%
+                                    }
+                                }
+                            %>
+                            <form name="BajaUsu" method="post" id="form" action="BajaUsu">
+                                        <br>
+                                        <input type="hidden" name="id" value="<%=u.getId()%>" readonly>
+                                        <input type="hidden" name="nombre" value="<%=u.getNombre()%>" readonly>
+                                        <input type="submit" id="boton" class="btn-material" value="Stand By">
+                            </form>
+                        <br>
+                        </div>
+                        </div>
                     </div>
+                    <%
+                            }
+                            else if(Stat==1){
+                            System.out.println("Usuario "+u.getNombre()+" inactivo, consultar apartado \"BAJAS\" ");
+                            }
+                        }
+                    %>
                 </div>
-                <%
-                    }
-                %>
             </div>
         </section>
+        
+        
     </main>
     <footer>
         <div class="container-footer-all">
@@ -210,7 +202,16 @@
       
           </div>
       </footer>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-      </body>
+
+    <!-- Filter: https://css-tricks.com/gooey-effect/ -->
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />    
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+    <script src="./JS/acordeon.js"></script>
+</body>
 </html>

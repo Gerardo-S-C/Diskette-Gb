@@ -151,12 +151,14 @@ body{
 
 .sec .contenido .Estafas{
     padding: 5px;
+    overflow: auto;
 }
 
 /*Virus*/
 
 .sec .contenido .Virus{
     padding: 5px;
+    overflow: auto;
 }
 
 /*actividades*/
@@ -170,11 +172,66 @@ body{
     border-radius: 10px;
     height: 80%;
     margin: 5px;
+    overflow: auto;
+}
+    /*scrollbar*/
+
+.acts::-webkit-scrollbar{
+    width: 12px;
+    background-color: #efefef;
+    border-radius: 8px;
 }
 
+.acts::-webkit-scrollbar-thumb{
+    background: #9faafa88;
+    border-radius: 8px;
+}
 /*phishing*/
 
 .sec .contenido .Estafas .phishing{
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.sec .contenido .Virus .phishing{
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+/*ejecutables*/
+
+.sec .contenido .Estafas .ejecutables{
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.sec .contenido .Virus .ejecutables{
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+/*links*/
+.sec .contenido .Estafas .links{
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.sec .contenido .Virus .links{
     margin: auto;
     margin-top: 30px;
     border-radius: 10px;
@@ -194,6 +251,7 @@ body{
     border-style: solid;
     border-color:#4E537A;
     border-radius: 10px;
+
 }
 
 .imgphishing{
@@ -204,6 +262,14 @@ body{
     padding: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
+    width: 100%;
+}
+
+.imgejecutables{
+    width: 100%;
+}
+
+.imglinks{
     width: 100%;
 }
 
@@ -221,6 +287,14 @@ body{
 /*spamming*/
 
 .sec .contenido .Estafas .spamming{
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.sec .contenido .Virus .spamming{
     margin: auto;
     margin-top: 30px;
     border-radius: 10px;
@@ -451,7 +525,24 @@ footer{
     .sec .contenido .Estafas .spamming{
         margin-top: 5px;
     }
-
+    .sec .contenido .Estafas .ejecutables{
+        margin-top: 5px;
+    }
+    .sec .contenido .Estafas .links{
+        margin-top: 5px;
+    }
+    .sec .contenido .Virus .phishing{
+        margin-top: 5px;
+    }
+    .sec .contenido .Virus .spamming{
+        margin-top: 5px;
+    }
+    .sec .contenido .Virus .ejecutables{
+        margin-top: 5px;
+    }
+    .sec .contenido .Virus .links{
+        margin-top: 5px;
+    }
     .btn-material{
         height: 30px;
         font-size: 12px;
@@ -498,7 +589,15 @@ footer{
     .spamming{
         height: 45%;
     }
-
+    
+    .ejecutables{
+        height: 45%;
+    }
+    
+    .links{
+        height: 45%;
+    }
+    
     .dificultades .dropdown{
         display: block;
     }
@@ -520,8 +619,12 @@ footer{
     .sec .contenido .Estafas .spamming{
         margin-top: 5px;
     }
-
-
+    .sec .contenido .Virus .ejecutables{
+        margin-top: 5px;
+    }
+    .sec .contenido .Virus .links{
+        margin-top: 5px;
+    }
     .btn-material{
         height: 20px;
         font-size: 8px;

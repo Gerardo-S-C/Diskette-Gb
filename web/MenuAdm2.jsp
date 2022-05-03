@@ -39,15 +39,24 @@
         <section class="sec" id="menu">
             <div class="contenido">
                 <%
-                    List<Bloques> listablo = Administrador.ConsBloques();
-                    List<Actividades> listaact = Administrador.ConsActividades();
-                    List<Dificultades> listdif = Administrador.ConsDificultadess();
-                    List<Act_Blo> listcons = Administrador.Consulta();
+                    List<Bloques> listablo = Administrador.ConsBloquesADM();
                     //Recorrera los bloques que hay (Estafas y Virus) para asignarlos a los acordeones
                     // blo -> es la variable que recorrera los valores
-                    // listablo -> es la lista con los valores de los bloques                
+                    // listablo -> es la lista con los valores de los bloques
+                    /*for(Bloques blo : listablo){
+                        System.out.println("bloque "+blo.getNom_blo()+"\n");
+                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo());  
+                        List<Actividades> listaact = Administrador.ConsActividadesADM(blo.getNom_blo());
+                        for(Actividades actblo : listaact ){
+                            System.out.println("actividad "+actblo.getNom_act()+" del bloque "+blo.getNom_blo()+"\n");
+                            List<Dificultades> dif = Administrador.ConsDificultadesADM(actblo.getNom_act());
+                            for(Dificultades d : dif){
+                                System.out.println("dificultad "+d.getDif_dif()+" de la actividad "+actblo.getNom_act()+" del bloque "+blo.getNom_blo()+"\n");
+                            }
+                        }
+                    }*/                 
                     for(Bloques blo : listablo ){
-                        System.out.println(blo.getNom_blo());
+                       System.out.println("\n\n\nbloque "+blo.getNom_blo()+"\n");
                 %>
                 <div class="<%=blo.getNom_blo()%>">
                     <div class="titulo">
@@ -55,9 +64,9 @@
                     </div>
                     <div class="acts">
                         <%
-                        List<Act_Blo> injoin = Administrador.ActividadesXBloque(blo.getId_blo()); 
-                        for(Act_Blo actblo : injoin ){
-                            System.out.println(actblo.getNom_act());
+                        List<Actividades> listaact = Administrador.ConsActividadesADM(blo.getNom_blo());
+                        for(Actividades actblo : listaact){
+                            System.out.println("actividad "+actblo.getNom_act()+" del bloque "+blo.getNom_blo()+"\n");
                         %>
                         <div class="<%=actblo.getNom_act()%>">
                             <div class="img">
@@ -68,10 +77,9 @@
                                 <div class="botones">
                                     <div class="dificultades">
                                     <%
-                                        List<Dificultades> dif = Administrador.ConsDificultadess();
+                                        List<Dificultades> dif = Administrador.ConsDificultadesADM(actblo.getNom_act());
                                         for(Dificultades d : dif){                    
-                                            System.out.println(d.getId_dif()+" "+d.getDif_dif());
-                                            int cons = 0;
+                                            System.out.println("dificultad "+d.getDif_dif()+" de id "+d.getId_dif()+" de la actividad "+actblo.getNom_act()+" del bloque "+blo.getNom_blo()+"\n");
                                         %>
                                         <div class="dropdown">
                                             <div class="tipodif">
@@ -82,9 +90,6 @@
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 <form name="ActualizarDif1" method="post" id="form" action="ActualizarDif1">
-                                                <%
-                                                    
-                                                %>
                                                     <input type="hidden" name="facil" value="facil" class="dropdown-item" readonly>
                                                     <input type="hidden" name="id" value="<%=d.getId_dif()%>" class="dropdown-item" readonly>
                                                     <input type="hidden" name="actividad" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
@@ -110,8 +115,20 @@
                                           Cambiar de bloque
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                          <li><a class="dropdown-item" href="#">Estafas</a></li>
-                                          <li><a class="dropdown-item" href="#">Virus</a></li>
+                                          <li>
+                                              <form name="ActualizarBlo" method="post" id="form" action="ActualizarBlo">
+                                                  <input type="hidden" name="Estafas" value="Estafas" class="dropdown-item" readonly>
+                                                  <input type="hidden" name="actividad" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
+                                                  <input type="submit" id="boton" class="dropdown-item" value="Estafas">
+                                              </form>
+                                          </li>
+                                          <li>
+                                              <form name="ActualizarBlo" method="post" id="form" action="ActualizarBlo">
+                                                  <input type="hidden" name="Virus" value="Virus" class="dropdown-item" readonly>
+                                                  <input type="hidden" name="actividad" value="<%=actblo.getNom_act()%>" class="dropdown-item" readonly>
+                                                  <input type="submit" id="boton" class="dropdown-item" value="Virus">
+                                              </form>
+                                          </li
                                         </ul>
                                     </div>
                                 </div>

@@ -76,17 +76,19 @@
                         <h2>VIRUS</h2>
                     </div>
                     <div class="acts">
-                        <div class="img">
-                            <img src="./img/linkss.png" class="imgp">
-                        </div>
-                        <div class="descripcion">
-                            <h2>Links</h2>
-                            <br>
-                            <p>¿Cómo identificar un virus? ¿Te atreves a intentarlo?</p>
-                            <div class="botones">
-                                <p>Iniciar</p>
-                                <a type="button" class="btn-material" href="buscador_virus_dif.html">Fácil</a>
-                                <a type="button" class="btn-material" href="buscador_virus_dif2.html">Difícil</a>
+                        <div class="links">
+                            <div class="img">
+                            <img src="./img/links.png" class="imgp">
+                            </div>
+                            <div class="descripcion">
+                                <h2>Links</h2>
+                                <br>
+                                <p>¿Cómo identificar un virus? ¿Te atreves a intentarlo?</p>
+                                <div class="botones">
+                                    <p>Iniciar</p>
+                                    <a type="button" class="btn-material" href="buscador_virus_dif.html">Fácil</a>
+                                    <a type="button" class="btn-material" href="buscador_virus_dif2.html">Difícil</a>
+                                </div>
                             </div>
                         </div>
                     </div>

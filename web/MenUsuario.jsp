@@ -24,7 +24,7 @@ c<!DOCTYPE html>
     System.out.println(email);
     String password = accionesUsu.getPassByEmail(email);
     int idbloEstafas=1;
-    List<Act_Blo> act_blo = Administrador.ActividadesXBloque(idbloEstafas);
+    int idbloVirus=2;
     %>
     <title>Inicio</title>
 </head>
@@ -90,12 +90,37 @@ c<!DOCTYPE html>
                         <br>
                         <div class="act">
                             <%
+                                List<Act_Blo> act_blo = Administrador.ActividadesXBloque(idbloEstafas);
                                 for (Act_Blo ab : act_blo){
                                 System.out.println(ab.getNom_act());
                                 List<Bloques> blo = Administrador.ConsBloques();
                                 for (Bloques bloques : blo){
                                     System.out.println(bloques.getNom_blo());
                                     String bloq = "Estafas";
+                                    UsuarioConsulta usuC = accionesUsu.buscarUsuAsigPromUsu(nombre,bloq,ab.getNom_act());
+                                    String progreso = usuC.getPro_dif();
+                                    System.out.println(usuC.getPro_dif());   
+                                %>
+                                <style>
+                                    .barraestafa2<%=ab.getNom_act()%>::after{
+                                        --barraavance:<%=progreso+"%"%>;
+                                    }
+                                </style>
+                                <%
+                                }
+                                %>
+                            <div class="cuadros">
+                                <p><%=ab.getNom_act()%></p> <div id="progreso" class="barraestafa barraestafa2<%=ab.getNom_act()%>"> </div>
+                            </div>                                
+                            <%    
+                                }   
+                                List<Act_Blo> act_blo2 = Administrador.ActividadesXBloque(idbloVirus);
+                                for (Act_Blo ab : act_blo2){
+                                System.out.println(ab.getNom_act());
+                                List<Bloques> blo = Administrador.ConsBloques();
+                                for (Bloques bloques : blo){
+                                    System.out.println(bloques.getNom_blo());
+                                    String bloq = "Virus";
                                     UsuarioConsulta usuC = accionesUsu.buscarUsuAsigPromUsu(nombre,bloq,ab.getNom_act());
                                     String progreso = usuC.getPro_dif();
                                     System.out.println(usuC.getPro_dif());   
