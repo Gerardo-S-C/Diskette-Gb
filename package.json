@@ -1,0 +1,29 @@
+{
+  "name": "Diskette-Gb",
+  "version": "1.0.0",
+  "description": "El proyecto bueno\r Creado por BellaKrisis:\r -Acevedo Ortega Ian Mauricio\r -Camacho Zavala Ricardo\r -Martínez Bravo Eduardo\r -Martínez Zaragoza Alan Gael\r -Sandoval Calderón Gerardo",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "emailjs-com": "^3.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gerardo-S-C/Diskette-Gb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gerardo-S-C/Diskette-Gb/issues"
+  },
+  "homepage": "https://github.com/Gerardo-S-C/Diskette-Gb#readme"
+}
